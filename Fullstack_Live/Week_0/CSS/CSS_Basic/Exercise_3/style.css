@@ -1,0 +1,13 @@
+.Button1, .Button2 {
+    font-size: 28px;
+    font-family: Verdana, 'Times New Roman', sans-serif;
+}
+
+.Button1 {
+    background-color: black;
+    color: white;
+}
+
+.Button2 {
+    background-color: yellow;
+}
