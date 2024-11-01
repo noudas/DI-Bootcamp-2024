@@ -12,14 +12,16 @@
 <body>
 
     <header>
+        <button id="menu-toggle">☰</button>
         <nav>
-            <ul> | 
-                <a href="#HTML1">1993</a> | 
-                <a href="#HTML2">1995</a> | 
-                <a href="#HTML3">1997</a> | 
-                <a href="#HTML4">2000</a> | 
-                <a href="#HTML5">2014</a> | 
-            </ul> 
+            <ul> |
+                <a href="#intro">Intro</a> |
+                <a href="#HTML1">1993</a> |
+                <a href="#HTML2">1995</a> |
+                <a href="#HTML3">1997</a> |
+                <a href="#HTML4">2000</a> |
+                <a href="#HTML5">2014</a> |
+            </ul>
         </nav>
     </header>
 
@@ -148,7 +150,38 @@
 
         <p>Just go the timeline through the inspect</p>
         <p>Most of the page was made using HTML 5 tags</p>
+
+        <button id="rotate-button" href="#HTML5">Upside the HTML 5</button>
     </section>
+    <footer id="intro" class="upsidedown">
+        <div class="uproot">
+
+            <h1 class="title">More features coming soon</h1>
+            <div>
+                <h1>I am still working on some stuff</h1>
+                <p>Maybe in the future i will try to redo this site</p>
+            </div>
+    </footer>
     
 </body>
+
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", function() {
+        document.querySelector("nav").classList.toggle("open");
+        document.body.classList.toggle("nav-open");
+    });
+
+    document.getElementById("rotate-button").addEventListener("click", function() {
+        // Aplica a classe de rotação ao body
+        document.body.classList.toggle("rotate-page");
+        
+        // Aguarda a rotação e depois rola até o footer e adiciona a classe upsidedown
+        setTimeout(function() {
+            const footer = document.querySelector("footer");
+            footer.classList.add("upsidedown");
+            footer.scrollIntoView({ behavior: "smooth" });
+        }, 600); // Tempo de espera para a rotação (igual ao tempo de transição)
+    });
+</script>
+
 </html>
