@@ -39,6 +39,16 @@ nav ul, nav li{
     list-style-type: none;
 }
 
+nav a:hover{
+    transition: 0.1s ease-in-out;
+    color: black;
+    font-size: 18px;
+}
+
+nav a:visited{
+    color: black;
+}
+
 #menu-toggle {
     display: none;
     position: fixed;

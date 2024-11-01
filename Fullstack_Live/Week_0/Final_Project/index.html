@@ -178,7 +178,6 @@
         // Aguarda a rotação e depois rola até o footer e adiciona a classe upsidedown
         setTimeout(function() {
             const footer = document.querySelector("footer");
-            footer.classList.add("upsidedown");
             footer.scrollIntoView({ behavior: "smooth" });
         }, 600); // Tempo de espera para a rotação (igual ao tempo de transição)
     });
