@@ -1,0 +1,1 @@
+print("\nHello world"*4,"\nI love python"*4)
