@@ -141,8 +141,45 @@ def exercise3():
     # Bonus: How many non-whitespace characters it contains.
     # Bonus: The average amount of words per sentence in the paragraph.
     # Bonus: the amount of non-unique words in the paragraph.
-    
+    import re
 
+    # Sample paragraph (replace this with any paragraph of your choice)
+    paragraph_text = """Your interesting paragraph goes here. Make sure it has multiple sentences, so the code can analyze it effectively."""
+
+    # Calculate the number of characters (including whitespace)
+    total_characters = len(paragraph_text)
+
+    # Count the number of sentences using regex to split by '.', '?', or '!'
+    sentences = re.split(r'[.!?]', paragraph_text)
+    # Remove any empty strings that may result from splitting
+    sentences = [s for s in sentences if s]
+    total_sentences = len(sentences)
+
+    # Calculate the number of words by splitting on whitespace
+    words = paragraph_text.split()
+    total_words = len(words)
+
+    # Calculate the number of unique words
+    unique_words = set(words)
+    total_unique_words = len(unique_words)
+
+    # Calculate the number of non-whitespace characters
+    non_whitespace_characters = len(paragraph_text.replace(" ", ""))
+
+    # Calculate the average number of words per sentence
+    average_words_per_sentence = total_words / total_sentences if total_sentences > 0 else 0
+
+    # Calculate the number of non-unique words
+    non_unique_words = total_words - total_unique_words
+
+    # Display results
+    print(f"Total characters (including whitespace): {total_characters}")
+    print(f"Total sentences: {total_sentences}")
+    print(f"Total words: {total_words}")
+    print(f"Unique words: {total_unique_words}")
+    print(f"Non-whitespace characters: {non_whitespace_characters}")
+    print(f"Average words per sentence: {average_words_per_sentence:.2f}")
+    print(f"Non-unique words: {non_unique_words}")
 
 
 def exercise4():
@@ -164,10 +201,28 @@ def exercise4():
     #     choosing:1
     #     or:2
     #     to:1
+    # Input text (you can replace this with any input or use input() to get text from the user)
+
+    text = "New to Python or choosing between Python 2 and Python 3? Read Python 2 or Python 3."
+
+    # Split the text into words and create a dictionary to count frequencies
+    word_counts = {}
+    for word in text.split():
+        # Strip punctuation and normalize to title case for uniformity
+        word = word.strip('.,?').title()
+        if word in word_counts:
+            word_counts[word] += 1
+        else:
+            word_counts[word] = 1
+
+    # Sort and print word frequencies
+    for word in sorted(word_counts):
+        print(f"{word}:{word_counts[word]}")
+
 
 
 
 
 #exercise1()
 #exercise2()
-exercise3()
+#exercise3()
