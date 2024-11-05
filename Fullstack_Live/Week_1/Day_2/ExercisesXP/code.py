@@ -57,14 +57,20 @@ def exercise_4():
 
     for i in range(3,11):
         i = i * 0.5
-        list1.append(i)
+        if i.is_integer():
+            list1.append(int(i))
+        else:
+            list1.append(i)
     print("Using a for loop ", list1)
     
     i = 1
 
     while i < 5:
         i += 0.5
-        list2.append(i)
+        if i.is_integer():
+            list2.append(int(i)) 
+        else:
+            list2.append(i)
 
     print("Using a while loop ", list2)
 
