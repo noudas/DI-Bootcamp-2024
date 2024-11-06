@@ -238,7 +238,7 @@ def exercise_8():
 
                 if user.lower() == 'quit':
                     print("\nThanks for playing!")
-                    return
+                    break
                 
                 if not user.strip():
                     print("\nPlease enter an answer.")
