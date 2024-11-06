@@ -283,8 +283,6 @@ def exercise_8():
     # Bonus : display to the user the questions he answered wrong, his answer, and the correct answer.
     # If he had more then 3 wrong answers, ask him to play again.
 
-
-
 exercise_1()
 exercise_2()
 exercise_3()
