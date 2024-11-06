@@ -84,30 +84,101 @@ def exercise_2():
     sales = {}
     for item in sales_data:
         product = item["product"]
-        sales[product] = (item["price"] * item["quantity"])
+        total_sale = item["price"] * item["quantity"]
 
-    print(sales)
+        if product in sales:
+            sales[product] += total_sale
+        else:
+            sales[product] = total_sale
 
     # Customer Spending Profile: Determine the total amount spent by each customer. 
     # Use a dictionary to maintain the sum of amounts each customer has spent.
-    # 
+
+    cust_payperview = {}
+    for item in sales_data:
+        cus = item["customer_id"]
+        total_sale = item["price"] * item["quantity"]
+
+        if cus in cust_payperview:
+            cust_payperview[cus] += total_sale
+        else:
+            cust_payperview[cus] = total_sale
+
+        
     # Sales Data Enhancement:
     # 
     # Add a new field to each transaction called “total_price” that represents the total price for that transaction (quantity * price).
     # Use a loop to modify the sales_data list with this new information.
+
+    for item in sales_data:
+        item["total_price"] = item["price"] * item["quantity"]
+
+
+
     # High-Value Transactions:
     # 
     # Using list comprehension, create a list of all transactions where the total price is greater than $500.
     # Sort this list by the total price in descending order.
+
+    transaction_bigger_than_500 = [transaction for transaction in sales_data if transaction['total_price'] > 500]
+    transaction_bigger_than_500.sort(key=lambda x: x['total_price'], reverse=True)
+    
+
+
     # Customer Loyalty Identification:
     # 
     # Identify any customer who has made more than one purchase, suggesting potential loyalty.
     # Use a dictionary to count purchases per customer, then use a loop or comprehension to identify customers meeting the loyalty criterion.
+
+    loyal_people = {}
+    for transactions in sales_data:
+        customer = transactions['customer_id']
+        if customer in loyal_people:
+            loyal_people[customer] += 1
+        else:
+            loyal_people[customer] = 1
+
+    loyality = [customer for customer,count in loyal_people.items() if count > 2]
+
+    print("\nTotal Sales:", sales)
+    print("Customer Spending:", cust_payperview)
+    print("First Two Sales Data Entries:", sales_data[:2])
+    print("Loyal Customers:", loyality)
+
+
+
     # Bonus: Insights and Analysis:
     # 
     # Calculate the average transaction value for each product category.
     # Identify the most popular product based on the quantity sold.
     # Provide insights into how these analyses could inform the company’s marketing strategies
 
-exercise_1()
+    quatity = {}
+    a = ''
+    b = 0
+    for transactions in sales_data:
+        quantity = transactions['quantity']
+        item = transactions['product']
+        if item in quatity:
+            quatity[item] += quantity
+        else:
+            quatity[item] = quantity
+    
+    for key,value in quatity.items():
+        if b < value:
+            b = value
+            a = key
+
+    print(f"The most sold item was {a} with {b} sales")
+    
+    # Media = {Valor criado do além: 
+    # arredondar(dicionario_sales[Valor criado do além] dividido por dicionario_quatity[Valor criado do além]) 
+    # para cada Valor criado do além dentro do dicionario_sales retorne ele se ele tiver dentro do dicionario_sales}
+    
+    avarage = {item: round(sales[item] / quatity[item]) for item in sales if item in quatity}
+    print(f"average transaction value for each product is {avarage}")
+    
+
+
+#exercise_1()
 exercise_2()

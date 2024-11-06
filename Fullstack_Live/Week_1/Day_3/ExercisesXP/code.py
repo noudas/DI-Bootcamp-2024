@@ -125,7 +125,6 @@ def exercise_3():
 
 
 
-
 def exercise_4():
     # Use this list :
     # 
@@ -184,7 +183,7 @@ def exercise_4():
         if 'm' in character.lower() or 'p' in character.lower():
             disney_users_A_m_p[character] = i
     
-    return f"Characters with an 'm or p': {disney_users_A_m_p}"
+    print(f"Characters with an 'm or p': {disney_users_A_m_p}")
 
 
 # exercise_1()

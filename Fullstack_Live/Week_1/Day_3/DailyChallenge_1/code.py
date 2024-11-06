@@ -114,8 +114,5 @@ def exercise_2():
     print(list_of_grangenas)
 
 
-
-
-
 exercise_1()
 exercise_2()
