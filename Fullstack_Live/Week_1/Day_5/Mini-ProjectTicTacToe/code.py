@@ -91,8 +91,13 @@ def check_win(board,player):
         player = 'O'
 
     for row in board:
-        if all(X_or_O  == player for X_or_O in row):
+        if all(X_or_O == player for X_or_O in row):
             return f"{player}! You win!"
+    for column in range(3):
+        if all(row[column] == player for row in board):
+            return f"{player} wins!"
+    
+
         
     if all(board[i][i] == player for i in range(3)):
         return f"{player}! You win!"
@@ -150,6 +155,5 @@ def play():
 
     display_board(board)
     print(f"Final Score: Player 1 (X): {player_1_win_counter}, Player 2 (O): {player_2_win_counter}")
-
 
 play()
