@@ -41,7 +41,7 @@ class Farm:
         print(f"{self.name}`s farm")
         print()
         for key,value in self.animals.items():
-            print(f"{key}:{value}")
+            print(f"{key:<6}:{value:>3}")
         print()
         print(f"{'':<10}E-I-E-I-0!")
         return ''
@@ -70,9 +70,6 @@ print(macdonald.get_info())
 macdonald.get_animal_types()
 macdonald.get_short_info()
         
-    
-
-
 
 
 # Bonus: nicely line the text in columns as seen in the example above. Use string formatting.
