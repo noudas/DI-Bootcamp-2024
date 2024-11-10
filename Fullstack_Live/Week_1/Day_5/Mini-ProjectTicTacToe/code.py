@@ -28,15 +28,19 @@ def welcome():
 ░█░ █ █▄▄   ░█░ █▀█ █▄▄   ░█░ █▄█ ██▄
 """)
     
-def display_board(board):
-    print("ULTIMATE TIC TAC TOE!")
-    print("******************")
-    for row in board:
-        print('*  ' + ' | '.join(row) + '   *')
+def display_board(board): # Desenhar o Tabuleiro
+    print("ULTIMATE TIC TAC TOE!") # Imprimir a frase
+    print("******************") # Imprimir a barreira de cima
+    for row in board: # Pra cada linha dentro do meu tabuleiro 
+        print('*  ' + ' | '.join(row) + '   *') # Imprime o tabuleiro em 3 linhas
         print('* ___|___|___  *')
-    print("******************")
+    print("******************") # Imprimir a barreira de baixo
 
-def clear_board():
+def clear_board(): # Limpar o Tabuleiro
+    # Criar uma matriz
+    # 3 x 3
+    # Cada espaço da matriz vai ser uma string vazia
+    # Que é retornada depois de chamada
     return [
         [' ', ' ', ' '],
         [' ', ' ', ' '],
@@ -115,20 +119,20 @@ def play_again():
         return False
 
 def play():
-    player_1_win_counter = 0
-    player_2_win_counter = 0
-    game_start = False
-    board = clear_board()
-    player = 0
-    move_count = 0
+    player_1_win_counter = 0 # Contador de vitorias do Player 1
+    player_2_win_counter = 0 # Contador de vitorias do Player 2
+    game_start = False # Incializador do Jogo
+    board = clear_board() # Gera um tabuleiro novo
+    player = 0 # De quem e o turno
+    move_count = 0 # Contador de jogadas
 
-    welcome()
-    game = input("Do you wish to play? (Type 'y' to start or 'q' to quit) ").lower()
-    if game == 'y':
-        game_start = True
+    welcome() # Mensagem de Jogo da Velha
+    game = input("Do you wish to play? (Type 'y' to start or 'q' to quit) ").lower() # Pede para usuario escrever y ou q para jogar ou sair
+    if game == 'y': # Se a condicao for verdade, ele entra no laço, qualquer outra coisa ele sai
+        game_start = True # game_start começa o jogo
     
-    while game_start:
-        display_board(board)
+    while game_start: # Equanto for verdade, faça as coisas abaixo
+        display_board(board) # Puxar a matriz do tabuleiro e gerar a parte visual dele
         
         print(f"It's {'X' if player == 0 else 'O'} turn!")
         if check_quit():
