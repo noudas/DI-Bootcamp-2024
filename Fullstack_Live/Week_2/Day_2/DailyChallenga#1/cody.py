@@ -1,3 +1,5 @@
+import math
+
 # Create a class to handle paginated content in a website. 
 # A pagination is used to divide long lists of content in a series of pages.
 # 
@@ -8,20 +10,60 @@
 class Pagination:
     def __init__(self, items = None, pageSize = 10):
         self.items = items
-        self.pageSize = pageSize
+        self.pageSize = int(pageSize)
+        self.page = {index + 1: list(self.items[index * self.pageSize:(index + 1) * self.pageSize]) for index in range(0, math.ceil(len(self.items)/self.pageSize))}
+        self.pagenum = 1
 
-alphabetList = list("abcdefghijklmnopqrstuvwxyz")
-# 
-p = Pagination(alphabetList, 4)
-# 
-# 
 # The Pagination class will have a few methods:
-# 
 # getVisibleItems() : returns a list of items visible depending on the pageSize
 # So for example we could use this method like this:
 # 
 # p.getVisibleItems() 
 # # ["a", "b", "c", "d"]
+
+    def getVisibleItems(self):
+        print(f"Page {(self.pagenum)}/{len(self.page)+1}: {self.page.get(self.pagenum)}")
+
+    def prevPage(self):
+        if self.pagenum == 1:
+            print("You be in the first page")
+        else:
+            self.pagenum -= 1
+            print(f"Page {(self.pagenum)}/{len(self.page)+1}")
+
+    def nextPage(self):
+        if self.pagenum == len(self.page):
+            print("You be in the last page")
+        else:
+            self.pagenum += 1
+            print(f"Page {(self.pagenum)}/{len(self.page)+1}")
+
+    def lastPage(self):
+        if self.pagenum == len(self.page):
+            print("You be in the last page")
+        else:
+            self.pagenum = len(self.page)
+
+    def firstPage(self):
+        if self.pagenum == 1:
+            print("You be in the first page")
+        else:
+            self.pagenum = 1
+            
+    def goToPage(self,pageNum):
+        print(f"You currently are in the page {self.pagenum}/{len(self.page)}")
+        try:
+            if pageNum > len(self.page) or pageNum < 1:
+                print("Invalid number")
+                pageNum = int(input("Type a valid number "))
+                self.goToPage(pageNum)
+            else:
+                self.pagenum = pageNum
+                print(f"Going to page {self.pagenum}/{len(self.page)}")
+        except:
+            raise TypeError("Write a valid number ")
+                
+
 # You will have to implement various methods to go through the pages such as:
 # prevPage()
 # nextPage()
@@ -31,24 +73,53 @@ p = Pagination(alphabetList, 4)
 # 
 # Here’s a continuation of the example above using nextPage and lastPage:
 # 
-# alphabetList = list("abcdefghijklmnopqrstuvwxyz")
+alphabetList = list("abcdefghijklmnopqrstuvwxyz")
 # 
-# p = Pagination(alphabetList, 4)
+p = Pagination(alphabetList, 4)
+p.nextPage()
+p.nextPage()
+p.nextPage()
+p.nextPage()
+p.nextPage()
+p.nextPage()
+p.nextPage()
+
+p.prevPage()
+p.prevPage()
+p.prevPage()
+p.prevPage()
+p.prevPage()
+p.prevPage()
+p.prevPage()
+
+p.lastPage()
+p.getVisibleItems() 
+
+p.firstPage()
+p.getVisibleItems() 
 # 
-# p.getVisibleItems() 
+#p.getVisibleItems() 
 # # ["a", "b", "c", "d"]
 # 
-# p.nextPage()
+#p.nextPage()
 # 
-# p.getVisibleItems()
+#p.getVisibleItems()
 # # ["e", "f", "g", "h"]
 # 
-# p.lastPage()
+
 # 
-# p.getVisibleItems()
+#p.firstPage()
+
+#p.getVisibleItems()
+
+#p.lastPage()
+# 
+#p.getVisibleItems()
 # # ["y", "z"]
 # 
-# 
+pageNum = 3
+p.goToPage(pageNum)
+p.getVisibleItems()
 # Notes
 # 
 # The second argument (pageSize) could be a float, in that case just convert it to an int (this is also the case for the goToPage method)
