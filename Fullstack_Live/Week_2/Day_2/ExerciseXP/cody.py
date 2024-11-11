@@ -93,14 +93,17 @@ def exercise_3():
     # Create a new python file and import your Dog class from the previous exercise.
 
     # In the new python file, create a class named PetDog that inherits from Dog.
-
     pass
 
 def exercise_4():
     # Create a class called Family and implement the following attributes:
     # members: list of dictionaries
     # last_name : (string)
-    # 
+    class Family:
+        def __init__(self, members, last_name):
+            self.members = {}
+            self.last_name = last_name
+
     # Implement the following methods:
     # 
     # born: adds a child to the members list (use **kwargs), don’t forget to print a message congratulating the family.
@@ -145,5 +148,6 @@ def exercise_5():
     # 
     # Call the incredible_presentation method again.
     pass
+
 #exercise_1()
 #exercise_2()
