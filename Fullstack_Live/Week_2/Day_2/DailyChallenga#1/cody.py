@@ -63,66 +63,68 @@ class Pagination:
         except:
             raise TypeError("Write a valid number ")
                 
+def testes():
+    # You will have to implement various methods to go through the pages such as:
+    # prevPage()
+    # nextPage()
+    # firstPage()
+    # lastPage()
+    # goToPage(pageNum)
+    # 
+    # Here’s a continuation of the example above using nextPage and lastPage:
+    # 
+    alphabetList = list("abcdefghijklmnopqrstuvwxyz")
+    # 
+    p = Pagination(alphabetList, 4)
+    p.nextPage()
+    p.nextPage()
+    p.nextPage()
+    p.nextPage()
+    p.nextPage()
+    p.nextPage()
+    p.nextPage()
 
-# You will have to implement various methods to go through the pages such as:
-# prevPage()
-# nextPage()
-# firstPage()
-# lastPage()
-# goToPage(pageNum)
-# 
-# Here’s a continuation of the example above using nextPage and lastPage:
-# 
-alphabetList = list("abcdefghijklmnopqrstuvwxyz")
-# 
-p = Pagination(alphabetList, 4)
-p.nextPage()
-p.nextPage()
-p.nextPage()
-p.nextPage()
-p.nextPage()
-p.nextPage()
-p.nextPage()
+    p.prevPage()
+    p.prevPage()
+    p.prevPage()
+    p.prevPage()
+    p.prevPage()
+    p.prevPage()
+    p.prevPage()
 
-p.prevPage()
-p.prevPage()
-p.prevPage()
-p.prevPage()
-p.prevPage()
-p.prevPage()
-p.prevPage()
+    p.lastPage()
+    p.getVisibleItems() 
 
-p.lastPage()
-p.getVisibleItems() 
+    p.firstPage()
+    p.getVisibleItems() 
+    # 
+    #p.getVisibleItems() 
+    # # ["a", "b", "c", "d"]
+    # 
+    #p.nextPage()
+    # 
+    #p.getVisibleItems()
+    # # ["e", "f", "g", "h"]
+    # 
 
-p.firstPage()
-p.getVisibleItems() 
-# 
-#p.getVisibleItems() 
-# # ["a", "b", "c", "d"]
-# 
-#p.nextPage()
-# 
-#p.getVisibleItems()
-# # ["e", "f", "g", "h"]
-# 
+    # 
+    #p.firstPage()
 
-# 
-#p.firstPage()
+    #p.getVisibleItems()
 
-#p.getVisibleItems()
+    #p.lastPage()
+    # 
+    #p.getVisibleItems()
+    # # ["y", "z"]
+    # 
+    pageNum = 3
+    p.goToPage(pageNum)
+    p.getVisibleItems()
+    # Notes
+    # 
+    # The second argument (pageSize) could be a float, in that case just convert it to an int (this is also the case for the goToPage method)
+    # The methods used to change page should be chainable, so you can call them one after the other like this: p.nextPage().nextPage()
+    # Please set the p.totalPages and p.currentPage attributes to the appropriate number as there cannot be a page 0.
+    # If a page is outside of the totalPages attribute, then the goToPage method should go to the closest page to the number provided (e.g. there are only 5 total pages, but p.goToPage(10) is given: the p.currentPage should be set to 5; if 0 or a negative number is given, p.currentPage should be set to 1).
 
-#p.lastPage()
-# 
-#p.getVisibleItems()
-# # ["y", "z"]
-# 
-pageNum = 3
-p.goToPage(pageNum)
-p.getVisibleItems()
-# Notes
-# 
-# The second argument (pageSize) could be a float, in that case just convert it to an int (this is also the case for the goToPage method)
-# The methods used to change page should be chainable, so you can call them one after the other like this: p.nextPage().nextPage()
-# Please set the p.totalPages and p.currentPage attributes to the appropriate number as there cannot be a page 0.
-# If a page is outside of the totalPages attribute, then the goToPage method should go to the closest page to the number provided (e.g. there are only 5 total pages, but p.goToPage(10) is given: the p.currentPage should be set to 5; if 0 or a negative number is given, p.currentPage should be set to 1).
+testes()
