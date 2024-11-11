@@ -19,11 +19,9 @@ class PetDog(Dog):
     # play: takes a parameter which value is a few names of other Dog instances (use *args). 
     # The method should print the following string: “dog_names all play together”.
 
-    def play(self,*args):
-        dog_names = []
-        for arg in args:
-            dog_names.append(arg.name)
-        print(f'{', '.join(dog_names)} all play together')
+    def play(self, *args):
+        dog_names = [arg.name for arg in args] + [self.name]
+        print(f"{', '.join(dog_names)} all play together")
 
 
     # do_a_trick: If the dog is trained the method should print one of the following sentences at random:
@@ -47,9 +45,11 @@ class PetDog(Dog):
     # “dog_name plays dead”.
 
 
-
+dog_1 = PetDog("Scratchaton",7,30)
+dog_2 = PetDog("Tinkebell",12,15)
+dog_3 = PetDog("German Sheppard #3",2,27)
 dog_4 = PetDog("Omori", 1, 16)
 dog_4.train()
 dog_4.do_a_trick()
-dog_4.play(dog_4,dog_4,dog_4,dog_4)
+dog_4.play(dog_1,dog_2,dog_3)
     

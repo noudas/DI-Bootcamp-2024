@@ -89,65 +89,108 @@ def exercise_2():
 
     # Create 3 dogs and run them through your class.
             
-def exercise_3():
+    # Exercise 3
     # Create a new python file and import your Dog class from the previous exercise.
 
     # In the new python file, create a class named PetDog that inherits from Dog.
-    pass
 
-def exercise_4():
+def exercise_4_5():
     # Create a class called Family and implement the following attributes:
     # members: list of dictionaries
     # last_name : (string)
     class Family:
-        def __init__(self, members, last_name):
-            self.members = {}
+        def __init__(self,last_name, members= None):
             self.last_name = last_name
+            self.members = members if members is not None else []
 
     # Implement the following methods:
-    # 
     # born: adds a child to the members list (use **kwargs), don’t forget to print a message congratulating the family.
-    # is_18: takes the name of a family member as a parameter and returns True if they are over 18 and False if not.
-    # family_presentation: a method that prints the family’s last name and all the members’ details.
-    # 
+        def born(self,**kwargs):
+            self.members.append(kwargs)
+            print("CONGARTULATIONES!")
+
+        # is_18: takes the name of a family member as a parameter and returns True if they are over 18 and False if not.
+        def is_18(self, name_compare):
+            name_compare = name_compare
+            for member in self.members:
+                if member.get('name') == name_compare:
+                    member['is_child'] = member.get('age', 0) < 18
+
+
+
+        # family_presentation: a method that prints the family’s last name and all the members’ details.
+        def family_presentation(self):
+            print(f"Family: {self.last_name}")
+            for index,member in enumerate(self.members):
+                print(f'{index + 1} member: {member}')
+
     # Create an instance of the Family class, with the last name of your choice, and the below members. Then call all the methods you created in Point 2.
     # 
     #     [
     #         {'name':'Michael','age':35,'gender':'Male','is_child':False},
     #         {'name':'Sarah','age':32,'gender':'Female','is_child':False}
     #     ]
-    pass
 
-def exercise_5():
+    johnson = Family('Johnsons',[
+        {'name':'Michael','age':35,'gender':'Male','is_child':False},
+        {'name':'Sarah','age':32,'gender':'Female','is_child':False}
+        ])
+    johnson.is_18('Sarah')
+
+
     # Create a class called TheIncredibles. This class should inherit from the Family class:
-    # This is no random family they are an incredible family, therefore the members attributes, will be a list of dictionaries containing the additional keys : power and incredible_name. (See Point 4)
+    # This is no random family they are an incredible family, therefore the members attributes, 
+    # will be a list of dictionaries containing the additional keys : power and incredible_name. (See Point 4)
+    class TheIncredibles(Family):
+        def __init__(self, last_name, members=None):
+            super().__init__(last_name, members)
     # 
-    # 
-    # Add a method called use_power, this method should print the power of a member only if they are over 18 years old. If not raise an exception (look up exceptions) which stated they are not over 18 years old.
-    # 
+    # Add a method called use_power, this method should print the power of a member only if they are over 18 years old. 
+    # If not raise an exception (look up exceptions) which stated they are not over 18 years old.
+        def use_power(self):
+            for member in self.members:
+                if not member.get('is_child', True):
+                    print(f'{member.get('name')} used {member.get('power')}')
+                else:
+                    raise Exception(f"{member.get('name')} is not over 18 years old and cannot use their power.")
     # 
     # Add a method called incredible_presentation which :
     # 
     # Print a sentence like “*Here is our powerful family **”
-    # Prints the family’s last name and all the members’ details (ie. use the super() function, to call the family_presentation method)
-    # 
-    # 
+    # Prints the family’s last name and all the members’ details (ie. use the super() function, to call the family_presentation method) 
+    
+        def incredible_presentation(self):
+            print(f'Here is our powerful family:')
+            super().family_presentation()
+
+    # [
     # Create an instance of the Incredibles class, with the “Incredibles” last name, and the below members.
-    # 
-    #     [
     #         {'name':'Michael','age':35,'gender':'Male','is_child':False,'power': 'fly','incredible_name':'MikeFly'},
     #         {'name':'Sarah','age':32,'gender':'Female','is_child':False,'power': 'read minds','incredible_name':'SuperWoman'}
-    #     ]
-    # 
-    # 
+    # ]
+
+    incriveis = TheIncredibles("Incredibles",    
+                               [
+            {'name':'Michael','age':35,'gender':'Male','is_child':False,'power': 'fly','incredible_name':'MikeFly'},
+            {'name':'Sarah','age':32,'gender':'Female','is_child':False,'power': 'read minds','incredible_name':'SuperWoman'}
+                                ]
+                                )
+    
     # Call the incredible_presentation method.
-    # 
-    # 
+    incriveis.incredible_presentation()
+    incriveis.use_power()
+
     # Use the born method inherited from the Family class to add Baby Jack with the following power: “Unknown Power”.
-    # 
-    # 
+    incriveis.born(name='Zeze',age=0,gender='Male',is_child=True,power= 'Unknown Power',incredible_name='Lil Ze')
+    
     # Call the incredible_presentation method again.
-    pass
+    incriveis.incredible_presentation()
+
+    
+
+    # 
+    # 
 
 #exercise_1()
 #exercise_2()
+exercise_4_5()
