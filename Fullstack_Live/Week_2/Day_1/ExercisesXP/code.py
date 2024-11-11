@@ -126,10 +126,10 @@ def exercise_4():
             self.animals = []
 
         def add_animal(self, new_animal):
-            if new_animal in self.animals:
-                pass
-            else:
+            if new_animal not in self.animals:
                 self.animals.append(new_animal)
+            else:
+                print(f'{new_animal} is already in the zoo')
             
         def get_animals(self):
             print(self.animals)
@@ -137,9 +137,13 @@ def exercise_4():
         def sell_animal(self,animal_sold):
             if animal_sold in self.animals:
                 self.animals.remove(animal_sold)
+            else:
+                print(f'{animal_sold} has already been sold')
 
         def sort_animals(self):
-            self.animals.sort()
+            return self.animals.sort()
+
+        def group_animals(self):
 
             groups = {}
             count = 1
@@ -178,6 +182,7 @@ def exercise_4():
     ramat_gan_safari.sell_animal('Platypus')
     ramat_gan_safari.get_animals()
     ramat_gan_safari.sort_animals()
+    ramat_gan_safari.group_animals()
     
     # Create a method called sort_animals that sorts the animals alphabetically and groups them together based on their first letter.
     # Example

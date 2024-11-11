@@ -84,4 +84,5 @@ macdonald.get_short_info()
 # The method should call the get_animal_types function to get a list of the animals.
 
 # Note : In English the plural form of the word “sheep” is sheep. 
-# But for the purpose of the exercise, let’s say that if there is more than 1 animal, an “s” should be added at the end of the word.
+# But for the purpose of the exercise, let’s say that if there is more than 1 animal, 
+# an “s” should be added at the end of the word.
