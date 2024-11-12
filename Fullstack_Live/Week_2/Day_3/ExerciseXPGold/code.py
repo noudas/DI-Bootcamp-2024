@@ -176,9 +176,9 @@ def exercise_5():
     # it fulfills all the requirements above (eg. it has at least one digit, etc.)
     # it has the specified length.
 
-#exercise_1()
-#exercise_2()
-#exercise_3()
-#exercise_4()
+exercise_1()
+exercise_2()
+exercise_3()
+exercise_4()
 for _ in range(100):
     exercise_5()
