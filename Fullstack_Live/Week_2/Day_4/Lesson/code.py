@@ -7,6 +7,7 @@ with open("star_wars.txt", "r", encoding="utf-8") as f:
 
     for line in lines_list:
         print(line)
+        print(list(line))
 
 # Read only the 5th line of the file
     print(lines_list[4])
@@ -16,10 +17,11 @@ with open("star_wars.txt", "r", encoding="utf-8") as f:
     print(f.read(5))
 
 # Find out how many occurences of the names "Darth", "Luke" and "Lea" are in the file
-    darth = len([darth for darth in lines_list if darth == "Darth"])
-    luke = len([luke for luke in lines_list if luke == "Luke"])
-    lea = len([lea for lea in lines_list if lea == "Lea"])
-    print(darth,luke,lea)
+    occ = {}
+    occ["Darth"] = len([darth for darth in lines_list if darth == "Darth"])
+    occ["Luke"] = len([luke for luke in lines_list if luke == "Luke"])
+    occ["Lea"] = len([lea for lea in lines_list if lea == "Lea"])
+    print(occ)
 
 # Append your first name at the end of the file
     lines_list.append(lines_list[0])
