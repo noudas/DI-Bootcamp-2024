@@ -79,7 +79,6 @@ class TextModification(Text):
         return self
         
 
-
     # a method that returns the text without any special characters.
     def no_special_characters(self):
         self.string = re.sub(r'[@#$*&87]', '', self.string)
