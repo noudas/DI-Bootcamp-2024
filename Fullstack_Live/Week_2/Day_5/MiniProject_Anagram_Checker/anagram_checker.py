@@ -10,14 +10,16 @@ class AnagramChecker:
             self.list = set(word.strip() for word in f)
     
 # is_valid_word(word) – should check if the given word (ie. the word of the user) is a valid word.
-    def is_valid_word(self,word):
+    @staticmethod
+    def is_valid_word(word):
         if isinstance(word,str) and word.isalpha():
             return True
         else:
             raise TypeError(f"{word} is not a word!")
 
 # Only a single word is allowed. If the user typed more than one word, show an error message. (Hint: how do we know how many words were typed?)
-    def only_one_word(self, word):
+    @staticmethod
+    def only_one_word(word):
         if ' ' in word.strip():
             raise ValueError("Only one word is allowed.")
         return True

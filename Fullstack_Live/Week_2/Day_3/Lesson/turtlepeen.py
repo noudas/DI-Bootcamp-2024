@@ -1,6 +1,6 @@
 import turtle
 
-turtle.speed(speed=0)
+turtle.speed(speed=2)
 turtle.penup()
 turtle.setpos(0,-300)
 turtle.back(100)
