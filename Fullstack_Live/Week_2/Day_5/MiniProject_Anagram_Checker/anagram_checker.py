@@ -28,9 +28,9 @@ class AnagramChecker:
         word = word.strip()
         if self.is_valid_word(word) and self.only_one_word(word):
             word = word.lower()
-            list_anagram = [ana for ana in self.list if len(ana) == len(word) and sorted(ana.lower()) == sorted(word) and ana != word] 
+            list_anagram = [ana for ana in self.list if len(ana) == len(word) and ana != word.upper() and sorted(ana.lower()) == sorted(word)] 
             return list_anagram
-
+        
 # (eg. if word of the user is ‘meat’, the function should return a list containing [“mate”, “tame”, “team”].)
 # 
 # 
