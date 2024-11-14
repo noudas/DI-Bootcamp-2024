@@ -70,15 +70,14 @@ def main():
 
                 case 2:
                     print("Goodbye!")
-                    break
+                    return False
 
                 case _:
                     print("Invalid choice, please try again.")
-        except:
-            TypeError("Not a number")
-
-main()
-
+        except TypeError as te:
+            print(f"Error: {te}")
+        except ValueError as ve:
+            print(f"Error: {ve}")
 main()
 
 # All possible anagrams to the user’s word.
