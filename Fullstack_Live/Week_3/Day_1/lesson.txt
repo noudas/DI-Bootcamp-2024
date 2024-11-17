@@ -1,0 +1,11 @@
+What is a relational database:
+A relational database is a DB that all of the fields relate to one another in some way, much like a dictionary with keys and values.
+It is organized in tables or a relation, each table consists in rows and columns
+
+What is SQL:
+A Relational database querry language, a specialized programming language used for managing and interacting with relational databases.
+
+What is Postgres:
+
+
+What is a Null value:
