@@ -59,14 +59,17 @@ def main():
                           """)
                     
                     word = input("Type your word: ").strip().upper()
+                    if word.isalpha():
                     
-                    anagram_list = anagramchecker.get_anagrams(word)
-                    
-                    if anagram_list == []:
-                        print("Sorry! But this is not an anagramable word! Try another")
+                        anagram_list = anagramchecker.get_anagrams(word)
+                        
+                        if anagram_list == []:
+                            print("Sorry! But this is not an anagramable word! Try another")
+                        else:
+                            print(f"\nYour word was '{word}'")
+                            print(f"Anagrams for your word: {', '.join(anagram_list)}")
                     else:
-                        print(f"\nYour word was '{word}'")
-                        print(f"Anagrams for your word: {', '.join(anagram_list)}")
+                        print("Not a word!")
 
                 case 2:
                     print("Goodbye!")

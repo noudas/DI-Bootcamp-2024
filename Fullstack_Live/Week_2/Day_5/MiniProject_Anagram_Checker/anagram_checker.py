@@ -10,9 +10,8 @@ class AnagramChecker:
             self.list = set(word.strip() for word in f)
     
 # is_valid_word(word) – should check if the given word (ie. the word of the user) is a valid word.
-    @staticmethod
-    def is_valid_word(word):
-        if isinstance(word,str) and word.isalpha():
+    def is_valid_word(self,word):
+        if isinstance(word,str) and word.upper() in self.list:
             return True
         else:
             raise TypeError(f"{word} is not a word!")
