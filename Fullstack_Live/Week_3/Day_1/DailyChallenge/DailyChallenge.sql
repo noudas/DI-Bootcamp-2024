@@ -23,6 +23,7 @@ VALUES
 --1. Count how many actors are in the table.
 
 -- SELECT * FROM actors
+-- SELECT COUNT(*) FROM ACTORS
 
 -- There are 7 actors
 

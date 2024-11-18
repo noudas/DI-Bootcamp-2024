@@ -16,3 +16,34 @@ word = random.choice(wordslist)
 
 ### YOUR CODE STARTS FROM HERE ###
 
+def welcome():
+    print(r"""
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/                       
+    """)
+
+def start():
+    answer = int(input("Type your answer"))
+    if not answer.isalpha() and answer != '':
+        return answer
+    else:
+        print("Type only numbers!")
+        start()
+
+def body_part(mistake):
+    bodypart = { 1:'head', 2:'body', 3:'left arm', 4:'right arm', 5:'left leg', 6:'right leg'}
+    return bodypart[mistake]
+
+def game_reset():
+    letters_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def main():
+    welcome()
+
+main()
