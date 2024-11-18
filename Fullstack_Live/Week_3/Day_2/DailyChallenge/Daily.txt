@@ -1,0 +1,107 @@
+In this puzzle you have to go through all the SQL queries and provide us the output of the requests before executing them (ie. make an assumption).
+Then, execute them to make sure you were correct.
+
+
+Queries
+
+CREATE TABLE FirstTab (
+     id integer, 
+     name VARCHAR(10)
+)
+
+INSERT INTO FirstTab VALUES
+(5,'Pawan'),
+(6,'Sharlee'),
+(7,'Krish'),
+(NULL,'Avtaar')
+
+SELECT * FROM FirstTab
+
+CREATE TABLE SecondTab (
+    id integer 
+)
+
+INSERT INTO SecondTab VALUES
+(5),
+(NULL)
+
+
+SELECT * FROM SecondTab
+
+
+DATA
+Table1 – FirstTab
+ID  Name
+5   Pawan
+6   Sharlee
+7   Krish
+NULL    Avtaar
+
+
+Table2 – SecondTab
+ID
+5
+NULL
+
+
+Questions
+Q1. What will be the OUTPUT of the following statement?
+
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NULL )
+
+
+A1. This will make a count of all ids from the SecondTab that are null, 
+    which will return 0 because no rows from FirstTab will satisfy the condition due to the presence of NULL in the subquery.
+
+Correction:
+A1 OUTPUT: 3
+
+This will actually result in counting 3 rows from FirstTab, because when NULL is in the subquery, the NOT IN condition is considered "unknown" for all rows.
+Thus, no rows are excluded, and the count includes all rows except those excluded by other conditions (if present).
+
+
+Q2. What will be the OUTPUT of the following statement?
+
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id = 5 )
+
+A2. This will make a count of all ids that are not in SecondTab,
+    which will return 2 due to excluding the id of 5 and the exclusion of the NULL row.
+
+
+Correction:
+A2 OUTPUT: 3
+
+This will return 3, as id = 5 is excluded from the count, but NULL remains unaffected by the NOT IN condition.
+
+
+
+Q3. What will be the OUTPUT of the following statement?
+
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
+
+A3. The output of the query will be 2, because only the rows with id = 6 and id = 7 satisfy the condition. 
+    Rows with id = 5 and NULL are excluded due to the behavior of NOT IN with NULL.
+
+
+Correction:
+A3 OUTPUT: 2
+
+This will return 2, as id = 5 is excluded, and NULL (in SecondTab) causes an undefined state that makes the condition fail for all rows in FirstTab. 
+The rows with id = 6 and id = 7 are counted, but the row with NULL is not excluded properly
+
+
+
+Q4. What will be the OUTPUT of the following statement?
+
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL )
+
+A4. The output of the query will be 2 because only the rows with id = 6 and id = 7 are counted. 
+    Row 5 is excluded, and the NULL row is excluded as well due to the NOT IN condition
+
+Correction:
+A4 OUTPUT: 3
+This will return 3, because id = 5 is excluded, but the NULL in the FirstTab is not excluded due to the absence of NULL in the subquery's condition (id IS NOT NULL).
