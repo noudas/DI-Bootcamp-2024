@@ -1,13 +1,14 @@
 from menu_item import MenuItem
 import psycopg2
+from config import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 
 def db_connect():
     connection = psycopg2.connect(
-        database='ExerciseXP_Python_SQL',
-        user='postgres',
-        password='admin',
-        host='localhost',
-        port='5432'
+        database=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        host=DB_HOST,
+        port=DB_PORT
     )
     return connection
 
