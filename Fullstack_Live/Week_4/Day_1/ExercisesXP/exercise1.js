@@ -1,15 +1,25 @@
 // Instructions
-// const people = ["Greg", "Mary", "Devon", "James"];
-
+const people = ["Greg", "Mary", "Devon", "James"];
 
 // Part I - Review about arrays
 // Write code to remove “Greg” from the people array.
+people.shift()
+console.log(people)
 
 // Write code to replace “James” to “Jason”.
+for (person in people) {
+    if (people[person] == 'James') {
+        people[person] = 'Jason'
+    }
+}
+console.log(people)
 
 // Write code to add your name to the end of the people array.
+people.push('Jonathan')
+console.log(people)
 
 // Write code that console.logs Mary’s index. take a look at the indexOf method on Google.
+console.log(people.indexOf('Mary'));
 
 // Write code to make a copy of the people array using the slice method.
 // The copy should NOT include “Mary” or your name.
