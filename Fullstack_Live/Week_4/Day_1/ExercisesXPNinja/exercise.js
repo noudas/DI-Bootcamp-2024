@@ -8,14 +8,41 @@
 // Mass
 // Height
 
-const person = {
+const person1 = {
     fullname: "Juanito Jones",
     mass: 90,
-    height: 187
+    height: 187,
+
+    BMI() {
+        return this.mass / (this.height / 100) ** 2;
+    }
+};
+
+const person2 = {
+    fullname: "Sarah Smith",
+    mass: 70,
+    height: 165,
+
+    BMI() {
+        return this.mass / (this.height / 100) ** 2;
+    }
+};
+
+function BMI_comparing(person1, person2) {
+    const bmi1 = person1.BMI();
+    const bmi2 = person2.BMI();
+
+    if (bmi1 > bmi2) {
+        console.log(`${person1.fullname} has a higher BMI (${bmi1.toFixed(2)}) than ${person2.fullname} (${bmi2.toFixed(2)})`);
+    } else if (bmi1 < bmi2) {
+        console.log(`${person2.fullname} has a higher BMI (${bmi2.toFixed(2)}) than ${person1.fullname} (${bmi1.toFixed(2)})`);
+    } else {
+        console.log(`${person1.fullname} and ${person2.fullname} have the same BMI (${bmi1.toFixed(2)})`);
+    }
 }
 
-
-// Each object should also have a key which value is a function (ie. A method), that calculates the Body Mass Index (BMI) of each person
+// Call the function to compare
+BMI_comparing(person1, person2);
 
 // Outside of the objects, create a JS function that compares the BMI of both objects.
 
@@ -39,3 +66,28 @@ const person = {
 // If the average is below 65 let the user know they failed and must repeat the course.
 // Bonus Try and split parts 1,2 and 3,4 of this exercise to two separate functions.
 // Hint One function must call the other.
+
+function calculateAverage(gradesList) {
+    let total = 0;
+
+    for (let i = 0; i < gradesList.length; i++) {
+        total += gradesList[i];
+    }
+
+    return total / gradesList.length;
+}
+
+function findAvg(gradesList) {
+    const average = calculateAverage(gradesList);
+
+    console.log(`The average grade is: ${average.toFixed(2)}`);
+
+    if (average >= 65) {
+        console.log("Congratulations! You passed.");
+    } else {
+        console.log("Unfortunately, you failed and must repeat the course.");
+    }
+}
+
+const grades = [70, 80, 90, 60, 50];
+findAvg(grades);
