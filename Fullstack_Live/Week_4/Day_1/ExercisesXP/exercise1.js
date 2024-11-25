@@ -48,6 +48,8 @@ for (person in people) {
 
 // Using a loop, iterate through the people array and exit the loop after you console.log “Devon” .
 // Hint: take a look at the break statement in the lesson.
-for (person in people) {
-    console.log(people[person]);
-}
+for (let person of people) {
+    console.log(person);
+    if (person === "Devon") {
+        break;
+}}
