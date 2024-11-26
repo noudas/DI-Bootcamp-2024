@@ -65,6 +65,14 @@ for(planet of planets){
     divs[planet].style.color = "white";
     divs[planet].style.fontWeight = "bold";
     // Finally append each div to the <section> in the HTML (presented below).
+    if (planet == "Uranus"){
+        function playWind() {
+            let sound = document.getElementById("Notafart");
+            sound.play();
+        }
+        divs[planet].setAttribute("onmouseover","playWind()")
+
+    }
     contaier.appendChild(divs[planet]);
 }
 
