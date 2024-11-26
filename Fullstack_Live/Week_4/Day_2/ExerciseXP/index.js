@@ -333,3 +333,42 @@ if (divDOMmodule.style.backgroundColor == "lightblue"){
 // Example: HarryPotter written by JKRolling.
 // The width of the image has to be set to 100px.
 // If the book is already read. Set the color of the book’s details to red.
+// Step 1: Create an array of books with the required properties.
+const allBooks = [
+    {
+        title: "Harry Potter and the Sorcerer's Stone",
+        author: "J.K. Rowling",
+        image: "",
+        alreadyRead: true
+    },
+    {
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        image: "",
+        alreadyRead: false
+    }
+];
+
+// Step 2: Access the section element where the books will be rendered.
+const listBooksSection = document.querySelector('.listBooks');
+
+// Step 3: Loop through each book and create the div element for each book.
+allBooks.forEach(book => {
+    // Create a div element for each book
+    let bookDiv = document.createElement('div');
+    
+    // If the book is already read, change the text color to red.
+    if (book.alreadyRead) {
+        bookDiv.style.color = 'red';
+    }
+
+    // Create the content for the book's details
+    bookDiv.innerHTML = `
+        <h3>${book.title}</h3>
+        <p>by ${book.author}</p>
+        <img src="${book.image}" alt="${book.title}" width="100px">
+    `;
+
+    // Append the div to the section
+    listBooksSection.appendChild(bookDiv);
+});
