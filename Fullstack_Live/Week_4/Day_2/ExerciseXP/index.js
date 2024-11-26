@@ -176,7 +176,7 @@ console.log(changeEnough(14.11, [2,100,0,0])) // => returns false
 
 function hotelCost() {
     let nights = prompt("How many nights are you staying in our amazing hotel motel?")
-    while (!parseInt(nights)){
+    while (!nights || isNaN(nights) || nights <= 0){
         nights = prompt("How many nights are you staying in our amazing hotel motel?")
     }
     price_total_nights = parseInt(nights) * 140;
@@ -215,8 +215,21 @@ function planeRideCost() {
 // Calculate the cost to rent the car. The car costs $40 everyday.
 // If the user rents a car for more than 10 days, they get a 5% discount.
 // The function should return the total price of the car rental.
-function planeRideCost(){
+function rentalCarCost(){
+    let days = prompt("How many days would you like to rent the car?")
+    while (!days || isNaN(days) || days <= 0) {
+        days = prompt("Please enter a valid number of days:");
+    }
+
+    days = parseInt(days);
     
+    let price_total = 40 * days;
+    
+    if (days > 10) {
+        price_total *= 0.95;
+    }
+    
+    return price_total
 }
 
 
