@@ -21,6 +21,17 @@ let planetColors = {
     "Neptune": "#4F86A1"
 };
 
+let planetScale = {
+    Mercury: 0.38,  // Mercury's scale (relative size compared to Earth)
+    Venus: 0.95,    // Venus' scale
+    Earth: 1,       // Earth as the baseline (scale 1)
+    Mars: 0.53,     // Mars' scale
+    Jupiter: 11.21, // Jupiter's scale
+    Saturn: 9.45,   // Saturn's scale
+    Uranus: 4.01,   // Uranus' scale
+    Neptune: 3.88   // Neptune's scale
+};
+
 // Bonus: Do the same process to create the moons.
 // Be careful, each planet has a certain amount of moons. How should you display them?
 // Should you still use an array for the planets ? Or an array of objects ?
@@ -34,19 +45,20 @@ let planetMoons = {
     "Uranus": ["Miranda", "Ariel", "Umbriel", "Titania", "Oberon"],
     "Neptune": ["Triton", "Nereid"] 
 };
-
+let planetSize = 100;
 // For each planet in the array, create a <div> using createElement. This div should have a class named "planet".
 for(planet of planets){
     divs[planet] = document.createElement("div");
     divs[planet].textContent = planet;
+    
    
     // Each planet should have a different background color. (Hint: you could add a new class to each planet - 
     // each class containing a different background-color).
     divs[planet].classList.add(planet);
     divs[planet].style.backgroundColor = planetColors[planet]
     divs[planet].style.borderRadius = "100%"
-    divs[planet].style.width = "300px"
-    divs[planet].style.height = "300px"
+    divs[planet].style.width = `${planetScale[planet] * planetSize}px`
+    divs[planet].style.height = `${planetScale[planet] * planetSize}px`
     divs[planet].style.display = "flex";
     divs[planet].style.justifyContent = "center";
     divs[planet].style.alignItems = "center";
