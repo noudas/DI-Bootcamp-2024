@@ -228,83 +228,85 @@ function rentalCarCost(){
     if (days > 10) {
         price_total *= 0.95;
     }
-    
+
     return price_total
 }
 
 
-// Define a function called totalVacationCost() that returns the total cost of the user’s vacation by calling the 3 functions that you created above.
+// Define a function called totalVacationCost() that returns the total cost of the user’s vacation by calling the 
+// 3 functions that you created above.
 // Example : The car cost: $x, the hotel cost: $y, the plane tickets cost: $z.
 // Hint: You have to call the functions hotelCost(), planeRideCost() and rentalCarCost() inside the function totalVacationCost().
 
 // Call the function totalVacationCost()
+// Bonus: Instead of using a prompt inside the 3 first functions, 
+// only use a prompt inside the totalVacationCost() function. You need to change the 3 first functions, accordingly.
+function totalVacationCost() {
+    plane_cost = planeRideCost()
+    car_cost = rentalCarCost()
+    hotel_cost = hotelCost()
 
-// Bonus: Instead of using a prompt inside the 3 first functions, only use a prompt inside the totalVacationCost() function. You need to change the 3 first functions, accordingly.
+    return `The car cost: ${car_cost}, the hotel cost: ${hotel_cost}, the plane tickets cost: ${plane_cost}.`
+}
 
+//console.log(totalVacationCost())
 
 // 🌟 Exercise 5 : Users
 // Instructions
 // Create a new structured HTML file and a new Javascript file
 
-// <div id="container">Users:</div>
-// <ul class="list">
-//     <li>John</li>
-//     <li>Pete</li>
-// </ul>
-// <ul class="list">
-//     <li>David</li>
-//     <li>Sarah</li>
-//     <li>Dan</li>
-// </ul>
-
-
 // Add the code above, to your HTML file
 
 // Using Javascript:
 // Retrieve the div and console.log it
+let divDOMmodule = document.getElementById('container')
+console.log(divDOMmodule);
+
 // Change the name “Pete” to “Richard”.
+let ilDOMmodule = document.body.children[1].firstElementChild.nextElementSibling;
+console.log(ilDOMmodule);
+ilDOMmodule.textContent = 'Richard';
+
 // Delete the second <li> of the second <ul>.
+let ilDOMmodule2 = document.body.children[2].firstElementChild.nextElementSibling;
+ilDOMmodule2.remove()
+
 // Change the name of the first <li> of each <ul> to your name. (Hint : use a loop)
+let uls = document.getElementsByTagName("ul");
+for(let ul of uls){
+    ul.firstElementChild.textContent = "Jonathan";
+}
+
 
 // Using Javascript:
 // Add a class called student_list to both of the <ul>'s.
 // Add the classes university and attendance to the first <ul>.
+for(let ul of uls){
+    ul.classList.add('student_list')
+}
+
+uls[0].classList.add('university','attendance')
+
 
 // Using Javascript:
 // Add a “light blue” background color and some padding to the <div>.
+divDOMmodule.style.backgroundColor = "lightblue"
+divDOMmodule.style.padding = "100px"
+
 // Do not display the <li> that contains the text node “Dan”. (the last <li> of the first <ul>)
+let ilDOMmodule3 = document.body.children[2].firstElementChild.nextElementSibling;
+ilDOMmodule3.style.display = "none";
+
 // Add a border to the <li> that contains the text node “Richard”. (the second <li> of the <ul>)
+ilDOMmodule.style.border = "1px solid"
 // Change the font size of the whole body.
+document.body.style.fontFamily = "Helvetica"
 
 // Bonus: If the background color of the div is “light blue”, alert “Hello x and y” (x and y are the users in the div).
+if (divDOMmodule.style.backgroundColor == "lightblue"){
+    alert(`Hello ${uls[0].firstElementChild.textContent} and ${uls[1].firstElementChild.textContent}`)
+    }
 
-
-// 🌟 Exercise 6 : Change the navbar
-// Instructions
-// Create a new structured HTML file and a new Javascript file
-
-// <div id="navBar">
-//     <ul>
-//         <li><a href="#">Profile</a></li>
-//         <li><a href="#">Home</a></li>
-//         <li><a href="#">My Friends</a></li>
-//         <li><a href="#">Messenger</a></li>
-//         <li><a href="#">My Pics</a></li>
-//     </ul>
-// </div>
-
-
-// Add the code above, to your HTML file
-
-// Using Javascript, in the <div>, change the value of the id attribute from navBar to socialNetworkNavigation, using the setAttribute method.
-
-// We are going to add a new <li> to the <ul>.
-// First, create a new <li> tag (use the createElement method).
-// Create a new text node with “Logout” as its specified text.
-// Append the text node to the newly created list node (<li>).
-// Finally, append this updated list node to the unordered list (<ul>), using the appendChild method.
-
-// Use the firstElementChild and the lastElementChild properties to retrieve the first and last <li> elements from their parent element (<ul>). Display the text of each link. (Hint: use the textContent property).
 
 
 // Exercise 7 : My Book List
