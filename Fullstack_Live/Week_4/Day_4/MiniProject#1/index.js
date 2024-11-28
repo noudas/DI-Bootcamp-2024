@@ -143,7 +143,6 @@ function createTableMenu() {
     menu.appendChild(clearButtonContainer);
 }
 
-
 function createDrawingBoard() {
     const drawingBoard = document.createElement("div");
 
@@ -234,8 +233,6 @@ function createColorPicker() {
 
     return colorPicker
 }
-
-// Call the function to add the color picker to the menu
 
 
 createTableMenu()
