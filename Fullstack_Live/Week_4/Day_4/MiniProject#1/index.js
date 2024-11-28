@@ -17,7 +17,6 @@ let bodyDOMModule = document.querySelector("body");
 let colorPosition = "black"
 let mousedown = false;
 
-
 let paintColors = [
     "red", "blue", "green", "yellow", "orange",
     "purple", "pink", "brown", "black", "white",
@@ -41,12 +40,7 @@ let colorDict = {
     "pink": "#FFC0CB",
     "yellow": "#FFFF00",
     "orange": "#FFA500",
-    "brown": "#A52A2A",
-    "custom1": null,
-    "custom2": null,
-    "custom3": null,
-    "custom4": null,
-    "custom5": null
+    "brown": "#A52A2A"
 };
 
 function createMenu() {
@@ -75,9 +69,9 @@ function createTableMenu() {
 
     const colorKeys = Object.keys(colorDict);
 
-        tableMenu.style.borderCollapse = "collapse";
-        tableMenu.style.margin = "20px auto";
-        tableMenu.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.2)";
+    tableMenu.style.borderCollapse = "collapse";
+    tableMenu.style.margin = "20px auto";
+    tableMenu.style.boxShadow = "0px 4px 8px rgba(0, 0, 0, 0.2)";
 
     for (let i = 0; i < colorKeys.length; i += 3) {
         let row = colorKeys.slice(i, i + 3);
@@ -87,49 +81,51 @@ function createTableMenu() {
         for (const color of row) {
             const colorButton = document.createElement("td");
 
-                colorButton.classList.add(color)
-                colorButton.style.backgroundColor = colorDict[color];
-                colorButton.style.height = "100px";
-                colorButton.style.width = "100px";
-                colorButton.style.cursor = "pointer";
-                colorButton.style.border = "2px solid #ddd";
-                colorButton.style.transition = "transform 0.2s, border-color 0.2s";
+            colorButton.classList.add(color);
+            colorButton.style.backgroundColor = colorDict[color];
+            colorButton.style.height = "100px";
+            colorButton.style.width = "100px";
+            colorButton.style.cursor = "pointer";
+            colorButton.style.border = "2px solid #ddd";
+            colorButton.style.transition = "transform 0.2s, border-color 0.2s";
 
-                colorButton.addEventListener("mouseenter", () => {
-                    colorButton.style.transform = "scale(1.1)";
-                    colorButton.style.borderColor = "#aaa";
-                    colorButton.style.zIndex = 1;
-                });
-                colorButton.addEventListener("mouseleave", () => {
-                    colorButton.style.transform = "scale(1)";
-                    colorButton.style.borderColor = "#ddd";
-                });
+            colorButton.addEventListener("mouseenter", () => {
+                colorButton.style.transform = "scale(1.1)";
+                colorButton.style.borderColor = "#aaa";
+                colorButton.style.zIndex = 1;
+            });
+            colorButton.addEventListener("mouseleave", () => {
+                colorButton.style.transform = "scale(1)";
+                colorButton.style.borderColor = "#ddd";
+            });
 
-                colorButton.addEventListener("click",() =>{
-                    colorPosition = colorButton.className;
-                    console.log(colorPosition);
-                })
+            colorButton.addEventListener("click", () => {
+                colorPosition = colorButton.className;
+                console.log(colorPosition);
+            });
 
             tableRow.appendChild(colorButton);
         }
     }
 
     const clearButtonContainer = document.createElement("div");
-        clearButtonContainer.style.display = "flex";
-        clearButtonContainer.style.justifyContent = "center";
-        clearButtonContainer.style.marginTop = "20px";
+    clearButtonContainer.style.display = "flex";
+    clearButtonContainer.style.flexDirection = "column"; // Stack items vertically
+    clearButtonContainer.style.alignItems = "center"; // Center align
+    clearButtonContainer.style.marginTop = "20px";
 
+    const colorPicker = createColorPicker();
     const clearButton = document.createElement("button");
-        clearButton.textContent = "Clear";
-        clearButton.style.width = "70%";
-        clearButton.style.padding = "10px";
-        clearButton.style.cursor = "pointer";
-        clearButton.style.fontSize = "16px";
-        clearButton.style.borderRadius = "5px";
-        clearButton.style.border = "1px solid #ccc";
-        clearButton.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.2)";
-        clearButton.style.transition = "background-color 0.2s, box-shadow 0.2s";
-        clearButton.classList.add("clear");
+    clearButton.textContent = "Clear";
+    clearButton.style.width = "70%";
+    clearButton.style.padding = "10px";
+    clearButton.style.cursor = "pointer";
+    clearButton.style.fontSize = "16px";
+    clearButton.style.borderRadius = "5px";
+    clearButton.style.border = "1px solid #ccc";
+    clearButton.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.2)";
+    clearButton.style.transition = "background-color 0.2s, box-shadow 0.2s";
+    clearButton.classList.add("clear");
 
     clearButton.addEventListener("mouseenter", () => {
         clearButton.style.backgroundColor = "#f0f0f0";
@@ -140,9 +136,13 @@ function createTableMenu() {
         clearButton.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.2)";
     });
 
+    // Add the color picker above the clear button
+    clearButtonContainer.appendChild(colorPicker);
     clearButtonContainer.appendChild(clearButton);
+
     menu.appendChild(clearButtonContainer);
 }
+
 
 function createDrawingBoard() {
     const drawingBoard = document.createElement("div");
@@ -219,6 +219,23 @@ function createDrawingBoard() {
         cells.forEach(cell => cell.style.backgroundColor = "");
     });
 }
+
+function createColorPicker() {
+    const colorPicker = document.createElement("input");
+    colorPicker.type = "color";
+    colorPicker.style.height = "75px"
+    colorPicker.style.width = "70%"
+    colorPicker.style.marginBottom = "20px";
+
+    colorPicker.addEventListener("input", (event) => {
+        colorPosition = event.target.value;
+        console.log("Selected color:", colorPosition);
+    });
+
+    return colorPicker
+}
+
+// Call the function to add the color picker to the menu
 
 
 createTableMenu()
