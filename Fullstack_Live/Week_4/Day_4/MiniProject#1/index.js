@@ -23,8 +23,6 @@ let paintColors = [
     "gray", "teal", "cyan", "magenta", "lime"
 ];
 
-let customColors = new Array(5).fill(null);
-
 let colorDict = {
     "black": "#000000",
     "white": "#FFFFFF",
