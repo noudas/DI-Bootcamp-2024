@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Drum Kit Container */
+.drum-kit {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* Three columns for top row */
+    grid-template-rows: 150px 150px 150px; /* Three rows for buttons */
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Styling Buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    text-align: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5px;
+    width: 100%;
+    max-width: 120px;
+}
+
+/* Button hover and active effects */
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+}
+
+button:active {
+    background-color: #388e3c;
+    transform: translateY(1px);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+}
+
+/* Custom Colors for Each Button */
+#playBoom {
+    background-color: #ffeb3b; /* Yellow */
+}
+
+#playClap {
+    background-color: #ff5722; /* Deep Orange */
+}
+
+#playHihat {
+    background-color: #2196F3; /* Blue */
+}
+
+#playKick {
+    background-color: #8bc34a; /* Light Green */
+}
+
+#playOpenhat {
+    background-color: #ff9800; /* Orange */
+}
+
+#playRide {
+    background-color: #009688; /* Teal */
+}
+
+#playSnare {
+    background-color: #f44336; /* Red */
+}
+
+#playTink {
+    background-color: #9c27b0; /* Purple */
+}
+
+#playTom {
+    background-color: #673ab7; /* Deep Purple */
+}
+
+/* Button hover effects for each button */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Layout: Ensuring buttons are spaced like a real drum set */
+.drum-kit {
+    grid-template-areas:
+        "hihat openhat ride"
+        "clap snare tink"
+        "boom kick tom";
+}
+
+/* Adjustments for small screens */
+@media (max-width: 600px) {
+    .drum-kit {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 50px);
+        grid-gap: 10px;
+    }
+}
