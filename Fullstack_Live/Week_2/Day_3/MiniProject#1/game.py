@@ -110,7 +110,7 @@ class Mage(Character):
         print(f"{self.name} CASTS TESTICULAR TORSION ON {character.name}. {character.name}'s life: {character.life}")
 
 
-
+"""
 druid = Druid("Snoop Dogg")
 warrior = Warrior("Bob")
 mage = Mage("Specularius The Fister")
@@ -129,3 +129,4 @@ warrior.roar(mage)
 mage.curse(warrior)
 mage.summon()
 mage.cast_spell(druid)
+"""
