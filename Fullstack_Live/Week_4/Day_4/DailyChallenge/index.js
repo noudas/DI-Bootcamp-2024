@@ -1,18 +1,3 @@
-// Recreate the todo list above:
-
-// Create an HTML, CSS and a JS file.
-
-// In the HTML file
-// create a form with one input type="text", and a “Submit” button.
-// add an empty div below the form
-// <div class="listTasks"></div>
-
-// In the js file, you must add the following functionalities:
-// Create an empty array : const tasks = [];
-
-
-
-
 const tasks = [];
 let formDOMmodule = document.querySelector("form");
 
@@ -20,17 +5,17 @@ let formDOMmodule = document.querySelector("form");
 function addTask() {
     let inputvalue = document.getElementById("todo");
     const value = inputvalue.value.trim();
-    // check that the input is not empty,
+    // Check that the input is not empty
     if (!isEmpty(value)) {
-        // then add it to the array (ie. add the text of the task)
-        tasks.push(value);
+        // Then add it to the array (ie. add the text of the task)
+        tasks.push({ task_id: tasks.length, text: value, done: false });
         inputvalue.value = '';
         let warning = document.getElementById("warning");
         warning.textContent = '';
     } else {
         let warning = document.getElementById("warning");
         warning.textContent = `Write something!`;
-        warning.style.color = 'red'
+        warning.style.color = 'red';
     }
 }
 
@@ -38,7 +23,7 @@ function isEmpty(val) {
     return (val === undefined || val == null || val.length <= 0 || val == '') ? true : false;
 }
 
-// then add it to the DOM, below the form (in the <div class="listTasks"></div>) .
+// Add tasks to the DOM
 function createTasktoList() {
     let listTasks = document.getElementsByClassName("listTasks")[0];
     listTasks.innerHTML = ""; // Clear the existing table
@@ -72,13 +57,19 @@ function createTasktoList() {
         checkbox.type = "checkbox";
         checkbox.id = `task_checkbox_${i}`;
         checkbox.classList.add("task-checkbox");
+        checkbox.checked = tasks[i].done; // Reflect task's done status
+        checkbox.addEventListener("change", () => doneTask(i, checkbox));
         checkboxCell.appendChild(checkbox);
 
         // Task label cell
         let taskCell = document.createElement("td");
         let label = document.createElement("label");
         label.setAttribute("for", `task_checkbox_${i}`);
-        label.textContent = tasks[i];
+        label.textContent = tasks[i].text;
+        if (tasks[i].done) {
+            label.style.color = "darkgreen";
+            label.style.textDecoration = "line-through";
+        }
         taskCell.appendChild(label);
 
         // Delete button cell
@@ -87,8 +78,10 @@ function createTasktoList() {
         buttonDelete.classList.add("delete-task");
         buttonDelete.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>'; // Font Awesome "X"
         buttonDelete.addEventListener("click", function () {
-            tasks.splice(i, 1); // Remove the task from the array
-            createTasktoList(); // Re-render the table
+            if (confirm("Are you sure you want to delete this task?")) {
+                tasks.splice(i, 1);
+                createTasktoList();
+            }
         });
         deleteCell.appendChild(buttonDelete);
 
@@ -105,22 +98,16 @@ function createTasktoList() {
     listTasks.appendChild(table);
 }
 
+// Function to handle task completion
+function doneTask(index, checkbox) {
+    tasks[index].done = checkbox.checked; // Toggle done status in tasks array
+    createTasktoList(); // Refresh the task list to update styles
+}
 
-formDOMmodule.addEventListener("submit",function(event){
+formDOMmodule.addEventListener("submit", function(event) {
     event.preventDefault();
     addTask();
-    console.log(tasks);
-    createTasktoList()
-
-})
+    createTasktoList();
+});
 
 console.log(formDOMmodule);
-// BONUS I (not mandatory):
-// Change the variable tasks to an array of task objects.
-// Each new task added to the array should have the properties : task_id, text and done (a boolean - false by default).
-// Every new task object should have a task_id, starting from 0, and a data-task-id attribute, which value is the same as the task_id. Check out data-* attributes here.
-// Create a function named doneTask(), that as soon as the user clicks on the “checkbox” input, the done property should change from false to true in the object, 
-// and from black to crossed out red in the DOM.
-
-// BONUS II (not mandatory):
-// Create a function named deleteTask(), that as soon as the user clicks on the “X” button, delete that specific task from the array listTasks.

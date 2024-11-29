@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <form>
-        <label for="todo"></label>
-        <input type="text" name="todo" id="todo">
-        <p id="warning"></p>
-        <button type="submit">Add to the list</button>
-    </form>
-    <div class="listTasks"></div>
+    <div class="container"> 
+        <form class="form">
+            <label for="todo"></label>
+            <div class="input-group">
+                <input type="text" name="todo" id="todo">
+                <button type="submit">Add to the list</button>
+            </div>
+            <p id="warning"></p>
+        </form>        
+        <div class="listTasks"></div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/abd9d57e05.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 </html>
