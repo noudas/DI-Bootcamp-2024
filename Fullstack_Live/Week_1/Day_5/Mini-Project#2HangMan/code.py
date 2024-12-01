@@ -42,8 +42,31 @@ def body_part(mistake):
 
 def game_reset():
     letters_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    mistake_count = 0
+    return letters_list, mistake_count
+    
+def word_checker(used_letter,letters_list):
+    if used_letter in letters_list:
+        letters_list.remove(used_letter)
+        if used_letter in word:
+            return True
+        else:
+            return False
+    
+def word_printer():
+    word_size = len(word)
+    return ['_' for _ in range(word_size)]
+
+def word_visualizer(letters_list,word_board):
+    if letters_list in word:
+        index_letter = {letter: position for position, letter in enumerate(word)}
+        
+    
 
 def main():
     welcome()
+    letters_list,mistake_count = game_reset()
+    print(word_printer())
+    
 
 main()
