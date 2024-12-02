@@ -63,17 +63,19 @@ function REPEATINATOR(str, n = 1) {
 // 
 // Using this code :
 // 
-// const startLine = '     ||<- Start line';
-// let turtle = '🐢';
-// let rabbit = '🐇';
+const startLine = '     ||<- Start line';
+let turtle = '🐢';
+let rabbit = '🐇';
 // Line up the Turtle and the Rabbit at the start line.
+turtle = '      ' + turtle
+rabbit = '      ' + rabbit
 // Expected Output:
 // 
 //     When you write:
 // 
-//     console.log(startLine);
-//     console.log(turtle);
-//     console.log(rabbit);
+     console.log(startLine);
+     console.log(turtle);
+     console.log(rabbit);
 // 
 //     It should look like this:
 // 
@@ -83,3 +85,4 @@ function REPEATINATOR(str, n = 1) {
 // 
 // 
 // What happens when you run turtle = turtle.trim().padEnd(9, '='); ?
+// Turtle goes VRUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUM
