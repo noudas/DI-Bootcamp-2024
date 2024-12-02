@@ -29,6 +29,16 @@ function removeDuplicate(array) {
 // Exercise 3 : Remove certain values
 // Instructions
 // Write a JavaScript function to remove: null, 0, "", false, undefined and NaN values from an array.
+function removeShinannigans(array) {
+    return array.filter(value => 
+        value !== null &&
+        value !== 0 &&
+        value !== false &&
+        value !== undefined &&
+        value !== "" &&
+        !Number.isNaN(value)
+    );
+}
 // Sample array : [NaN, 0, 15, false, -22, '',undefined, 47, null]
 // Expected result : [15, -22, 47]
 // 
@@ -39,6 +49,13 @@ function removeDuplicate(array) {
 // Create the repeat function yourself:
 // console.log(repeat('Ha!',3));
 // "Ha!Ha!Ha!"
+function REPEATINATOR(str, n = 1) {
+    let result = '';
+    for (let i = 0; i < n; i++) {
+        result += str;
+    }
+    return result;
+}
 // 
 // 
 // Exercise 5 : Turtle & Rabbit
