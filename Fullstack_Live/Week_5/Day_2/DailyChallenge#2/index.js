@@ -6,7 +6,8 @@
 // (see the array of objects below)
 
 function getCarHonda(carInventory) {
-    return carInventory.filter(car => car.car_make === "Honda")[0]
+    const car = carInventory.filter(car => car.car_make === "Honda")[0]
+    return `This is a ${car.car_make} ${car.car_model} from ${car.car_year}`
 }
 // The function should:
 // loop through the array of object and return the first car with the name “Honda”.
