@@ -70,6 +70,7 @@ function randomQuote() {
     return arrayObjects[randomIndex]
 }
 
+
 function formGenerator() {
     let generatorDOMmodule = document.getElementById("Generator")
 
@@ -77,7 +78,9 @@ function formGenerator() {
         quotePrint.style.visibility = "hidden";
 
     let h1DOMmodule = document.getElementsByTagName("h1")[0];
-        h1DOMmodule.textContent = "Add your Quote"
+        h1DOMmodule.textContent = "Add Your Quote"
+
+
 
     
 
