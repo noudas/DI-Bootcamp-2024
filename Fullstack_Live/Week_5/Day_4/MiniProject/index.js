@@ -72,10 +72,14 @@ function randomQuote() {
 
 function formGenerator() {
     let generatorDOMmodule = document.getElementById("Generator")
+
     let quotePrint = document.getElementById("quotePrint")
-    quotePrint.style.visibility = "hidden";
+        quotePrint.style.visibility = "hidden";
+
     let h1DOMmodule = document.getElementsByTagName("h1")[0];
-    h1DOMmodule.textContent = "Add your Quote"
+        h1DOMmodule.textContent = "Add your Quote"
+
+    
 
 }
 

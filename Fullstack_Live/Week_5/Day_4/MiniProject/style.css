@@ -22,11 +22,12 @@ blockquote {
 
 #quotePrint{
     margin-top: 20px;
+    border-radius: 10px;
     padding-top: 10px;
     border: 1px outset #C3976A;
-    width: 40%;
+    width: 50%;
     height: 100px;
-    background-color: #FFDFBF;
+    background-color: #fde7d1;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.148);
 }
 
