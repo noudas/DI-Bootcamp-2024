@@ -203,10 +203,10 @@ searchButton.addEventListener("click", (event) => {
             quote: "I`m sorry, Dave, I`m afraid I cannot do that. You passed the limits."
         };
     } else {
-        quote = searchQuote(searchValue); // Assume `searchQuote` returns a valid quote object
+        quote = searchQuote(searchValue);
     }
 
-    let quotePrintArea = document.getElementById("quotePrint"); // Ensure this is defined
+    let quotePrintArea = document.getElementById("quotePrint");
 
     let existingParagraph = document.querySelector("#quoteDisplay");
     let existingAuthor = document.querySelector("#quoteAuthor");
