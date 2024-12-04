@@ -47,3 +47,46 @@ button:active{
 button:hover{
     background-color: #D9C6B0;
 }
+
+#formSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#formForm {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px 30px;
+    border: 1px outset #C3976A;
+    width: 500px;
+    background-color: #fde7d1;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.148);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#formForm label{
+    text-align: left;
+}
+
+input {
+    height: 25px;
+    width: 100%;
+}
+
+
+#searchSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    padding-top: 35px;
+}
+
+#searchSection input{
+    margin-right: 30px;
+    margin-left: 5px;
+}

@@ -9,6 +9,7 @@
 <body id="container">
     <div id="Generator">    
         <h1>Quote Generator</h1>
+
         <section id="quoteSection">
             <button id="generateQuote">
                 <strong>Generate Quote</strong>
@@ -20,10 +21,25 @@
                 <strong>Find a Quote</strong>
             </button>
         </section>
+        
+        <section id="searchSection">
+            <label for="searchInput">Quote:</label>
+            <input type="text" id="searchInput" name="quote" placeholder="">
+            <button type="submit" id="searchButton">Search The Quote</button>
+        </section>
+        
         <div id="quotePrint"></div>
 
         <section id="formSection">
-
+            <form id="formForm">
+                <label for="quoteInput">Quote:</label>
+                <input type="text" id="quoteInput" name="quote" placeholder="Enter the quote" required>
+        
+                <label for="authorInput">Author:</label>
+                <input type="text" id="authorInput" name="author" placeholder="Enter the author" required>
+        
+                <button type="submit" id="addQuoteButton">Add Quote</button>
+            </form>
         </section>
     </div>
 
