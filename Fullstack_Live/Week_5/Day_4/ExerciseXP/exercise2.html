@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="exercise2.js" method="post" style="display: flex; flex-direction: column; gap: 1em; max-width: 300px; margin: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label for="name" style="flex: 1;">Name</label>
+            <input type="text" name="name" id="name" style="flex: 2; margin-left: 1em;">
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <label for="text" style="margin-bottom: 0.5em;">Comments</label>
+            <textarea name="text" id="text" style="width: 100%;"></textarea>
+        </div>
+        <input type="submit" value="Send" style="align-self: flex-start;">
+    </form>
+    <script src="exercise2.js"></script>    
+</body>
+</html>
