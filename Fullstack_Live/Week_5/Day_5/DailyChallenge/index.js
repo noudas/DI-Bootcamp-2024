@@ -4,19 +4,27 @@
 // and returns a boolean that indicates whether or not the first string is an anagram of the second string.
 // Some Help
 
-let str1 = prompt("Write an anagram");
-let str2 = prompt("Write another anagram");  // Corrected the typo from srt2 to str2
+let str1 = prompt("Write an anagram").trim();
+let str2 = prompt("Write another anagram").trim();
 
-function anagramaMan(str1, str2) {
-    str1 = str1.toLowerCase().replace(/\s+/g, '').split('').sort().join('');
-    str2 = str2.toLowerCase().replace(/\s+/g, '').split('').sort().join('');
-    return str1 === str2;
+function isValidString(input) {
+    return typeof input === "string" && input.length > 0 && isNaN(input);
 }
 
-if (anagramaMan(str1, str2)) {
-    console.log(`"${str1}" is an anagram of "${str2}"`);
+if (!isValidString(str1) || !isValidString(str2)) {
+    console.error("Both inputs must be valid non-empty strings and cannot be numbers.");
 } else {
-    console.log(`"${str1}" is not an anagram of "${str2}"`);
+    function anagramaMan(str1, str2) {
+        str1 = str1.toLowerCase().replace(/\s+/g, '').split('').sort().join('');
+        str2 = str2.toLowerCase().replace(/\s+/g, '').split('').sort().join('');
+        return str1 === str2;
+    }
+
+    if (anagramaMan(str1, str2)) {
+        console.log(`"${str1}" is an anagram of "${str2}"`);
+    } else {
+        console.log(`"${str1}" is not an anagram of "${str2}"`);
+    }
 }
 
 
