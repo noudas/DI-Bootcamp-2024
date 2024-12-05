@@ -1,0 +1,69 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family:  "Comic Sans MS", cursive, sans-serif;
+    font-size: 20px;
+}
+
+button{
+    font-size: 35px;
+    width: 70px;
+    border-radius: 10px;
+    background-color: #1a53ff;
+    border-color: #1a53ff;
+    color: white;
+  } 
+
+  body{
+    background-color: #3399ff;
+  }
+  
+h1{
+    color: white;
+    font-size: 50px;
+    font-family:  "Comic Sans MS", cursive, sans-serif;
+} 
+  
+#chooseXO {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#tiktaktoeContainer {
+    border-collapse: collapse;
+    width: 300px;
+    height: 300px;
+}
+
+#tiktaktoeContainer td {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/*Drawing the board*/
+#tttRow1Column0,#tttRow1Column1,#tttRow1Column2,#tttRow2Column0,#tttRow2Column1,#tttRow2Column2 {
+    border-bottom: 10px solid white;
+}
+
+#tttRow1Column0,#tttRow2Column0,#tttRow3Column0 {
+    border-right:  10px solid white;
+}
+
+#tttRow1Column1,#tttRow2Column1,#tttRow3Column1 {
+    border-right:  10px solid white;
+}
+
+
+
+#tiktaktoeContainer td:hover {
+    background-color: #f0f0f0; /* Add hover effect */
+}
