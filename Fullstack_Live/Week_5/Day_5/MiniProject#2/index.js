@@ -29,10 +29,26 @@ cells.forEach((cell) => {
             cell.textContent = selectedSymbol;
             cell.style.textAlign = "center";
             cell.style.fontSize = "2em";
+            moveCounter++;
+            setTimeout(oponentPlays, 500);
         }
     });
 });
 
 function oponentPlays() {
-    
+
+    const availableCells = Array.from(cells).filter(cell => !cell.textContent);
+
+    if (availableCells.length === 0) {
+        alert("It's a draw!");
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableCells.length);
+    const chosenCell = availableCells[randomIndex];
+
+    chosenCell.textContent = oponentSymbol;
+    chosenCell.style.textAlign = "center";
+    chosenCell.style.fontSize = "2em";
+    moveCounter++;
 }
