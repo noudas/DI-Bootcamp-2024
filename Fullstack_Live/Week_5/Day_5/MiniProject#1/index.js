@@ -133,29 +133,30 @@ return robots.filter((robot) => {
 * The function continuously updates the display of robot cards based on the query.
 */
 searchBar.addEventListener("click", (event) => {
-audio.play();
-event.preventDefault(); // Prevent the default action of the click event
+  // secret audio
+  audio.play();
+  event.preventDefault(); // Prevent the default action of the click event
 
-if (!clicked) { // Check if the search bar was not previously clicked
-    clicked = true; // Mark that the search bar is clicked
-    myInterval = setInterval(function () {
-        let query = searchBar.value.toLowerCase(); // Get the search query in lowercase
-        let queryArray = searchRobit(query); // Filter robots based on the query
+  if (!clicked) { // Check if the search bar was not previously clicked
+      clicked = true; // Mark that the search bar is clicked
+      myInterval = setInterval(function () {
+          let query = searchBar.value.toLowerCase(); // Get the search query in lowercase
+          let queryArray = searchRobit(query); // Filter robots based on the query
 
-        // Iterate through all robots and update their visibility
-        robots.forEach((robot) => {
-            let card = document.querySelector(`.robotCard.id_${robot.id}`); // Get the robot card by its class
-            if (card) {
-                // If the robot is in the filtered queryArray, display the card, else hide it
-                if (queryArray.some((robit) => robit.id === robot.id)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            }
-        });
-    }, 300); // Update every 300 milliseconds
-}
+          // Iterate through all robots and update their visibility
+          robots.forEach((robot) => {
+              let card = document.querySelector(`.robotCard.id_${robot.id}`); // Get the robot card by its class
+              if (card) {
+                  // If the robot is in the filtered queryArray, display the card, else hide it
+                  if (queryArray.some((robit) => robit.id === robot.id)) {
+                      card.style.display = "block";
+                  } else {
+                      card.style.display = "none";
+                  }
+              }
+          });
+      }, 300); // Update every 300 milliseconds
+  }
 });
 
 /**
@@ -165,6 +166,7 @@ if (!clicked) { // Check if the search bar was not previously clicked
 document.addEventListener("click", (event) => {
   // Check if the click occurred outside the search bar
   if (!searchBar.contains(event.target)) {
+      // secret audio
       audio.pause();
       clicked = false; // Reset the clicked state
       clearInterval(myInterval); // Clear the interval that was updating the robot cards
