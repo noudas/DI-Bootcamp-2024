@@ -171,6 +171,9 @@ function joinWords(morseTranslation) {
     });
 }
 
+
+// Chatgpt did the math....
+/*This code Kind of works */
 function listenToBips(morseTranslations) {
     const smallbip = new Audio("sounds/smallbip.mp3");
     const longbip = new Audio("sounds/longbip.mp3");
@@ -179,24 +182,23 @@ function listenToBips(morseTranslations) {
 
     morseTranslations.forEach((translation, index) => {
         playTranslation(translation, sequenceDelay);
-        
-        sequenceDelay += translation.length * 300 + 900;
+        sequenceDelay += translation.length * 100 + 500;
     });
 
     function playTranslation(translation, startDelay) {
         let charDelay = startDelay;
 
-        for (const char of translation) {
-            console.log(char);
-
+        for (char of translation) {
             if (char === '.') {
                 setTimeout(() => smallbip.play(), charDelay);
-                charDelay += 150;
+                charDelay += 50;
+                charDelay += 50;
             } else if (char === '-') {
                 setTimeout(() => longbip.play(), charDelay);
-                charDelay += 200;
+                charDelay += 100;
+                charDelay += 50;
             } else if (char === ' ') {
-                charDelay += 400;
+                charDelay += 200;
             }
         }
     }
