@@ -14,3 +14,7 @@ body button {
     width: 150px;
     margin-top: 10px;
 }
+
+p {
+    font-size: 12px;
+}

@@ -160,10 +160,14 @@ function joinWords(morseTranslation) {
     soundButton.classList.add("sounds")
     soundButton.textContent = "Hear the morse code"
 
+    const p = document.createElement("p")
+    p.textContent = "It kind of works..."
+
     const h3Morse = document.createElement("h3");
     h3Morse.textContent = morseTranslation.join("\n");
     bodyDOMModule.appendChild(h3Morse);
     bodyDOMModule.appendChild(soundButton)
+    bodyDOMModule.appendChild(p)
 
     soundButton.addEventListener("click", (event) => {
         event.preventDefault();
@@ -179,26 +183,37 @@ function listenToBips(morseTranslations) {
     const longbip = new Audio("sounds/longbip.mp3");
 
     let sequenceDelay = 0;
+    let soundCounter = 0;
 
     morseTranslations.forEach((translation, index) => {
         playTranslation(translation, sequenceDelay);
-        sequenceDelay += translation.length * 100 + 500;
+        sequenceDelay += translation.length * 150 + 500; // Adjust delay based on individual character timing
     });
 
     function playTranslation(translation, startDelay) {
         let charDelay = startDelay;
 
-        for (char of translation) {
+        for (let char of translation) {
+            setTimeout(() => {
+                if (char === '.') {
+                    smallbip.play();
+                    soundCounter++;
+                    console.log(`Sound #${soundCounter}: Played a short bip.`);
+                } else if (char === '-') {
+                    longbip.play();
+                    soundCounter++;
+                    console.log(`Sound #${soundCounter}: Played a long bip.`);
+                } else if (char === ' ') {
+                    console.log(`Sound #${soundCounter}: Pause.`);
+                }
+            }, charDelay);
+
             if (char === '.') {
-                setTimeout(() => smallbip.play(), charDelay);
-                charDelay += 50;
-                charDelay += 50;
+                charDelay += 1050;
             } else if (char === '-') {
-                setTimeout(() => longbip.play(), charDelay);
-                charDelay += 100;
-                charDelay += 50;
+                charDelay += 1050;
             } else if (char === ' ') {
-                charDelay += 200;
+                charDelay += 750;
             }
         }
     }
