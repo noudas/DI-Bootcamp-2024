@@ -1,0 +1,110 @@
+/* General Page Styles */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif; /* Classic 2000s font */
+    background: linear-gradient(to bottom, #ffcc00, #ff9900);
+    color: black;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Form Styles */
+form {
+    background-color: #ff6600;
+    border: 5px double #333;
+    padding: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px black;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    margin-left: 10px;
+    border: 2px solid #333;
+    background-color: #fff8dc;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #ff3300;
+    color: white;
+    border: 3px outset #660000;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px black;
+}
+
+button:hover {
+    background-color: #cc2900;
+}
+
+/* GIF Results Styles */
+#gifResults {
+    display: inline-block;
+    background-color: #ffcc99;
+    border: 5px groove #660000;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 10px #333;
+}
+
+/* Individual GIF Container */
+.gif-container {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    background-color: #fff8dc;
+    border: 3px ridge #cc3300;
+    padding: 5px;
+}
+
+.gif-container img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ff9900;
+}
+
+.gif-container button {
+    display: block;
+    width: 80%;
+    margin: 10px auto 0;
+    padding: 5px;
+    background-color: #ff3300;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px outset #660000;
+    cursor: pointer;
+}
+
+.gif-container button:hover {
+    background-color: #cc2900;
+}
+
+/* DELETE ALL Button Styles */
+#deleteAll {
+    display: inline-block;
+    background-color: #660000;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 3px outset #330000;
+    margin-top: 20px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px #ffcc00;
+}
+
+#deleteAll:hover {
+    background-color: #330000;
+}
