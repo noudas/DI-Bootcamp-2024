@@ -6,6 +6,30 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>SHOW ME THE MONEY!</h1>
+    <h3>Money Converter</h3>
+
+    <form id="currency-form">
+        <label for="from-currency">From</label>
+        <select id="from-currency" required>
+            <option value="" disabled selected>Select currency</option>
+        </select>
+
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" placeholder="Enter amount" required>
+
+        <label for="to-currency">To</label>
+        <select id="to-currency" required>
+            <option value="" disabled selected>Select currency</option>
+        </select>
+
+        <label for="conversion-result">Conversion</label>
+        <input type="text" id="conversion-result" readonly placeholder="Converted amount">
+
+        <button type="button" id="switch-values">Switch</button>
+        <button type="button" id="convert-button">Convert</button>
+    </form>
+
     <script src="index.js"></script>
 </body>
 </html>
