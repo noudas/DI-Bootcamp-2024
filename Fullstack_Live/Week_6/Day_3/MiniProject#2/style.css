@@ -59,3 +59,27 @@ body #logo {
 .pokedex-data p{
     margin: 10px;
 }
+
+#left-right{
+    position: absolute;
+    top: 72%;
+    left: 25.8%;
+}
+
+#left {
+    width: 40px;
+    height: 30px;
+    background-color: transparent; /* Invisible background */
+    border: none; /* Remove border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+#right {
+    width: 40px;
+    height: 30px;
+    background-color: transparent; /* Invisible background */
+    border: none; /* Remove border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Indicates it's clickable */
+}

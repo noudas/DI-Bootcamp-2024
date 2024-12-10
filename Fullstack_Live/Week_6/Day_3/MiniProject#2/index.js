@@ -7,6 +7,10 @@ const weightDOM = document.getElementById("weight");
 const typeDOM = document.getElementById("type");
 const spriteDOM = document.getElementById("sprite")
 const buttonDOMmodule = document.getElementById("button");
+const leftDOM = document.getElementById("left");
+const rightDOM = document.getElementById("right");
+
+let currentID = 1;
 
 const fetchData = async (url) => {
     try {
@@ -49,8 +53,33 @@ const updatePokedexInfo = (pokemonData) => {
     typeDOM.textContent = `Type: ${pokemonData.types.map((type) => type.type.name).join(", ")}`;
 };
 
+const getPokemon = async (id) => {
+    try {
+        const pokemonData = await fetchData(`${BASE_URL}${id}`);
+        return pokemonData;
+    } catch (error) {
+        console.error("Failed to fetch Pokémon:", error);
+    }
+};
+
 buttonDOMmodule.addEventListener("click", async (event) => {
     event.preventDefault();
     const pokemonData = await randomPokemon(); // Await Pokémon data
     updatePokedexInfo(pokemonData); // Update the DOM
+});
+
+// Left button: Fetch previous Pokémon
+leftDOM.addEventListener("click", async (event) => {
+    event.preventDefault();
+    currentID = currentID > 1 ? currentID - 1 : 1025;
+    const pokemonData = await getPokemon(currentID);
+    updatePokedexInfo(pokemonData);
+});
+
+// Right button: Fetch next Pokémon
+rightDOM.addEventListener("click", async (event) => {
+    event.preventDefault();
+    currentID = currentID < 1025 ? currentID + 1 : 1;
+    const pokemonData = await getPokemon(currentID);
+    updatePokedexInfo(pokemonData);
 });
