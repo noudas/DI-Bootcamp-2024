@@ -38,6 +38,8 @@ const fetchData = async (url) => {
 const codeList = async () => {
     let url = `${BASE_URL}${API_KEY}/codes`
     const data = await fetchData(url)
+    // Debug response structure
+    // console.log(data);
     let codes = data.supported_codes
     return codes
 }
@@ -90,7 +92,7 @@ convertButton.addEventListener("click", async (event) => {
         const data = await fetchData(url);
 
         // Debug response structure
-        console.log(data);
+        // console.log(data);
 
         // Extract conversion result
         const result = data.conversion_result;
