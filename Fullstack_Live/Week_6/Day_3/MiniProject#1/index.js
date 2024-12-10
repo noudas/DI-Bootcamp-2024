@@ -84,6 +84,18 @@ const fetchData = async (url) => {
     }
 };
 
+const playSounds = (characterData) => {
+    let name = characterData.name
+    switch (name) {
+        case "Luke Skywalker":
+            
+            break;
+    
+        default:
+            break;
+    }
+}
+
 
 // Update DOM with Character Info
 // Again trying to make the code more readable using helper funcitons
@@ -101,7 +113,7 @@ const getRandomStarWarsCharacter = async () => {
     const randomID = getRandomNum();
 
     try {
-        // Using the helçper function to make it wayyy easier than to keep copying and pasting the same code
+        // Using the helper function to make it wayyy easier than to keep copying and pasting the same code
         const characterData = await fetchData(`${baseUrl}${randomID}`);
         const properties = characterData.result.properties;
 
@@ -109,8 +121,12 @@ const getRandomStarWarsCharacter = async () => {
         // Same here
         const homeWorldData = await fetchData(properties.homeworld);
 
+
         // Update DOM
         updateCharacterInfo(properties, homeWorldData.result.properties.name);
+
+        // Play sounds
+        playSounds(properties);
     } catch (error) {
         console.error("Failed to fetch Star Wars character:", error);
         nameDOMmodule.textContent = "I am sorry Master Luke, It appears that this person does not exist.";
@@ -122,9 +138,20 @@ const getRandomStarWarsCharacter = async () => {
 };
 
 
+function updateWithLoading(){
+    //Icon link: https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons
+    nameDOMmodule.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> <p>Loading...</p>';
+    heightDOMmodule.textContent = ""
+    genderDOMmodule.textContent = ""
+    birthDOMmodule.textContent = ""
+    homeDOMmodule.textContent = ""
+  }
+
 
 buttonDOMmodule.addEventListener("click", (event) => {
     event.preventDefault();
+    // Loading content
+    updateWithLoading()
     getRandomStarWarsCharacter();
 })
 
