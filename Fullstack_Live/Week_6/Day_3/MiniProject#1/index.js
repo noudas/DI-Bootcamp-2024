@@ -84,6 +84,7 @@ const fetchData = async (url) => {
     }
 };
 
+// I got bored searching and the sounds... so there is about 6 or so
 const playSounds = (characterData) => {
     let name = characterData.name
     const sound = new Audio(`sounds/${name}.mp3`);
