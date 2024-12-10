@@ -1,4 +1,10 @@
 /* Global styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;

@@ -1,0 +1,61 @@
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+body #logo {
+    align-items: left;
+}
+
+
+#pokedex {
+    position: relative;
+    overflow: hidden;
+    align-content: center;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    background-image: url(assets/pokedex.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#button {
+    position: absolute;
+    bottom: 12.4%;
+    right: 18.9%;
+    border-radius: 100%;
+    width: 6vw;
+    height: 12vh;
+    background-color: transparent; /* Invisible background */
+    border: none; /* Remove border */
+    outline: none; /* Remove focus outline */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+#sprite {
+    position: absolute;
+    top: 8%;
+    left: 41.5%;
+    width: 150px;
+    height: 150px;
+}
+
+.pokedex-data{
+    position: absolute;
+    top: 58%;
+    left: 42%;
+    padding: 0;
+    margin: 0;
+}
+
+.pokedex-data h1{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.pokedex-data p{
+    margin: 10px;
+}
