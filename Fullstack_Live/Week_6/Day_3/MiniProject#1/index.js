@@ -86,16 +86,31 @@ const fetchData = async (url) => {
 
 const playSounds = (characterData) => {
     let name = characterData.name
-    switch (name) {
-        case "Luke Skywalker":
-            
-            break;
-    
-        default:
-            break;
-    }
+    const sound = new Audio(`sounds/${name}.mp3`);
+    sound.volume =  0.4;
+    sound.play();
 }
 
+window.onload = () => {
+    const playPrompt = document.createElement('button');
+    playPrompt.textContent = "Enable Sound";
+    playPrompt.style.position = "fixed";
+    playPrompt.style.bottom = "20px";
+    playPrompt.style.right = "20px";
+    playPrompt.style.zIndex = "1000";
+    document.body.appendChild(playPrompt);
+
+    playPrompt.addEventListener('click', () => {
+        const pageLoadSound = new Audio("sounds/StarWarsIntro.mp3");
+        pageLoadSound.volume = 0.4;
+        pageLoadSound.play().catch((error) => {
+            console.error("Playback failed:", error);
+        });
+
+        // Remove button after interaction
+        document.body.removeChild(playPrompt);
+    });
+};
 
 // Update DOM with Character Info
 // Again trying to make the code more readable using helper funcitons
