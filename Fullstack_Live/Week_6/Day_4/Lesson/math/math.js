@@ -8,28 +8,35 @@
  * use this functions in app.js
  */
 
-const multi = (a,b) => {
+export const multi = (a,b) => {
     return a * b;
 };
 
-const divide = (a,b) => {
+export const divide = (a,b) => {
     if(b === 0){
         throw new Error("Divison cannot be divided by 0");
     };
     return a / b;
 };
 
-const plus = (a,b) => {
+export const plus = (a,b) => {
     return a + b;
 };
 
-const minus = (a,b) => {
+export const minus = (a,b) => {
     return a - b;
 };
 
-module.exports = {
-    multi,
-    divide,
-    plus,
-    minus,
+export const mods = (a,b) => {
+    return a % b;
 };
+
+export default plus;
+
+// module.exports = {
+//     multi,
+//     divide,
+//     plus,
+//     minus,
+//     mods
+// };
