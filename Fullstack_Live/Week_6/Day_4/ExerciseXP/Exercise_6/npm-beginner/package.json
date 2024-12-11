@@ -1,15 +1,16 @@
 {
-  "name": "day1_intro_to_node_js",
-  "version": "1.0.1",
+  "name": "npm-beginner",
+  "version": "1.0.0",
   "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "zivuch",
+  "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "day1_intro_to_node_js": "file:"
+    "chalk": "^5.3.0",
+    "npm-beginner": "file:"
   }
 }

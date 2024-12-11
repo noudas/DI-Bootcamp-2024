@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "exercise_5": "file:",
     "lodash": "^4.17.21"
   }
 }
