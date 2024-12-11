@@ -15,5 +15,4 @@ import chalk from "chalk";
   
 console.log(chalk.red("R") + chalk.magenta("A") + chalk.yellow("I") + chalk.green("N") + chalk.cyan("B") + chalk.blue("O") + chalk.red("W"));
 
-
 // Run app.js using Node.js and observe the colorful output in the terminal.
