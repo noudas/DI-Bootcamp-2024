@@ -9,19 +9,22 @@
  */
 
 const multi = (a,b) => {
-    return a*b
+    return a * b;
 };
 
 const divide = (a,b) => {
-    return a/b
+    if(b === 0){
+        throw new Error("Divison cannot be divided by 0");
+    };
+    return a / b;
 };
 
 const plus = (a,b) => {
-    return a+b
+    return a + b;
 };
 
 const minus = (a,b) => {
-    return a-b
+    return a - b;
 };
 
 module.exports = {
@@ -29,4 +32,4 @@ module.exports = {
     divide,
     plus,
     minus,
-}
+};
