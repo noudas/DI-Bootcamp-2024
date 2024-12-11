@@ -18,3 +18,9 @@ console.log(minus(10,9));
 console.log(plus(10,9));
 console.log(divide(15,3));
 console.log(multi(1,1));
+
+try {
+    console.log(minus(10,10));
+} catch (error) {
+    console.error(`An error has occured ${error}`)
+}
