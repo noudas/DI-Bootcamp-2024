@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const products = require("./config/data")
 
 const app = express();
 
@@ -39,3 +40,21 @@ app.get('/about', (req,res) =>{
 app.get('/users', (req,res) =>{
     res.json(users)
 });
+
+
+
+
+/*Creating a Products API*/
+
+// API GET Endpoint
+app.get("/api/products",(req,res) => {
+    res.json(products)
+});
+
+app.get("/api/products/:id",(req,res) => {
+    const {id} = req.params;
+    const myProduct = products.find(item => item.id ==id);
+    if(!myProduct) return res.status(404).send("not found")
+    console.log(req.params);
+    res.json(myProduct)
+})
