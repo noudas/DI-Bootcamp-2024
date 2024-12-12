@@ -57,4 +57,27 @@ app.get("/api/products/:id",(req,res) => {
     if(!myProduct) return res.status(404).send("not found")
     console.log(req.params);
     res.json(myProduct)
-})
+});
+
+app.get("/api/search",(req,res) =>{
+    console.log(req.query);
+    const {name} = res.query;
+    const filtered = products.filtered(item =>{
+        return item.name.toLowerCase().includes(name.toLowerCase())
+    });
+    if(filtered.length === 0){
+        return res.status(404).json({message: "No product match your search"})
+    }
+
+    res.json(filtered);  
+});
+
+/*Exercise*/
+
+/*
+ * create a module userInfo.js that get users from this api - https://jsonplaceholder.typicode.com/users
+ * create a server.js
+ * GET - get al users
+ * GET to search users with id in params
+ * GET - to search a user with name case insensetive in query
+ */
