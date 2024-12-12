@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "file-explorer": "file:",
     "fs": "^0.0.1-security"
   }
 }
