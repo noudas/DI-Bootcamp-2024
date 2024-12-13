@@ -1,3 +1,6 @@
+/* I got sick really bad.... so Sorry for the lack of effort, as soon as i get better, i will imporve this*/
+
+
 // Instructions
 // Create a fun emoji guessing game using an Express API.
 // The game will present players with a random emoji and a set of options. 
