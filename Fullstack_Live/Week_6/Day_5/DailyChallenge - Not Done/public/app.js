@@ -83,7 +83,6 @@ function presentQuiz() {
     form.appendChild(submit);
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
         const selected = new FormData(form).get("emoji");
         if (selected === quiz.correctAnswer) {
             alert("Correct!");
@@ -124,7 +123,26 @@ async function handleGuess(selected, correctAnswer) {
         console.error("Error submitting guess:", error);
     }
 }
+
+async function showLeaderboard() {
+    try {
+        const response = await fetch("/leaderboard");
+        const data = await response.json();
+
+        const leaderboard = document.createElement("div");
+        leaderboard.innerHTML = `<h2>Leaderboard</h2><ol>${data.leaderboard
+            .map(([name, score]) => `<li>${name}: ${score}</li>`)
+            .join("")}</ol>`;
+
+        document.body.appendChild(leaderboard);
+    } catch (error) {
+        console.error("Error fetching leaderboard:", error);
+    }
+}
+
+// Initialize the game
 presentQuiz();
+showLeaderboard();
 
 
 // Implement a leaderboard to show the top scores.
