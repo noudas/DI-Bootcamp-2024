@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // POST route to handle the guess submission
-app.post("/submit-guess", (req, res) => {
+app.post("/api/submit-guess", (req, res) => {
     const { player, guess, correctAnswer } = req.body;
 
     if (!player || !guess || !correctAnswer) {
@@ -28,7 +28,7 @@ app.post("/submit-guess", (req, res) => {
 });
 
 // GET route to retrieve leaderboard
-app.get("/leaderboard", (req, res) => {
+app.get("/api/leaderboard", (req, res) => {
     const sortedLeaderboard = Object.entries(leaderboard)
         .sort(([, a], [, b]) => b - a)
         .slice(0, 10); // Top 10 players

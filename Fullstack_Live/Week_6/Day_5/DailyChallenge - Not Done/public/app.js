@@ -27,45 +27,42 @@ const emojis = [
     { character: "🔥", name: "Fire" }
 ];
 
-// Generate a random emoji from the array and select a few incorrect options as distractors.
-function radomIndexGenerator() {
-    return Math.floor(Math.random() * emojis.length)
-}
+let player = "";
+let score = 0; // Keep track of score
 
-const randomEmote = () =>{
-    const correctIndex = radomIndexGenerator();
+// Generate a random emoji and options
+function randomEmote() {
+    const randomIndex = () => Math.floor(Math.random() * emojis.length);
+
+    const correctIndex = randomIndex();
     const correctEmote = emojis[correctIndex];
 
     const distractors = new Set();
-    while (distractors.size < 3){
-        const randomIndex = radomIndexGenerator();
-        if(randomIndex !== correctIndex){
-            distractors.add(emojis[randomIndex].name);
+    while (distractors.size < 3) {
+        const randomDistractor = emojis[randomIndex()].name;
+        if (randomDistractor !== correctEmote.name) {
+            distractors.add(randomDistractor);
         }
     }
 
-    const options = Array.from(distractors);
-    options.push(correctEmote.name)
-    options.sort(() => Math.random - 0.5);
+    const options = [...distractors, correctEmote.name];
+    options.sort(() => Math.random() - 0.5);
 
-    return {
-        emoji: correctEmote.character,
-        correctAnswer: correctEmote.name,
-        options: options
-    };
+    return { emoji: correctEmote.character, correctAnswer: correctEmote.name, options };
 }
 
-
-// Using a form, present the player with the random emoji and multiple choice options (including the correct name).
+// Display the quiz
 function presentQuiz() {
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = ""; // Clear previous content
+
     const quiz = randomEmote();
 
-    // Create form dynamically
-    const form = document.createElement("form");
     const question = document.createElement("h2");
     question.textContent = `What is the name of this emoji? ${quiz.emoji}`;
-    form.appendChild(question);
+    quizContainer.appendChild(question);
 
+    const form = document.createElement("form");
     quiz.options.forEach((option) => {
         const label = document.createElement("label");
         label.style.display = "block";
@@ -85,67 +82,75 @@ function presentQuiz() {
     submit.textContent = "Submit";
     form.appendChild(submit);
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
         const selected = new FormData(form).get("emoji");
-        if (selected === quiz.correctAnswer) {
-            alert("Correct!");
-        } else {
-            alert(`Wrong! The correct answer is: ${quiz.correctAnswer}`);
+        if (!selected) {
+            alert("Please select an option.");
+            return;
         }
+
+        await handleGuess(selected, quiz.correctAnswer);
     });
 
-    document.body.innerHTML = "";
-    document.body.appendChild(form);
-};
+    quizContainer.appendChild(form);
+}
 
-
-// Allow the player to submit their guess. Get the data from the form and POST it, using the Fetch API.
+// Handle guess submission
 async function handleGuess(selected, correctAnswer) {
+    if (!player) {
+        player = prompt("Enter your name:") || "Anonymous";
+    }
+
     try {
-        const response = await fetch("/submit-guess", {
+        const response = await fetch("/api/submit-guess", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ guess: selected, correctAnswer })
+            body: JSON.stringify({ player, guess: selected, correctAnswer })
         });
-        
+
         const result = await response.json();
-        
-        // Check if the guess is correct and update the player’s score.
+
         if (result.correct) {
-            // Keep track of the player’s total score.
-            score++;
-            alert("Correct! Your current score is: " + score);
+            alert(`Correct! Your score: ${result.score}`);
         } else {
-            // Provide feedback to the player, indicating whether their guess was correct or not.
-            alert(`Wrong! The correct answer was: ${correctAnswer}. Your score is: ${score}`);
+            alert(`Wrong! The correct answer was: ${correctAnswer}. Your score: ${result.score}`);
         }
-        
-        // Continue presenting new emojis and options for the player to guess.
+
+        showLeaderboard();
         presentQuiz();
     } catch (error) {
         console.error("Error submitting guess:", error);
     }
 }
 
+// Show leaderboard
 async function showLeaderboard() {
     try {
-        const response = await fetch("/leaderboard");
+        const response = await fetch("/api/leaderboard");
         const data = await response.json();
 
-        const leaderboard = document.createElement("div");
-        leaderboard.innerHTML = `<h2>Leaderboard</h2><ol>${data.leaderboard
-            .map(([name, score]) => `<li>${name}: ${score}</li>`)
-            .join("")}</ol>`;
+        const leaderboardContainer = document.getElementById("leaderboard");
+        leaderboardContainer.innerHTML = "<h2>Leaderboard</h2>";
 
-        document.body.appendChild(leaderboard);
+        const list = document.createElement("ol");
+        data.leaderboard.forEach(([name, score]) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${name}: ${score}`;
+            list.appendChild(listItem);
+        });
+
+        leaderboardContainer.appendChild(list);
     } catch (error) {
         console.error("Error fetching leaderboard:", error);
     }
 }
 
-// Initialize the game
-presentQuiz();
+// Initialize game
 showLeaderboard();
+presentQuiz();
+
 
 
 // Implement a leaderboard to show the top scores.
