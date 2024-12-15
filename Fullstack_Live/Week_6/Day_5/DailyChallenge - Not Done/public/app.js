@@ -28,6 +28,7 @@ const emojis = [
 ];
 
 let player = "";
+
 let score = 0; // Keep track of score
 
 // Generate a random emoji and options
