@@ -10,7 +10,7 @@ app.use(cors());
 // console.log(__dirname + "/public");
 app.use("/", express.static(__dirname + "/public"));
 
-const PORT = 3003;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`run on ${PORT}`);
 });
@@ -50,6 +50,55 @@ app.get("/users", (req, res) => {
  * PUT - /api/products app.put()
  * DELETE - /api/products app.delete()
  */
+
+/**
+ * POST - /api/products app.post()
+ * PUT - /api/products app.put()
+ * DELETE - /api/products app.delete()
+ */
+
+// form data
+app.use(express.urlencoded({ extended: true }));
+
+// parse application/json
+app.use(express.json());
+
+app.delete("/api/products/:id", (req, res) => {
+  const { id } = req.params;
+  const index = products.findIndex((item) => item.id == id);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "product not found to delete" });
+  }
+
+  products.splice(index, 1);
+  // res.json({status: "deleted" });
+  res.sendStatus(200)
+});
+
+app.put("/api/products/:id", (req, res) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+
+  const index = products.findIndex((item) => item.id == id);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "product not found" });
+  }
+
+  products[index] = { ...products[index], name, price };
+
+  res.status(200).json(products);
+});
+
+app.post("/api/products", (req, res) => {
+  console.log(req.body);
+  const { name, price } = req.body;
+  const newProduct = { id: products.length + 1, name, price };
+  products.push(newProduct);
+  res.json(products);
+});
+
 app.get("/api/products", (req, res) => {
   res.json(products);
 });
@@ -75,11 +124,3 @@ app.get("/api/search", (req, res) => {
 
   res.json(filtered);
 });
-
-/**
- * create a module userInfo.js that get users from this api - https://jsonplaceholder.typicode.com/users
- * create a server.js
- * GET - get al users
- * GET to search users with id in params
- * GET - to search a user with name case insensetive in query
- */
