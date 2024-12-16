@@ -19,14 +19,15 @@ const cors = require("cors");
 // Step 5: Mount the Router in Your Application
 // In your app.js file, import the router module you created and mount it in your Express application:
 const aboutRoute = require("./routes/aboutRoute.js")
+const PORT = 3000;
+
 
 app.use(cors());
 app.use("/", express.static(__dirname + "/public"));
-const PORT = 3000;
+app.use("/about", aboutRoute);
 
-app.listen(PORT, () =>{
-    console.log("Listening to port 3000");
-    
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });
 
 // Step 6: Start Your Server
