@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <script src="script.js" defer async></script>
+  </head>
+  <body>
+    <h2>Shop</h2>
+    <form onSubmit="handleSubmit(event)">
+      <input placeholder="name" name="product_name" />
+      <input placeholder="price" name="product_price" />
+      <input type="submit" value="Add Product" />
+    </form>
+    <h2>Update Product</h2>
+    <form onSubmit="handleUpdate(event)">
+      <input placeholder="id" name="product_id" />
+      <input placeholder="name" name="product_name" />
+      <input placeholder="price" name="product_price" />
+      <input type="submit" value="update Product" />
+    </form>
+    <div id="root"></div>
+  </body>
+</html>
