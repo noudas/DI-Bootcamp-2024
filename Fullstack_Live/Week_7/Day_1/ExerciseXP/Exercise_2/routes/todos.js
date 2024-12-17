@@ -4,9 +4,6 @@ const router = express.Router();
 // // Sample in-memory database for storing to-do items
 // const todos = [];
 
-
-
-
 let todos = [];
 let idCounter = 1;
 
