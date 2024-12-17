@@ -25,6 +25,19 @@ const PORT = 3000;
 // Step 6: Start Your Server
 // Now, you can start your Express server by running:
 
+app.use(express.json());
+
+app.use("/books", bookRouter);
+
+app.get("/healthcheck", (req,res)=>{
+    console.log("I am working!");
+    
+})
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 // node app.js
 // Step 7: Test Your API
 // You can use tools like Postman or curl to test your API endpoints for managing books:
