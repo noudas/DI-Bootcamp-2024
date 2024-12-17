@@ -39,3 +39,27 @@
 
 
 // Implement the “Create” route at POST /api/books.
+
+
+const express = require("express");
+const booksRoute = require("./server/routes/booksRoute");
+require("dotenv").config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.use("/api/books", booksRoute);
+
+// Root Route
+app.get("/", (req, res) => {
+    res.send("Welcome to the Book API!");
+});
+
+// Server Listener
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
