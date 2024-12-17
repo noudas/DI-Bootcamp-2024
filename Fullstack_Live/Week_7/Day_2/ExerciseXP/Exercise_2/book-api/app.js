@@ -32,8 +32,10 @@
 // Implement the “Read all” route by defining a route at GET /api/books. Send a JSON response with the books array.
 
 
-// Implement the “Read” route by defining a route at GET /api/books/:bookId. Extract the bookId parameter from the URL and use it to find the corresponding book in the books array. If the book is found, send a JSON response with the book details and a status code of 200 (OK). If the book is not found, send a 404 status with a “Book not found” message.
+// Implement the “Read” route by defining a route at GET /api/books/:bookId. 
+// Extract the bookId parameter from the URL and use it to find the corresponding book in the books array. 
+// If the book is found, send a JSON response with the book details and a status code of 200 (OK). 
+// If the book is not found, send a 404 status with a “Book not found” message.
 
 
 // Implement the “Create” route at POST /api/books.
-
