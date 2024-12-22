@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "exercise-1": "file:",
     "preact": "^10.25.2"
   },
   "devDependencies": {
