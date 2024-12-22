@@ -1,0 +1,11 @@
+using
+
+npx create-react-app my-app
+
+or
+
+using
+
+npm i -g create-react-app
+
+create-react-app my-app
