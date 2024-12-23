@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "my-users",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "my-users": "file:",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-responsive-carousel": "^3.2.23",
-    "vite-project": "file:"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
