@@ -1,6 +1,7 @@
 import './App.css'
 import CarModel from './components/Car';
 import ClickMe from './components/Events';
+import Phone from './components/Phone';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     <>
       <CarModel name={carinfo.name} model={carinfo.model} />
       <ClickMe />
+      <Phone/>
     </>
   )
 }
