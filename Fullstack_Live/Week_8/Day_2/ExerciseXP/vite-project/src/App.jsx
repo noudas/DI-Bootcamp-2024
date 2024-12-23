@@ -1,5 +1,6 @@
 import './App.css'
 import CarModel from './components/Car';
+import ClickMe from './components/Events';
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
       <CarModel name={carinfo.name} model={carinfo.model} />
+      <ClickMe />
     </>
   )
 }
