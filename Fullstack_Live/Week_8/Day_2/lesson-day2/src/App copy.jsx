@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ExapleUnmount from "./ExampleUnmout";
 
-function App() {
+function App(props) {
   // state = {}
 
   // let users = [{name:'Jonn', id:1}]
@@ -10,21 +10,26 @@ function App() {
    * state - users
    * setState - setUsers
    */
-  const [users, setUsers] = useState([{id:1, name:'aaa'}]);
+  const [users, setUsers] = useState([]);
+  const [textInput, setTextInput] = useState("abc");
+  const [unmount, setUnmount] = useState(false);
 
-  useEffect(() =>{
-    if (inputValue !== "abc") {
+  /** component  mount */
+  /** component  update */
+  useEffect(() => {
+    console.log("useEffect=>", users);
+    if (textInput !== "abc") {
       handleClick();
     }
-  }, [])
+  }, [textInput, props.id]);
 
   const handleClick = async () => {
     try {
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
       const data = await res.json();
       // console.log(data);
-      setUsers(data)
-      console.log(users);
+      setUsers(data);
+      // console.log(users);
     } catch (error) {
       console.log(error);
     }
@@ -38,13 +43,11 @@ function App() {
     //   });
   };
 
-  const [inputValue, setInputValue] = useState("Type Something...");
   const handleInput = (e) => {
-    setInputValue(e.target.value || "Type Something...");
+    console.log("hello from input", e.target.value);
+    setTextInput(e.target.value);
   };
 
-
-  console.log(users);
   return (
     <>
       <h2>Events,State,Class vs. Function</h2>
@@ -55,7 +58,15 @@ function App() {
         return <div key={item.id}>{item.name}</div>;
       })}
       <h2>Display here the input value</h2>
-      <h3>{inputValue}</h3>
+      <h3>{textInput}</h3>
+      {unmount ? null : <ExapleUnmount />}
+      <div>
+        <button onClick={() => setUnmount(!unmount)}>
+          
+          {unmount ? 'mount me' : 'unmount me'}
+          
+        </button>
+      </div>
     </>
   );
 }
