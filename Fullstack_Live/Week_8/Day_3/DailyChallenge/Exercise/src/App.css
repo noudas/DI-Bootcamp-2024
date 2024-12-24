@@ -1,6 +1,23 @@
 #root {
+  display: flex;
+  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+form{
+  padding: 30px;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: burlywood;
+}
+
+.display{
+  padding: 30px;
+  margin: 40px;
+  background-color: rgb(135, 222, 135);
 }

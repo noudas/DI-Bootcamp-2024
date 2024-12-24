@@ -10,7 +10,7 @@ const Display = (props) =>{
 
 
     return(
-        <>
+        <div className="display">
             <h1>Display Area</h1>
 
             <p>Your name: {fullName}</p>
@@ -27,7 +27,7 @@ const Display = (props) =>{
                 ))};
             </div>
             
-        </>
+        </div>
     )
 }
 
