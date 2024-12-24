@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Display from "./displayArea";
 
 const Form = () => {
 
@@ -51,6 +52,7 @@ const Form = () => {
 
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <h2>Simple Form</h2>
 
@@ -108,6 +110,10 @@ const Form = () => {
         <button type="submit">Submit</button>
       </div>
     </form>
+
+    <Display info={formData} />
+
+    </>
   );
 };
 
