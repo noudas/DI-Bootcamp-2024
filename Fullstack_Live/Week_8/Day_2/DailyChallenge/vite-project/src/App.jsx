@@ -10,7 +10,6 @@ function App() {
     { name: "Java", votes: 0 },
   ]);
 
-  // Function to handle vote increment
   const handleVote = (index) => {
     const updatedLanguages = [...languages];
     updatedLanguages[index].votes += 1;
@@ -25,7 +24,7 @@ function App() {
           <Language
             key={index}
             info={language}
-            onVote={() => handleVote(index)} // Pass the vote handler
+            onVote={() => handleVote(index)}
           />
         ))}
       </div>
