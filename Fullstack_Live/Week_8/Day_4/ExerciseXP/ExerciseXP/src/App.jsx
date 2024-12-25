@@ -6,6 +6,8 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Shop from './components/Shop';
 import Posts from './data/posts.json'
 import PostList from './components/Postlist';
+import Dat from './data/data.json'
+import Example1 from './components/Example1';
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
             <Route path="/profile" element={
               <ErrorBoundary>
                 <Profile />
+                <Example1 socialmedias={Dat.SocialMedias} />
               </ErrorBoundary>
               } />
             <Route path="/shop" element={
