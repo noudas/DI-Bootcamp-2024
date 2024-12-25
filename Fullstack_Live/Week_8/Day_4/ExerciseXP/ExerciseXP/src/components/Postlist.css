@@ -1,0 +1,22 @@
+.postcard{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin: 30px;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 30px;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px
+}
