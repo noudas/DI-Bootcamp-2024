@@ -9,7 +9,7 @@ const Example3 = (props) => {
                     return (
                         <li key={index}>
                             <p>{experience.companyName}</p>
-                            <img src={experience.logo || 'https://via.placeholder.com/150'} alt={`${experience.companyName} logo`} />
+                            <img src={experience.logo} alt={`${experience.companyName} logo`} />
                             <a href={experience.url} target="_blank" rel="noopener noreferrer">
                                 {experience.url}
                             </a>
