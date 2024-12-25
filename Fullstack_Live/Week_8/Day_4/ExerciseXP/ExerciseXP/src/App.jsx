@@ -9,6 +9,7 @@ import PostList from './components/Postlist';
 import Dat from './data/data.json'
 import Example1 from './components/Example1';
 import Example2 from './components/Example2';
+import Example3 from './components/Example3';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                 <Profile />
                 <Example1 socialmedias={Dat.SocialMedias} />
                 <Example2 info={Dat}/>
+                <Example3 info={Dat}/>
               </ErrorBoundary>
               } />
             <Route path="/shop" element={
