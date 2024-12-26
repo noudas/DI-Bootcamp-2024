@@ -1,0 +1,12 @@
+Snap Shot is a gallery created using React and React Router.
+The Routes need to be setup for four default pages and a search page.
+The images are displayed using an Image API, you could use the Pexel API
+Sign in to Pexel, receive an API KEY and start making requests.
+
+The functionalities
+The user can search for a specific image type. As soon as the user click on the button, you will display 30 images corresponding to the category.
+The user can also click on one of the 4 categories that you present on the page. In the demo the categories are Mountain,Beaches,Birds and Food but fell free to add your own personal categories.
+When the user hovers on a image, add some nice CSS transitions.
+
+Bonus: Add some kind of pagination, so on a click of a button, the user will be able to change the number of images displayed on the page.
+Good luck!
