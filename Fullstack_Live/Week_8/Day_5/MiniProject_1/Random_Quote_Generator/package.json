@@ -1,5 +1,5 @@
 {
-  "name": "shop",
+  "name": "random-quote-generator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "random-quote-generator": "file:",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router": "^7.1.1",
-    "shop": "file:"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
