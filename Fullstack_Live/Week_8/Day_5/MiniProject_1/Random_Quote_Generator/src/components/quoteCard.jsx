@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './QuoteCard.css';
 
+
+// 100% copy-pasted from stackoverflow
 const speakText = (text) => {
     const synth = window.speechSynthesis;
 
@@ -10,7 +12,7 @@ const speakText = (text) => {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US"; // You can change this to match the desired language
+    utterance.lang = "en-AU"; // You can change this to match the desired language
     utterance.rate = 1.2; // Adjust speed (default is 1)
     utterance.pitch = 10; // Adjust pitch (default is 1)
 
