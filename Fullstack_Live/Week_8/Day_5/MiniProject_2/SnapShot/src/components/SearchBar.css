@@ -47,7 +47,7 @@
 
 /* Optional: Smooth transition on input focus */
 .search-form input:focus {
-    width: 30%; /* Increase the width slightly on focus for effect */
-    padding: 8px; /* Add padding on focus for effect */
+    width: 30%;
+    padding: 8px;
     transition: all 0.3s ease;
 }
