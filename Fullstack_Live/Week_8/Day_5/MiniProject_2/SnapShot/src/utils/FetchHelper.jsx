@@ -1,5 +1,5 @@
 const FetchHelper = async (query, perPage = 30) =>{
-    const API_KEY = ENV_API_KEY
+    const API_KEY = process.env.REACT_APP_PEXELS_API_KEY
     const BASE_URL = "https://api.pexels.com/v1/search";
 
     try {
@@ -17,7 +17,7 @@ const FetchHelper = async (query, perPage = 30) =>{
         return data.photo
 
     } catch (error) {
-        
+
         console.error("FetchHelper Error:", error);
         throw error;
     }
