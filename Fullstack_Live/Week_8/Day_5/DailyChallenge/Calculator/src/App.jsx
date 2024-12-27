@@ -39,6 +39,7 @@ function App() {
         onChange={(e) => setNum2(e.target.value)}
         placeholder="Enter second number"  
       />
+      <br></br><br></br>
 
       <div className="buttons">
         {['+', '-', '*', '/'].map((op) => (

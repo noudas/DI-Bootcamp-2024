@@ -1,3 +1,5 @@
+import "./GenericInput.css"
+
 const GenericInput = ({ value, onChange, placeholder }) => {
     return (
         <input
