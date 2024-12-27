@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import FetchHelper from "../utils/FetchHelper"
 import Loading from "../utils/Loading"
+import "./ImageArea.css"
 
 const ImageArea = ({ query }) =>{
     

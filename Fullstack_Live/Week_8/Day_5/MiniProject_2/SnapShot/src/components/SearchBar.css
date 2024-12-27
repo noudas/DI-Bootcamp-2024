@@ -1,0 +1,53 @@
+/* Search Form Styling */
+.search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Search Button Styling */
+.search-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    cursor: pointer;
+
+    /* Smooth transitions for background color, padding, and other properties */
+    transition: all 0.3s ease;
+}
+
+/* Input and Button Font Size */
+.search-form input, .search-button {
+    font-size: 16px;
+}
+
+/* Search Input Field */
+.search-form input {
+    width: 25%;
+    padding: 5px;
+    /* Smooth transition for width and padding */
+    transition: all 0.3s ease;
+}
+
+/* Button Hover Effect */
+.search-button:hover {
+    background-color: rgb(86, 139, 238);
+}
+
+/* SVG inside the Button */
+.search-form button svg {
+    fill: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+/* Optional: Smooth transition on input focus */
+.search-form input:focus {
+    width: 30%; /* Increase the width slightly on focus for effect */
+    padding: 8px; /* Add padding on focus for effect */
+    transition: all 0.3s ease;
+}

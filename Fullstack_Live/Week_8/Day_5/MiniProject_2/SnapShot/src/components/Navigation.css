@@ -1,0 +1,27 @@
+/* Basic Link Styling */
+a {
+    /* Font Styling */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+    color: whitesmoke;
+
+    /* Button Feel */
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(74, 129, 233);
+    background-color: cornflowerblue;
+
+    /* Add smooth transition */
+    transition: all 0.3s ease; /* Transitions all properties over 0.3 seconds */
+}
+
+/* Hover Effect */
+a:hover {
+    color: azure;
+    border: 2px solid rgb(52, 113, 226);
+    background-color: rgb(89, 140, 236);
+    font-size: 20.2px;
+}
