@@ -16,15 +16,24 @@
 }
  */
 
-import './App.css'
+import './App.css';
+import { createContext, useState } from 'react';
+import Header from './components/Header';
+import Main from './components/Main';
+
+export const LightDarkContext = createContext();
 
 function App() {
+  const [mode, setMode] = useState(false); // false = light mode, true = dark mode
 
   return (
-    <>
-
-    </>
-  )
+    <div className={mode ? 'dark' : 'light'}>
+      <LightDarkContext.Provider value={{ mode, setMode }}>
+        <Header />
+        <Main />
+      </LightDarkContext.Provider>
+    </div>
+  );
 }
 
-export default App
+export default App;
