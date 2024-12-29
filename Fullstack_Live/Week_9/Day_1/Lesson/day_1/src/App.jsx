@@ -26,15 +26,23 @@ App - setState - count, setCount
  
  */
 
-import './App.css'
+import { createContext, useState } from "react";
+import "./App.css";
+import Display from "./components/Display";
+import Action from "./components/Action";
+
+export const CounterContext = createContext();
 
 function App() {
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-
-    </>
-  )
+    <CounterContext.Provider value={{ count, setCount }}>
+      <Display />
+      <Action />
+    </CounterContext.Provider>
+  );
 }
 
-export default App
+export default App;
+
