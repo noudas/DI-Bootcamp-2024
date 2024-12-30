@@ -8,10 +8,17 @@ const initialState ={
 export const todoReducer = (state = initialState, action) =>{
     switch (action.type) {
         case ADD_TODO:
-            const newState = { ...state };
-            newState.todo_list.push({ id: newState.todo_list.length + 1, text: action.payload.text, completed: false });
-            return newState;
-            break;
+            return {
+                ...state,
+                todo_list: [
+                    ...state.todo_list,
+                    {
+                        id: state.todo_list.length + 1,
+                        text: action.payload.text,
+                        completed: false
+                    }
+                ]
+            };
     
         case TOGGLE_TODO:
             return{
