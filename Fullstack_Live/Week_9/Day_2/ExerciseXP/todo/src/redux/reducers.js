@@ -1,7 +1,8 @@
 import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO} from "./actiontypes";
 
 const initialState ={
-    todo_list:[]
+    todo_list:[],
+    filter: "all",
 };
 
 export const todoReducer = (state = initialState, action) =>{
