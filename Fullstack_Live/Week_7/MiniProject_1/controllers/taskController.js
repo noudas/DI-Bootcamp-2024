@@ -51,3 +51,21 @@ const updateExistingTask = (req,res) =>{
 
     res.json(updatedTask);
 };
+
+const deleteExistingTask = (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const deletedTask = deleteTask(id);
+
+    if (!deletedTask) {
+        return res.status(404).json({ message: 'Task not found' });
+    }
+    res.json(deletedTask);
+};
+
+module.exports = {
+    getTasks,
+    getTasksId,
+    createTask,
+    updateExistingTask,
+    deleteExistingTask,
+};
