@@ -1,15 +1,19 @@
-import { INCREMENT, DECREMENT } from "./actions";
+import { INCREMENT, DECREMENT, TITLECHANGE } from './actions';
 
-const initializeState = {
-    count:0,
-}
+const initialState = {
+  count: 0,
+  title: '',
+};
 
-export const counterReducer = (state = initializeState, action) =>{
-    if (action.type === INCREMENT) {
-        return {...state, count: state.count + 1}
-    }
-    if (action.type === DECREMENT) {
-        return {...state, count: state.count - 1}
-    }
-    return state;
-}
+export const counterReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return { ...state, count: state.count + 1 };
+    case DECREMENT:
+      return { ...state, count: state.count - 1 };
+    case TITLECHANGE:
+      return { ...state, title: action.payload };
+    default:
+      return state;
+  }
+};
