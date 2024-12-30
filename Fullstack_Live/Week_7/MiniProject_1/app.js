@@ -12,4 +12,21 @@
 // 6. Test your API using tools like Postman or curl.
 
 const express = require('express');
-const tasksRoutes = require("../routes/taskRoutes")
+const tasksRoutes = require("./routes/taskRoutes");
+
+const app = express();
+app.use(express.json());
+
+// Routes
+app.use('/api', tasksRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'An error occurred!' });
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});

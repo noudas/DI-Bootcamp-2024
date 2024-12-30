@@ -21,23 +21,27 @@ const getTasksId = (req, res) =>{
     res.json(task);
 }
 
-const createTask = (req,res) =>{
-    const {title, description} = req.body;
+const createNewTask = (req, res) => {
+    const { title, description } = req.body;
 
     if (!title || !description) {
         return res.status(400).json({ message: 'Title and description are required' });
     }
 
+    const tasks = getAllTasks();
+
+    const newId = tasks.length > 0 ? Math.max(...tasks.map(task => task.id)) + 1 : 1;
+
     const newTask = {
-        id: tasks.length + 1,
+        id: newId,
         title,
-        description
-    }
+        description,
+    };
 
-    createTask(newTask)
-    res.json(201).json(newTask);
-
+    createTask(newTask);
+    res.status(201).json(newTask);
 };
+
 
 const updateExistingTask = (req,res) =>{
     const id = parseInt(req.params.id,10);
@@ -65,7 +69,7 @@ const deleteExistingTask = (req, res) => {
 module.exports = {
     getTasks,
     getTasksId,
-    createTask,
+    createNewTask,
     updateExistingTask,
     deleteExistingTask,
 };
