@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import todoReducer from "./TodoSlice";
+import todoReducer from "../features/Todo/TodoSlice";
 
 const appReducer = combineReducers({
     todos: todoReducer,
