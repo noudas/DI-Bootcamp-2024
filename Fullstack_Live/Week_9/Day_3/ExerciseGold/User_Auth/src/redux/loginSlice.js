@@ -1,38 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
-    isLoggedIn: false,
-    user: null,
+  status: false, // false logged out, true logged in
+  user: null, // { id, name, email, etc. }
 };
 
 const loginSlice = createSlice({
-    name: "login",
-    initialState,
-    reducers: {
-        loginUser: (state, action) => {
-            state.isLoggedIn = true;
-            state.user = {
-                id: action.payload.id || uuidv4(),
-                name: action.payload.name,
-                email: action.payload.email,
-            };
-        },
-        logoutUser: (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        },
-        setUser: (state, action) => {
-            state.user = {
-                ...state.user, // Spread the current user data to retain existing fields
-                id: action.payload.id || uuidv4(), // Assign a new ID if not provided
-                name: action.payload.name || state.user?.name, // Update name if provided, otherwise keep the existing one
-                email: action.payload.email || state.user?.email, // Update email if provided, otherwise keep the existing one
-            };
-        },        
+  name: "login",
+  initialState,
+  reducers: {
+    loginUser: (state, action) => {
+      state.status = true;
+      state.user = action.payload; // Assuming you set the user data when logging in
     },
+    logoutUser: (state) => {
+      state.status = false;
+      state.user = null;
+    },
+    setUser: (state, action) => {
+      state.user = action.payload; // Just to set a user (if necessary)
+    },
+  },
 });
 
 export const { loginUser, logoutUser, setUser } = loginSlice.actions;
-
 export default loginSlice.reducer;

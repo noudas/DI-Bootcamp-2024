@@ -1,59 +1,58 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser, setUser } from "../redux/loginSlice";
+import { loginUser } from "../redux/loginSlice";
 
-const Login = (props) =>{
+const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        // Set mock email and password when the component mounts
+        emailRef.current.value = "mail@abc.com";
+        passwordRef.current.value = "123teste";
+    }, []);
+
     const handleLogin = (e) => {
         e.preventDefault();
-    
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-    
-        if (email && password) {
-          const user = {
-            name: "user",
-            email: email,
-            id: new Date().getTime(),
-          };
-    
-          dispatch(setUser(user));
-          dispatch(loginUser());
+        const userData = {
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+        };
+
+        if (userData.email && userData.password) {
+            dispatch(loginUser(userData));
         } else {
-          alert("Please fill in both fields.");
+            console.error("Please provide valid login credentials.");
         }
     };
 
-    
     return (
         <div>
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <div>
-              <label>Email:</label>
-                <input
-                    type="email"
-                    ref={emailRef}
-                    placeholder="Enter your email"
-                    required
-                />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input
-                    type="password"
-                    ref={passwordRef}
-                    placeholder="Enter your password"
-                    required
-                />
-            </div>
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+                <div>
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        ref={emailRef}
+                        placeholder="Enter your email"
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input
+                        type="password"
+                        ref={passwordRef}
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
                 <button type="submit">Login</button>
             </form>
         </div>
     );
 };
 
-export default Login
+export default Login;
