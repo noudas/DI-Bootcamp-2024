@@ -20,14 +20,23 @@ const counterSlice = createSlice({
             state.count = 0
         },
         incrementByNum: (state,action) =>{
-            state.count += Number(action.payload)
+            state.count += Number(action.payload.num)
         },
         decrementByNum: (state,action) =>{
-            state.count -= Number(action.payload)
+            state.count -= Number(action.payload.num)
         },
+        // Prepare
+        increment2nums: {
+            reducer (state,action){
+                state.count += action.payload;
+            },
+            prepare(num1,num2){
+                return {payload: Number(num1) + Number(num2)}
+            }
+        }
     },
 });
 
-export const { increment, decrement, reset, incrementByNum, decrementByNum } = counterSlice.actions
+export const { increment, decrement, reset, incrementByNum, decrementByNum, increment2nums } = counterSlice.actions
 
 export default counterSlice.reducer;
