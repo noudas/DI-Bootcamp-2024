@@ -12,7 +12,7 @@ const TodoSlice = createSlice({
             const newTodo = {
                 id: state.todos.length + 1, // Generating a new ID based on the current length of the array
                 text: action.payload.text,
-                active: true,
+                completed: false,
             };
 
             state.todos = [...state.todos, newTodo].sort((a, b) => new Date(a.date) - new Date(b.date));

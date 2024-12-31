@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
     const todos = useSelector((state) => state.todos.todos);
@@ -10,9 +11,7 @@ const TodoList = () => {
                 <p>No todos available</p>
             ) : (
                 todos.map((item) => (
-                    <div key={item.id}>
-                        <p>{item.text || "No todo description"}</p>
-                    </div>
+                    <TodoItem key={item.id} todo={item} />
                 ))
             )}
         </>
