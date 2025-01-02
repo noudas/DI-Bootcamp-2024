@@ -30,12 +30,12 @@ const DataSlice = createSlice({
             state.error = null;
         })
         .addCase(fetchData.fulfilled, (state, action) =>{
-                    state.status = "success";
-                    state.todos = action.payload;
+            state.status = "success";
+            state.data = action.payload;
         })
         .addCase(fetchData.rejected, (state, action) =>{
-                    state.status = "failed";
-                    state.error = action.payload;
+            state.status = "failed";
+            state.error = action.payload;
         })
     }
 });
