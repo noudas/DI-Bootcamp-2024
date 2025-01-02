@@ -1,9 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   count: 5,
   msg:''
 };
+
+export const delayIncrementThunk = createAsyncThunk("counter/delay5sec", () =>{
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve(6);
+    }, 5000);
+  })
+});
 
 const counterSlice = createSlice({
   name: "counter",
@@ -32,10 +40,20 @@ const counterSlice = createSlice({
         return { payload: Number(num1) + Number(num2) };
       },
     },
+//    delayIncrement5Sec: (state) => {
+//      setTimeout(() => {
+//        state.count += 5
+//      }, 5000);
+//    },
+  },
+  extraReducers(builder){
+    builder.addCase(delayIncrementThunk.fulfilled, (state,action) => {
+      state.count += action.payload
+    })
   },
 });
 
-export const { increment, decrement, reset, incrementByNum,increment2nums } =
+export const { increment, decrement, reset, incrementByNum,increment2nums, delayIncrement5Sec } =
   counterSlice.actions;
 
 export default counterSlice.reducer;

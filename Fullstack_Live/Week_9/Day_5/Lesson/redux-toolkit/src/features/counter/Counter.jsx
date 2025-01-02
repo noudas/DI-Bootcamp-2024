@@ -5,6 +5,7 @@ import {
   reset,
   incrementByNum,
   increment2nums,
+  delayIncrementThunk,
 } from "./counterSlice";
 import { useRef } from "react";
 
@@ -15,6 +16,12 @@ const Counter = (props) => {
   const numRef = useRef();
   const num1Ref = useRef();
   const num2Ref = useRef();
+
+  const delay5sec = () =>{
+    setTimeout(() => {
+      dispatch(incrementByNum({num : 5}))
+    }, 5000);
+  }
   return (
     <>
       <h2>Count: {count}</h2>
@@ -39,6 +46,14 @@ const Counter = (props) => {
         <button onClick={() => dispatch(increment2nums(4, 5))}>
           Add number
         </button>
+        <div>
+          <button onClick={() => delay5sec()}>
+            Wrong way Increment by 5 Sec
+          </button>
+          <button onClick={() => dispatch(delayIncrementThunk())}>
+            Right way Increment by 5 Sec
+          </button>
+        </div>
       </div>
     </>
   );
