@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-
+      <h2>Data List</h2>
     </>
   )
 }
