@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "lesson",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
+    "lesson": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "redux-thunk": "^3.1.0",
-    "vite-project": "file:"
+    "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
