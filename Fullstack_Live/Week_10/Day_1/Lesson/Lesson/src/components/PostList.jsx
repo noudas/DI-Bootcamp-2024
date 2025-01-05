@@ -1,21 +1,19 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchPosts } from "../redux/slice";
 import ReactionButton from "./ReactionButton";
-import { useErrorSelector, usePostSelector, useStatusSelector } from "../redux/hooks";
+import { useErrorSelector, usePostSelector, useStatusSelector, useFetchPost } from "../redux/hooks"; // Import hooks
 
 const PostList = () => {
+    const posts = usePostSelector(); // Access posts state using the custom hook
+    const status = useStatusSelector(); // Access status state
+    const error = useErrorSelector(); // Access error state
 
-    const posts = usePostSelector
-    const status = useStatusSelector
-    const error = useErrorSelector
-    const dispatch = useDispatch();
+    const callFetchPost = useFetchPost(); // Get fetch function
 
     useEffect(() => {
         if (status === "idle") {
-            dispatch(fetchPosts());
+            callFetchPost();  // Fetch posts if status is idle
         }
-    }, [dispatch, status]);
+    }, [status, callFetchPost]); // Run effect when status changes
 
     if (status === "pending") return <h2>Loading posts...</h2>;
     if (status === "failed") return <h2>Error: {error}</h2>;
