@@ -1,13 +1,14 @@
 import React from "react";
-import { useUserIdsSelector, useSelectedUser, useSetSelectedUser } from "../redux/hooks";
+import { useSelector, useDispatch } from "react-redux";
+import { selectorUserIds, selectSelectedUser, setSelectedUser } from "../redux/hooks";
 
 const UserBox = () => {
-    const userIds = useUserIdsSelector(); // Get unique user IDs
-    const selectedUser = useSelectedUser(); // Get selected user
-    const setSelectedUser = useSetSelectedUser(); // Dispatch function to set user
+    const userIds = useSelector(selectorUserIds);
+    const selectedUser = useSelector(selectSelectedUser);
+    const dispatch = useDispatch();
 
     const handleUserChange = (e) => {
-        setSelectedUser(e.target.value); // Update selected user
+        dispatch(setSelectedUser(e.target.value));
     };
 
     return (

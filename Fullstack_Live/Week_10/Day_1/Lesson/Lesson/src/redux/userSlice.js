@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    selectedUser: "", // Default: show all posts
+    selectedUser: "",
 };
 
 const userSlice = createSlice({
@@ -9,11 +9,11 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setSelectedUser(state, action) {
-            state.selectedUser = action.payload; // Update selected user
+            state.selectedUser = action.payload;
         },
     },
 });
 
-export const { setSelectedUser } = userSlice.actions;
-export const selectSelectedUser = (state) => state.user.selectedUser; // Selector for selected user
+export const { setSelectedUser: setUserSelected } = userSlice.actions;
+export const selectSelectedUser = (state) => state.user.selectedUser;
 export default userSlice.reducer;

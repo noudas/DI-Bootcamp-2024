@@ -1,38 +1,41 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectorPostState, selectorError, selectorStatus, selectorUserIds } from "./selectors";
 import { useCallback } from "react";
-import { fetchPosts, reactionAdded } from "./slice";
+import { fetchPosts, reactionAdded, setSelectedUser } from "./slice";
 
-export const usePostSelector = () =>{
-    return useSelector(selectorPostState)
+export const usePostSelector = () => {
+    return useSelector(selectorPostState);
 }
 
-export const useErrorSelector = () =>{
-    return useSelector(selectorError)
+export const useErrorSelector = () => {
+    return useSelector(selectorError);
 }
 
-export const useStatusSelector = () =>{
-    return useSelector(selectorStatus)
+export const useStatusSelector = () => {
+    return useSelector(selectorStatus);
 }
 
-export const useFetchPost = () =>{
+export const useFetchPost = () => {
     const dispatch = useDispatch();
-    return useCallback(() =>{
+    return useCallback(() => {
         dispatch(fetchPosts());
-    }, [dispatch])
+    }, [dispatch]);
 };
 
 export const useAddReaction = () => {
     const dispatch = useDispatch();
-    return useCallback((id, name) =>{
-        dispatch(reactionAdded({id, name}))
-    }, [dispatch])
+    return useCallback((id, name) => {
+        dispatch(reactionAdded({ id, name }));
+    }, [dispatch]);
 };
 
+export const useSelectedUser = () => {
+    return useSelector(selectSelectedUser);
+};
 
 export const useSetSelectedUser = () => {
     const dispatch = useDispatch();
     return useCallback((userId) => {
-        dispatch(setSelectedUser(userId));
+        dispatch(setUserSelected(userId));
     }, [dispatch]);
 };
