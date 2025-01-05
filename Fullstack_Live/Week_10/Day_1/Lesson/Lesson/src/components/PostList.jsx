@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchPosts } from "../redux/slice";
 import ReactionButton from "./ReactionButton";
+import { useErrorSelector, usePostSelector, useStatusSelector } from "../redux/hooks";
 
 const PostList = () => {
-    const { posts, status, error } = useSelector((state) => state.postReducer);
+
+    const posts = usePostSelector
+    const status = useStatusSelector
+    const error = useErrorSelector
     const dispatch = useDispatch();
 
     useEffect(() => {

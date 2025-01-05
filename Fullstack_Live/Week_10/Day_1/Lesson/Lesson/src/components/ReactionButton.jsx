@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { useDispatch } from "react-redux";
 import { reactionAdded } from "../redux/slice";
 
@@ -34,4 +34,5 @@ const ReactionButton = ({ post }) => {
     );
 };
 
-export default ReactionButton;
+const memorizeReactionButton = memo(ReactionButton)
+export default memorizeReactionButton;
