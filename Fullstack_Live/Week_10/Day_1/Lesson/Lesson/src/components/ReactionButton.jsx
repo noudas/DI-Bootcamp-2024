@@ -16,6 +16,7 @@ const ReactionButton = ({ post }) => {
     const handleReaction = (reaction) => {
         dispatch(reactionAdded({ postId: post.id, reaction }));
     };
+    console.log("Render Reaction", post.id);
 
     return (
         <div>
