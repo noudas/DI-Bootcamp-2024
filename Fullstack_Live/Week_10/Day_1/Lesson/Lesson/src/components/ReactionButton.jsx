@@ -1,6 +1,9 @@
-import { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { reactionAdded } from "../redux/slice";
 
-const ReactionButton = (props) =>{
+const ReactionButton = ({ post }) => {
+    const dispatch = useDispatch();
 
     const reactionEmoji = {
         thumbsUp: "👍",
@@ -8,40 +11,26 @@ const ReactionButton = (props) =>{
         heart: "❤️",
         rocket: "🚀",
         coffee: "☕",
-      };
-
-    const [reactionCount, setReactionCount] = useState({
-        thumbsUp: 0,
-        wow: 0,
-        heart: 0,
-        rocket: 0,
-        coffee: 0,
-    })
-
-    const handleReaction = (reactionCount) => {
-        setReactionCount((prevReactions) => ({
-            ...prevReactions,
-            [reactionCount]: prevReactions[reactionCount] + 1,
-        }));
     };
 
+    const handleReaction = (reaction) => {
+        dispatch(reactionAdded({ postId: post.id, reaction }));
+    };
 
-    return(
-        <>
-        <p>Reaction Button</p>
-        <div style={{ display: "flex", gap: "10px" }}>
-                {Object.entries(reactionEmoji).map(([name, emoji]) => (
-                    <button style={{cursor:"pointer"}}
-                        key={name}
-                        className="reactionButton"
-                        onClick={() => handleReaction(name)}
-                    >
-                        {emoji} {reactionCount[name]}
-                    </button>
-                ))}
-            </div>
-        </>
-    )
-}
+    return (
+        <div>
+            {Object.entries(reactionEmoji).map(([name, emoji]) => (
+                <button
+                    style={{cursor:"pointer"}}
+                    key={name}
+                    className="reactionButton"
+                    onClick={() => handleReaction(name)}
+                >
+                    {emoji} <span>{post.reactions[name]}</span>
+                </button>
+            ))}
+        </div>
+    );
+};
 
-export default ReactionButton
+export default ReactionButton;

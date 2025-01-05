@@ -23,7 +23,7 @@ const PostList = () => {
                 <article key={post.id} className="post">
                     <h3>{post.title}</h3>
                     <p>{post.body}</p>
-                <ReactionButton/>
+                    <ReactionButton post={post} />
                 </article>
             ))}
         </main>

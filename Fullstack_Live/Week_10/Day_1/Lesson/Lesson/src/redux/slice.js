@@ -9,6 +9,7 @@ const initialState = {
     error: null,
 };
 
+// Thunk for fetching posts
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
     const response = await axios.get(POST_URL);
     return response.data; // Axios wraps data inside `data`
@@ -17,7 +18,16 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 const postSlice = createSlice({
     name: "posts",
     initialState,
-    reducers: {},
+    reducers: {
+        // Reducer for updating reactions
+        reactionAdded(state, action) {
+            const { postId, reaction } = action.payload;
+            const existingPost = state.posts.find((post) => post.id === postId);
+            if (existingPost) {
+                existingPost.reactions[reaction]++; // Increment reaction count
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPosts.pending, (state) => {
@@ -26,7 +36,16 @@ const postSlice = createSlice({
             })
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = "success";
-                state.posts = action.payload; // Store fetched posts
+                state.posts = action.payload.map((post) => ({
+                    ...post,
+                    reactions: {
+                        thumbsUp: 0,
+                        wow: 0,
+                        heart: 0,
+                        rocket: 0,
+                        coffee: 0,
+                    },
+                }));
             })
             .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = "failed";
@@ -35,7 +54,8 @@ const postSlice = createSlice({
     },
 });
 
+// Export actions
+export const { reactionAdded } = postSlice.actions;
 
-export const {} = postSlice.actions;
+// Export reducer
 export default postSlice.reducer;
-
