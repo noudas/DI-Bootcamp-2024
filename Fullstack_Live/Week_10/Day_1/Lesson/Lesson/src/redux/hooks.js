@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectorPostState, selectorError, selectorStatus } from "./selectors";
+import { selectorPostState, selectorError, selectorStatus, selectorUserIds } from "./selectors";
 import { useCallback } from "react";
 import { fetchPosts, reactionAdded } from "./slice";
 
@@ -27,4 +27,12 @@ export const useAddReaction = () => {
     return useCallback((id, name) =>{
         dispatch(reactionAdded({id, name}))
     }, [dispatch])
+};
+
+
+export const useSetSelectedUser = () => {
+    const dispatch = useDispatch();
+    return useCallback((userId) => {
+        dispatch(setSelectedUser(userId));
+    }, [dispatch]);
 };

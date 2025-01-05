@@ -18,3 +18,8 @@ export const selectorError = createSelector(
     [stateReducer], // Input selector
     (state) => state.error // Output selector
 );
+
+export const selectorUserIds = createSelector(
+    [selectorPostState],
+    (posts) => [...new Set(posts.map(post => post.userId))]
+);
