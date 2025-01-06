@@ -6,3 +6,8 @@ export const selectorUsersState = createSelector(
   [stateReducer],
   (state) => state.users
 );
+
+export const selectorAuthorState = createSelector(
+  [stateReducer],
+  (state) => state.author
+);

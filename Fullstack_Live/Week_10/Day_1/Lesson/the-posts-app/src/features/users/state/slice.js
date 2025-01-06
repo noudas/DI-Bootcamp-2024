@@ -5,6 +5,7 @@ const USER_URL = "https://jsonplaceholder.typicode.com/users";
 
 const initialState = {
   users: [],
+  author: -1,
 };
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
@@ -15,7 +16,12 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    selectedAuthor: (state, action) => {
+      state.author = action.payload;
+      console.log(state.author);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.users = action.payload;
@@ -25,5 +31,5 @@ const usersSlice = createSlice({
 
 export const stateReducer = (state) => state.usersReducer;
 
-export const {} = usersSlice.actions;
+export const { selectedAuthor } = usersSlice.actions;
 export default usersSlice.reducer;

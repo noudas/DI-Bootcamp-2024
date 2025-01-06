@@ -1,24 +1,30 @@
-import { useUsersSelector, useFetchUsers } from "./state/hooks";
+import {
+  useUsersSelector,
+  useFetchUsers,
+  useSelectAuthor,
+} from "./state/hooks";
 import { useEffect } from "react";
 
 const UsersBox = (props) => {
   const users = useUsersSelector();
 
   const callFetchUsers = useFetchUsers();
-
+  const callSelectAuthor = useSelectAuthor();
+  
   useEffect(() => {
     callFetchUsers();
   }, []);
+
   return (
     <>
       <div>
         <h4>Authors</h4>
-        <select>
+        <select onChange={(e) => callSelectAuthor(e.target.value)}>
           <option value={-1}>Select Author...</option>
-          {users.map((user) => {
+          {users.map((author) => {
             return (
-              <option key={user.id} value={user.id}>
-                {user.name}
+              <option key={author.id} value={author.id}>
+                {author.name}
               </option>
             );
           })}

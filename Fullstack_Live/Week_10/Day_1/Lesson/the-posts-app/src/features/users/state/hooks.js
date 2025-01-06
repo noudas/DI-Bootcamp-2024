@@ -1,10 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectorUsersState } from "./selectors";
-import { fetchUsers } from "./slice";
+import { selectorUsersState, selectorAuthorState } from "./selectors";
+import { fetchUsers, selectedAuthor } from "./slice";
 import { useCallback } from "react";
 
 export const useUsersSelector = () => {
   return useSelector(selectorUsersState);
+};
+
+export const useSelectedAuthor = () => {
+  return useSelector(selectorAuthorState);
 };
 
 export const useFetchUsers = () => {
@@ -12,4 +16,14 @@ export const useFetchUsers = () => {
   return useCallback(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+};
+
+export const useSelectAuthor = () => {
+  const dispatch = useDispatch();
+  return useCallback(
+    (id) => {
+      dispatch(selectedAuthor(id));
+    },
+    [dispatch]
+  );
 };

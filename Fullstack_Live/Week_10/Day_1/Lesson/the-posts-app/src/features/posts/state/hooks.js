@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useCallback } from "react";
 import { fetchPosts, addreaction } from "./slice";
 
-import { selectorPostsState, selectorStatusState } from "./selectors";
+import { selectorPostsState, selectorStatusState, selectorFilterdPosts } from "./selectors";
 
 export const usePostsSelector = () => {
-  return useSelector(selectorPostsState);
+  return useSelector(selectorFilterdPosts);
 };
 
 export const usePostsStatus = () => {
