@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { useAppDispatch } from "./hooks";
+import { useAppDispatch } from "./state/hooks";
 import { addBook } from "./state/slice";
 
 const BookPost = (props) =>{
@@ -24,22 +24,25 @@ const BookPost = (props) =>{
     };
 
 return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="title">Title:</label>
-                    <input id="title" type="text" ref={refTitle} required />
-                </div>
-                <div>
-                    <label htmlFor="author">Author:</label>
-                    <input id="author" type="text" ref={refAuthor} required />
-                </div>
-                <div>
-                    <label htmlFor="genre">Genre:</label>
-                    <input id="genre" type="text" ref={refGenre} required />
-                </div>
-                <button type="submit">Add Book</button>
-            </form>
+        <>  
+            <div>
+                <h2>Post Book</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="title">Title:</label>
+                        <input id="title" type="text" ref={refTitle} required />
+                    </div>
+                    <div>
+                        <label htmlFor="author">Author:</label>
+                        <input id="author" type="text" ref={refAuthor} required />
+                    </div>
+                    <div>
+                        <label htmlFor="genre">Genre:</label>
+                        <input id="genre" type="text" ref={refGenre} required />
+                    </div>
+                    <button type="submit">Add Book</button>
+                </form>
+            </div>
         </>
     );
 
