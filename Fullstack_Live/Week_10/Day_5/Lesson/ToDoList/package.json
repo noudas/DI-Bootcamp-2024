@@ -13,6 +13,7 @@
     "vite": "^6.0.5"
   },
   "dependencies": {
+    "todolist": "file:",
     "uuid": "^11.0.4"
   }
 }
