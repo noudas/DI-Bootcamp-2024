@@ -5,3 +5,14 @@ const initialState = {
     stage:"", // ToDo, doing, done
     status: "",
 }
+
+const taskSlice = createSlice({
+    name:"tasks",
+    initialState,
+    reducers:{},
+    extraReducers(builder){},
+})
+
+export const stateReducer = (state) => state.taskReducer;
+export const {} = taskSlice.actions;
+export default taskSlice.reducer;
