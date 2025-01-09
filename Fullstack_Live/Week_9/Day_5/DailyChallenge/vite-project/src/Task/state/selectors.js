@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectTasksState = (state) => state.tasksReducer.tasks;
-export const selectCategoriesState = (state) => state.categoriesReducer.categories;
+export const selectTasksState = (state) => state.taskReducer.tasks;
+export const selectCategoriesState = (state) => state.categoryReducer.categories;
 
 
 // Select by category
