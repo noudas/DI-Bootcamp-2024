@@ -1,3 +1,3 @@
 import { useDispatch } from "react-redux";
-import { stateReducer } from "./slice";
+import { stateReducer } from "./TaskSlice";
 import { createSelector } from "@reduxjs/toolkit";
