@@ -20,7 +20,7 @@ const TaskPosts = (props) =>{
         if(taskTitle){
             dispatch(addTask({title: taskTitle, description: taskDesc, stage: 'doing'}));
             titleRef.current.value = '';
-            taskDesc.current.value = '';
+            descriptionRef.current.value = '';
         }
     }
 
@@ -39,6 +39,7 @@ const TaskPosts = (props) =>{
                 placeholder="Add a description"
                 ref={descriptionRef}
                 />
+                <button type="submit">Add Task</button>
             </form>
         </>
     )
