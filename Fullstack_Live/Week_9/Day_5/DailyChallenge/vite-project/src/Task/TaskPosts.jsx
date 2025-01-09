@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useTasks } from "./state/hooks";
+import { useCategories, useTasks } from "./state/hooks";
 import { useDispatch } from "react-redux";
 import { addTask } from "./state/TaskSlice";
 
@@ -8,17 +8,20 @@ const TaskPosts = (props) =>{
     const dispatch = useDispatch();
     const titleRef = useRef();
     const descriptionRef = useRef();
+    const categoryIdRef = useRef();
 
     const tasks = useTasks();
+    const categories = useCategories()
     
     const handleAddTask = (e) =>{
         e.preventDefault();
 
         const taskTitle = titleRef.current.value.trim();
         const taskDesc = descriptionRef.current.value;
+        const taskCategoryId = categoryIdRef.current.value
 
         if(taskTitle){
-            dispatch(addTask({title: taskTitle, description: taskDesc, stage: 'doing'}));
+            dispatch(addTask({title: taskTitle, description: taskDesc, stage: 'doing', categoryId: taskCategoryId}));
             titleRef.current.value = '';
             descriptionRef.current.value = '';
         }
@@ -39,6 +42,16 @@ const TaskPosts = (props) =>{
                 placeholder="Add a description"
                 ref={descriptionRef}
                 />
+                <select ref={categoryIdRef} defaultValue="">
+                    <option value="" disabled>
+                        Select a category
+                    </option>
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
                 <button type="submit">Add Task</button>
             </form>
         </>

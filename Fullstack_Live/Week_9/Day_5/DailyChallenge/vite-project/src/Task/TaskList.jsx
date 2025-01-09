@@ -1,4 +1,3 @@
-// TaskList.jsx
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask, editTask } from "./state/TaskSlice";
@@ -8,8 +7,6 @@ const TaskList = () => {
     const tasks = useTasks();
     const dispatch = useDispatch();
     const [editIdTask, setEditIdTask] = useState(null);
-    const [editTitleRef, setEditTitleRef] = useState(null);
-    const [editDescriptionRef, setEditDescriptionRef] = useState(null);
 
     // Delete a task
     const handleDelete = (id) => {
@@ -19,26 +16,13 @@ const TaskList = () => {
     // Start editing a task
     const handleEdit = (id, title, description) => {
         setEditIdTask(id);
-        setEditTitleRef((prevRef) => {
-            if (prevRef) prevRef.value = '';
-            return { value: title };
-        });
-        setEditDescriptionRef((prevRef) => {
-            if (prevRef) prevRef.value = '';
-            return { value: description };
-        });
     };
 
     // Submit the edited task
-    const handleSaveEdit = () => {
-        if (editIdTask && editTitleRef?.value && editDescriptionRef?.value) {
-            dispatch(editTask({ id: editIdTask, changes: { 
-                title: editTitleRef.value, 
-                description: editDescriptionRef.value 
-            } }));
+    const handleSaveEdit = (id, title, description) => {
+        if (title && description) {
+            dispatch(editTask({ id, changes: { title, description } }));
             setEditIdTask(null);
-            setEditTitleRef(null);
-            setEditDescriptionRef(null);
         }
     };
 
@@ -51,15 +35,15 @@ const TaskList = () => {
                         {editIdTask === task.id ? (
                             <>
                                 <input
-                                    ref={(node) => setEditTitleRef(node)}
                                     type="text"
                                     defaultValue={task.title}
+                                    onChange={(e) => (task.title = e.target.value)}
                                 />
                                 <textarea
-                                    ref={(node) => setEditDescriptionRef(node)}
                                     defaultValue={task.description}
-                                ></textarea>
-                                <button onClick={handleSaveEdit}>Save</button>
+                                    onChange={(e) => (task.description = e.target.value)}
+                                />
+                                <button onClick={() => handleSaveEdit(task.id, task.title, task.description)}>Save</button>
                             </>
                         ) : (
                             <>
