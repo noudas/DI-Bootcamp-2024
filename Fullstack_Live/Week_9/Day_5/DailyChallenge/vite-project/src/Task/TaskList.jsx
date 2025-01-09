@@ -1,16 +1,12 @@
-import TaskCard from "./TaskCard";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteTask, editTask } from "./state/TaskSlice";
+import { useTasks } from "./state/hooks";
 
-const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
+const TaskList = () => {
   return (
     <div className="task-list">
-      {tasks.map((task) => (
-        <TaskCard
-          key={task.id}
-          task={task}
-          onToggleComplete={toggleComplete}
-          onDelete={deleteTask}
-        />
-      ))}
+
     </div>
   );
 };

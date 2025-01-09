@@ -1,5 +1,5 @@
 // CategoryList.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteCategory, editCategory } from "./state/CategorySlice";
 import { useCategories } from "./state/hooks";
