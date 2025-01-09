@@ -24,10 +24,17 @@ const tasksSlice = createSlice({
             const id = action.payload;
             state.tasks = state.tasks.filter((task) => task.id !== id);
         },
+        updateTaskStage: (state, action) => {
+            const { id, stage } = action.payload;
+            const task = state.tasks.find((task) => task.id === id);
+            if (task) {
+                task.stage = stage;
+            }
+        },
     },
     extraReducers: (builder) => {},
 });
 
-export const { addTask, editTask, deleteTask } = tasksSlice.actions;
+export const { addTask, editTask, deleteTask, updateTaskStage  } = tasksSlice.actions;
 export const selectTasksState = (state) => state.taskReducer;
 export default tasksSlice.reducer;
