@@ -91,16 +91,35 @@ console.log(details); // Output: ['Alice', 25, 'Hello, Alice! You are 25 years o
 // How to create and return an object with specific properties.
 // Instructions
 // Define the Object Structure:
-// Create an object type annotation that defines the shape of a Person object. The object should have two properties: name (a string) and age (a number).
+// Create an object type annotation that defines the shape of a Person object. 
+// The object should have two properties: name (a string) and age (a number).
+
+type Person = {
+  name: string;
+  age: number;
+}
+
 
 // Create the Function:
 
 // Write a function named createPerson that takes two parameters: name (string) and age (number).
 // The function should return an object that matches the Person structure.
 
+function createObject(name:string, age:number) {
+  let person:Person = {
+      name:name,
+      age: age
+  }  
+
+  return person
+}
+
 // Test the Function:
 
 // Test the createPerson function by creating a person and logging the result to the console.
+
+const person = createObject("Alice", 25);
+console.log(person); // Output: { name: 'Alice', age: 25 }
 
 
 // 🌟 Exercise 7: Type Assertions
@@ -110,11 +129,14 @@ console.log(details); // Output: ['Alice', 25, 'Hello, Alice! You are 25 years o
 // How to access and manipulate properties of an HTML element after casting.
 // Description:
 
-// In this exercise, you’ll learn how to use type assertions to cast an HTML element to a specific type in TypeScript. This allows you to safely access and manipulate properties of the element.
+// In this exercise, you’ll learn how to use type assertions to cast an HTML element to a specific type in TypeScript. 
+// This allows you to safely access and manipulate properties of the element.
 
 // Instructions
 // Get an Element from the DOM:
 // Use document.getElementById() to retrieve an HTML element from the DOM.
+
+let appDOMElemente = document.getElementById("app") as HTMLDivElement;
 
 // Use Type Assertion:
 
@@ -126,10 +148,19 @@ console.log(details); // Output: ['Alice', 25, 'Hello, Alice! You are 25 years o
 
 // Test the Functionality:
 
+if (appDOMElemente) {
+  appDOMElemente.innerHTML = "<h1>Hello, Vite + TypeScript!</h1>";
+  appDOMElemente.style.color = "blue";
+  appDOMElemente.style.textAlign = "center";
+} else {
+  console.error("Element with ID 'app' not found in the DOM.");
+}
+
 // Ensure that you can successfully set or manipulate a property of the element.
 // Additional Notes:
 
-// Type assertions are a powerful way to let TypeScript know more about the type of an element when you’re certain of it. However, you should use them cautiously, as incorrect assertions can lead to runtime errors if the type is not as expected.
+// Type assertions are a powerful way to let TypeScript know more about the type of an element when you’re certain of it. 
+// However, you should use them cautiously, as incorrect assertions can lead to runtime errors if the type is not as expected.
 
 
 // 🌟 Exercise 8: switch Statement with Complex Conditions
