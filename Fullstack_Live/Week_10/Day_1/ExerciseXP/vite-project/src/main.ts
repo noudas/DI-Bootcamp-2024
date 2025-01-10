@@ -70,11 +70,16 @@ console.log(uniontype);
 // Instructions
 // Create a function getDetails that takes a name and age as input and returns a tuple containing the input values and a greeting message.
 // The tuple should contain multiple values of different types
+function getDetails(details: [string, number]): [string, number, string] {
+  const [name, age] = details;
+  const message = `Hello, ${name}! You are ${age} years old.`;
+  return [name, age, message];
+}
 
 // // Call the function and log the tuple
-// const details = getDetails("Alice", 25);
+const details = getDetails(["Alice", 25]);
 // // Expected output
-// console.log(details); // Output: ['Alice', 25, 'Hello, Alice! You are 25 years old.']
+console.log(details); // Output: ['Alice', 25, 'Hello, Alice! You are 25 years old.']
 
 
 
