@@ -97,9 +97,15 @@ console.log(getFirstElement(strings));
 // Use generic constraints to limit type usage.
 // Create a generic function that works with constrained types.
 // Task
-// Create a generic function logLength that takes a parameter of type T constrained to types with a length property (like string or Array). 
+// Create a generic function logLength that takes a parameter of type T constrained to types with a length property (like string or Array).
+function logLength<T extends {length: number}>(item:T): void{
+  console.log(item.length);
+} 
 // The function should log the length.
 
+logLength("Hello, World!"); // Output: 13
+
+logLength([1, 2, 3, 4, 5]); // Output: 5
 
 
 // 🌟 Exercise 6: Intersection Types and Type Guards
@@ -112,9 +118,38 @@ console.log(getFirstElement(strings));
 // Job is a Manager or a Developer.
 
 // Person type: name: string; age: number;
+type Person6 = {
+  name: string;
+  age: number;
+}
 // Job type: position: string; department: string;
+type Job = {
+  position: string; 
+  department: string;
+}
+
 // Employee type should combine these.
+type Employee = Person6 & Job;
+
 // describeEmployee should return a specific message for each type of job.
+function describeEmployee(employee: Employee): string {
+  if (employee.position === 'Manager') {
+    return `${employee.name}, Age ${employee.age}, is a Manager in the ${employee.department} department.`;
+  } else if (employee.position === 'Developer') {
+    return `${employee.name}, Age ${employee.age}, is a Developer in the ${employee.department} department.`;
+  } else {
+    return `${employee.name}, Age ${employee.age}, works as a ${employee.position} in the ${employee.department} department.`;
+  }
+}
+
+const manager: Employee = { name: 'Alice', age: 40, position: 'Manager', department: 'HR' };
+console.log(describeEmployee(manager));
+
+const developer: Employee = { name: 'Bob', age: 30, position: 'Developer', department: 'IT' };
+console.log(describeEmployee(developer));
+
+const designer: Employee = { name: 'Espen', age: 69, position: 'Gabagooblin', department: 'HOT EATING TRIP BIN' };
+console.log(describeEmployee(designer));
 
 
 // 🌟 Exercise 7: Type Assertions and Generic Constraints
@@ -123,4 +158,18 @@ console.log(getFirstElement(strings));
 // Apply generic constraints to ensure type safety.
 // Task
 // Create a generic function formatInput that takes a parameter of type T constrained to have a toString() method.
-// Use type assertions to ensure the parameter is treated as a string for formatting. The function should format the input as a string.
+function formatInput<T extends {toString(): string}>(params: T): string {
+  const formattedInput = params.toString();
+
+  if (typeof params === 'string') {
+    return params;
+  }
+
+  // Otherwise, return the formatted string
+  return `Formatted: ${formattedInput}`;
+}
+
+console.log(formatInput(123));
+console.log(formatInput(`ABC`));
+// Use type assertions to ensure the parameter is treated as a string for formatting. 
+// The function should format the input as a string.
