@@ -54,5 +54,3 @@ const handleData = (array: (User | Product | Order)[]) => {
     }
   });
 };
-
-
