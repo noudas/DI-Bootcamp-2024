@@ -172,4 +172,45 @@ console.log(`Multiplication result: ${resultMultiply}`);
 
 
 // Instructions
-// Create an interface Shape with a property color of type string and a method getArea(). Extend the interface with a new interface Rectangle that adds properties width and height (both readonly) and a method getPerimeter(). Implement the Rectangle interface in a class and provide implementations for the methods.
+// Create an interface Shape with a property color of type string and a method getArea(). 
+
+interface Shape {
+  color: string;
+  getArea(): number;
+}
+
+// Extend the interface with a new interface Rectangle that adds properties width and height (both readonly) and a method getPerimeter(). 
+interface Rectangle extends Shape{
+  readonly width: number;
+  readonly height: number;
+
+  getPerimeter():number;
+}
+
+// Implement the Rectangle interface in a class and provide implementations for the methods.
+
+class MyRectangle implements Rectangle {
+  color: string;
+  readonly width: number;
+  readonly height: number;
+
+  constructor(color: string, width: number, height: number) {
+    this.color = color;
+    this.width = width;
+    this.height = height;
+  }
+
+  // Implement the getArea method from the Shape interface
+  getArea(): number {
+    return this.width * this.height;
+  }
+
+  // Implement the getPerimeter method from the Rectangle interface
+  getPerimeter(): number {
+    return 2 * (this.width + this.height);
+  }
+}
+const rectangle = new MyRectangle('blue', 10, 5);
+console.log(`Color: ${rectangle.color}`);
+console.log(`Area: ${rectangle.getArea()}`);
+console.log(`Perimeter: ${rectangle.getPerimeter()}`);
