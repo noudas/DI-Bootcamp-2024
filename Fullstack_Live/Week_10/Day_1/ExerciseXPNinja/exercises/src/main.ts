@@ -73,7 +73,8 @@ console.log(mapTypev2("Hello")); // Output: 5 (length of the string)
 // How to retrieve a property value from an object dynamically while maintaining type safety.
 // Description:
 
-// In this exercise, you will create a function that retrieves the value of a property from an object based on a provided key. This function will ensure type safety by leveraging TypeScript’s keyof and lookup types.
+// In this exercise, you will create a function that retrieves the value of a property from an object based on a provided key. 
+// This function will ensure type safety by leveraging TypeScript’s keyof and lookup types.
 
 // Instructions
 // Define the Function:
@@ -81,6 +82,17 @@ console.log(mapTypev2("Hello")); // Output: 5 (length of the string)
 // Create a function named getProperty that accepts two parameters:
 // An object that contains various properties.
 // A key which represents one of the properties in the object.
+
+// Quando usamos <>, estamos declarando "parâmetros de tipo" no TypeScript, 
+// ou seja, estamos permitindo que o código seja genérico e flexível para trabalhar com diferentes tipos.
+
+// T representa um tipo genérico qualquer. Nesse caso, T será o objeto que estamos manipulando.
+// K representa uma das chaves do tipo T, ou seja, um valor que corresponde a uma propriedade existente em T.
+// K é restrito pelo tipo T (usando `extends`), garantindo que ele só possa ser uma chave válida do objeto T.
+
+function getProperty<T, K extends keyof T>(myObj:T, key:K):T[K] {
+    return myObj[key]
+}
 // The function should return the value of the property associated with the given key.
 // Ensure Type Safety:
 
@@ -90,7 +102,24 @@ console.log(mapTypev2("Hello")); // Output: 5 (length of the string)
 
 // Test the getProperty function with an object, passing different keys to retrieve different property values.
 
+const user = {
+  id: 123,
+  name: "Alice",
+  age: 30,
+  isAdmin: true,
+};
 
+const userId = getProperty(user, "id"); // Type: number
+console.log(`User ID: ${userId}`); // Output: User ID: 123
+
+const userName = getProperty(user, "name"); // Type: string
+console.log(`User Name: ${userName}`); // Output: User Name: Alice
+
+const userAge = getProperty(user, "age"); // Type: number
+console.log(`User Age: ${userAge}`); // Output: User Age: 30
+
+const userIsAdmin = getProperty(user, "isAdmin"); // Type: boolean
+console.log(`Is User Admin?: ${userIsAdmin}`); // Output: Is User Admin?: true
 
 
 // Exercise 3: Using Interfaces with Numeric Properties in TypeScript
