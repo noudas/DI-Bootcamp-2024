@@ -129,12 +129,17 @@ console.log(`Is User Admin?: ${userIsAdmin}`); // Output: Is User Admin?: true
 // How to work with numeric properties in objects.
 // Description:
 
-// In this exercise, you will create a function that operates on objects with specific numeric properties. The function will multiply the value of a specified numeric property by a given factor.
+// In this exercise, you will create a function that operates on objects with specific numeric properties. 
+// The function will multiply the value of a specified numeric property by a given factor.
 
 // Instructions
 // Define an Interface:
 
 // Create an interface named HasNumericProperty that describes objects with properties that have numeric values.
+interface HasNumericProperty{
+  [key:string]: number
+}
+
 // Implement the Function:
 
 // Write a function named multiplyProperty that takes three parameters:
@@ -142,6 +147,19 @@ console.log(`Is User Admin?: ${userIsAdmin}`); // Output: Is User Admin?: true
 // A string key that corresponds to one of the numeric properties in the object.
 // A numeric factor by which to multiply the property’s value.
 // The function should return the result of multiplying the specified property’s value by the given factor.
+
+function multiplyProperty<T extends HasNumericProperty, K extends keyof T>(myObj:T, key:K, fator:number): number{
+  return myObj[key] * fator;
+}
+
 // Test the Function:
 
 // Test the multiplyProperty function with different objects and keys to ensure it works as expected.
+const exemplo: HasNumericProperty ={
+  value1: 10,
+  value2: 20,
+  value3: 30,
+}
+
+const result = multiplyProperty(exemplo, "value2", 3);
+console.log(result); // Output: 60
