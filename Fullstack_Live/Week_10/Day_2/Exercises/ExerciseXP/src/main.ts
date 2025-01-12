@@ -161,7 +161,37 @@ console.log(myDog.makeSound());
 
 // add(a: number, b: number): number – returns the sum of two numbers.
 // subtract(a: number, b: number): number – returns the difference between two numbers.
+class Calculator {
+
+  public a:number;
+  public b:number;
+
+  constructor(a:number, b:number) {
+    this.a = a
+    this.b = b
+  }
+
+  /**
+   * add
+   */
+  public add(): number {
+    return this.a + this.b
+  }
+
+  /**
+   * subtract
+   */
+  public subtract(): number {
+    return this.a - this.b
+  }
+}
+
+
 // Call these methods without creating an instance of the class.
+const Calculator1 = new Calculator(1, 2)
+console.log(Calculator1.add());
+console.log(Calculator1.subtract());
+
 
 
 
@@ -173,5 +203,36 @@ console.log(myDog.makeSound());
 
 
 // Instructions:
-// Create an interface User with properties id (readonly), name, and email. Extend the User interface to create a PremiumUser interface with an additional optional property membershipLevel. Create a function printUserDetails that accepts a PremiumUser and logs the details to the console.
+// Create an interface User with properties id (readonly), name, and email.
+
+interface User {
+  readonly id: number;
+  name: string;
+  email: string;
+}
+
+// Extend the User interface to create a PremiumUser interface with an additional optional property membershipLevel. 
+class PremiumUser implements User{
+  readonly id: number;
+  name: string;
+  email: string;
+  membershipLevel?: string;
+  
+  constructor(id: number, name: string, email: string, membershipLevel?: string) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.membershipLevel = membershipLevel; // Optional
+  }
+  // Create a function printUserDetails that accepts a PremiumUser and logs the details to the console.
+  printUserDetails(): string {
+    return `${this.name} (${this.email}) - Membership Level: ${this.membershipLevel ?? "Poor.. I mean Free"}`;
+  }
+}
+
+const premiumUser1 = new PremiumUser(1, "Alice", "alice@example.com", "Gold");
+console.log(premiumUser1.printUserDetails());
+
+const premiumUser2 = new PremiumUser(2, "Bob", "bob@example.com");
+console.log(premiumUser2.printUserDetails());
 
