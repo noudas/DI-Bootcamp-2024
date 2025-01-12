@@ -59,9 +59,73 @@ console.log(executive.approveBudget(100000)); // Bob has approved a budget of $1
 
 
 // Instructions:
-// Create a base class Shape with a static method getType that returns the type of the shape. Define a static property totalShapes to count how many instances of any shape have been created. Extend the class to Circle and Square, each with its own area calculation. Override the static method getType in each subclass.
-
+// Create a base class Shape with a static method getType that returns the type of the shape. 
+// Define a static property totalShapes to count how many instances of any shape have been created. 
+class Shape{
+  static totalShapes: number = 0
+  static getType(): string{
+      return 'Shape'
+  }
+  constructor(){
+    Shape.totalShapes ++;
+  }
+}
+// Extend the class to Circle and Square, each with its own area calculation. 
+// Override the static method getType in each subclass.
 // Ensure that you track the total number of shapes created using the totalShapes static property.
+
+class Circle extends Shape {
+  private radius: number;
+
+  constructor(radius: number) {
+    super(); // Increment the totalShapes count
+    this.radius = radius;
+  }
+
+  static getType(): string {
+    return "Circle";
+  }
+
+  getArea(): number {
+    return Math.PI * this.radius ** 2;
+  }
+}
+
+
+class Rectangle extends Shape {
+  private width: number;
+  private height: number;
+
+  constructor(width: number, height: number) {
+    super(); // Increment the totalShapes count
+    this.width = width;
+    this.height = height;
+  }
+
+  static getType(): string {
+    return "Rectangle";
+  }
+
+  getArea(): number {
+    return this.width * this.height;
+  }
+}
+
+const circle1 = new Circle(5);
+const rectangle1 = new Rectangle(4, 6);
+const circle2 = new Circle(3);
+
+console.log(Circle.getType()); // Output: "Circle"
+console.log(Rectangle.getType()); // Output: "Rectangle"
+console.log(Shape.getType()); // Output: "Shape"
+
+console.log(Shape.totalShapes); // Output: 3 (circle1, rectangle1, circle2)
+
+// Access areas
+console.log(circle1.getArea()); // Output: 78.53981633974483
+console.log(rectangle1.getArea()); // Output: 24
+console.log(circle2.getArea()); // Output: 28.274333882308138
+
 
 
 
@@ -73,10 +137,74 @@ console.log(executive.approveBudget(100000)); // Bob has approved a budget of $1
 
 
 // Instructions:
-// Create an interface Calculator with properties for two numbers (a and b), and a method operate that accepts a function for performing an operation (addition, subtraction, multiplication, etc.). The operate method should apply the passed function to a and b and return the result.
+// Create an interface Calculator with properties for two numbers (a and b), 
+// and a method operate that accepts a function for performing an operation (addition, subtraction, multiplication, etc.). 
+// The operate method should apply the passed function to a and b and return the result.
+
+interface Calculator {
+  a: number;
+  b: number;
+  operate(operation: (a: number, b: number) => number): number;
+}
+
+class SimpleCalculator implements Calculator {
+  a: number;
+  b: number;
+
+  constructor(a: number, b: number) {
+    this.a = a;
+    this.b = b;
+  }
+
+  operate(operation: (a: number, b: number) => number): number {
+    return operation(this.a, this.b);
+  }
+}
 
 // Then, create a class AdvancedCalculator that implements this interface and can perform operations like add, subtract, and multiply.
+class AdvancedCalculator implements Calculator {
+  a: number;
+  b: number;
 
+  constructor(a: number, b: number) {
+    this.a = a;
+    this.b = b;
+  }
+
+  operate(operation: (a: number, b: number) => number): number {
+    return operation(this.a, this.b);
+  }
+
+  add(): number {
+    return this.a + this.b;
+  }
+
+  subtract(): number {
+    return this.a - this.b;
+  }
+
+  multiply(): number {
+    return this.a * this.b;
+  }
+
+  divide(): number {
+    if (this.b === 0) {
+      throw new Error("Division by zero is not allowed.");
+    }
+    return this.a / this.b;
+  }
+}
+
+
+const simpleCalc = new SimpleCalculator(10, 5);
+console.log("Simple Calculator - Custom Operation (Modulus):", simpleCalc.operate((a, b) => a % b)); // Output: 0
+
+const advancedCalc = new AdvancedCalculator(20, 10);
+console.log("Advanced Calculator - Addition:", advancedCalc.add()); // Output: 30
+console.log("Advanced Calculator - Subtraction:", advancedCalc.subtract()); // Output: 10
+console.log("Advanced Calculator - Multiplication:", advancedCalc.multiply()); // Output: 200
+console.log("Advanced Calculator - Division:", advancedCalc.divide()); // Output: 2
+console.log("Advanced Calculator - Custom Operation (Power):", advancedCalc.operate((a, b) => a ** b)); // Output: 10240000000000
 
 
 // Exercise 4: Readonly Properties in Complex Inheritance
@@ -87,7 +215,39 @@ console.log(executive.approveBudget(100000)); // Bob has approved a budget of $1
 
 
 // Instructions:
-// Create a base class Device with a readonly property serialNumber. Extend it with a class Laptop that adds additional properties like model and price. Ensure that the serialNumber is immutable but model and price can be updated. Override a method to return the device information including the serialNumber.
+// Create a base class Device with a readonly property serialNumber. 
+class Device{
+  readonly serialNumber: number;
+
+  constructor(serialNumber: number){
+    this.serialNumber = serialNumber
+  }
+
+  public getInfo(): string{
+    return `Serial number: ${this.serialNumber}`
+  }
+}
+
+// Extend it with a class Laptop that adds additional properties like model and price. 
+// Ensure that the serialNumber is immutable but model and price can be updated. 
+// Override a method to return the device information including the serialNumber.
+class Laptop extends Device{
+  public model: string;
+  public price: number;
+
+  constructor(serialNumber: number, model: string, price: number){
+    super(serialNumber);
+    this.model = model;
+    this.price = price;
+  }
+
+  public getInfo(): string {
+    return `Serial number: ${this.serialNumber} -> Model ${this.model} -> Price $${this.price}`
+  }
+}
+
+const laptop = new Laptop(12345, "MacBook Pro", 2499.99);
+console.log(laptop.getInfo());
 
 
 
@@ -99,6 +259,50 @@ console.log(executive.approveBudget(100000)); // Bob has approved a budget of $1
 
 
 // Instructions:
-// Create an interface Product with properties name (readonly), price, and an optional discount. Then, create another interface Electronics that extends Product and adds a property warrantyPeriod. Finally, create a class Smartphone that implements the Electronics interface and calculates the price after discount.
+// Create an interface Product with properties name (readonly), price, and an optional discount. 
+interface Product{
+  readonly name: string;
+  price: number;
+  discount?: number
+}
 
-// Ensure that the name is immutable, and the discount is optional.
+// Then, create another interface Electronics that extends Product and adds a property warrantyPeriod. 
+interface Electronics extends Product{
+  warrantyPeriod: number;
+}
+
+// Finally, create a class Smartphone that implements the Electronics interface and calculates the price after discount.
+class Smartphone implements Electronics{
+
+  // Ensure that the name is immutable, and 
+  readonly name: string;
+  price: number;
+
+  // the discount is optional.
+  discount?: number | undefined;
+  warrantyPeriod: number;
+
+  constructor(name: string, price: number, warrantyPeriod: number, discount?: number) {
+    this.name = name;
+    this.price = price;
+    this.warrantyPeriod = warrantyPeriod;
+    this.discount = discount;
+  }
+
+  public getPriceAfterDiscount(): number {
+    if (this.discount) {
+      return this.price - (this.price * this.discount) / 100;
+    }
+    return this.price;
+  }
+
+  public getDetails(): string {
+    const finalPrice = this.getPriceAfterDiscount();
+    return `Smartphone: ${this.name}, Price: $${finalPrice.toFixed(2)}, Warranty Period: ${this.warrantyPeriod} months`;
+  }
+}
+
+const smartphone = new Smartphone("iPhone 14", 999.99, 24, 10);
+
+// Print details
+console.log(smartphone.getDetails()); 
