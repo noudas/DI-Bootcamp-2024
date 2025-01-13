@@ -13,3 +13,12 @@ const myToken = jwt.sign({
 console.log(myToken);
 
 const expiredToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+
+jwt.verify(expiredToken, "123456", (err,decode) =>{
+    if(err){
+        console.log(err);
+        return
+    }
+    console.log(decode);
+});
+
