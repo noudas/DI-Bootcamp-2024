@@ -25,7 +25,7 @@ module.exports = {
 
     getUserByEmail: async (email) =>{
         try {
-            const user = await db("user")
+            const user = await db("users")
                 .select("id","email","password")
                 .where({email: email.toLowerCase()})
                 .first();
