@@ -76,5 +76,31 @@ module.exports = {
         }
 
     },
-
+    logoutUser:async (req, res) =>{
+        req.clearCookie("Token_Cookie");
+        req.cookies.token = null;
+        delete req.cookies.token;
+        /*Set null in db collumn*/
+        res.sendStatus(200);
+    },
+    verifyAuth: async (req,res) =>{
+        const { userid, email}  = req.user;
+        const {ACCESS_TOKEN_SECRET} = process.env;
+    
+        const newAccessToken= jwt.sign(
+            { userid, email},
+            ACCESS_TOKEN_SECRET,
+            {expiresIn: "60s"}
+        );
+        res.cookie("Token_Cookie", newAccessToken), {
+            httpOnly: true,
+            maxAge: 60 *1000,
+        }
+        res.json({
+                message: "verified",
+                user:{userid, email},
+                token: newAccessToken,
+            }
+        )
+    }
 }
