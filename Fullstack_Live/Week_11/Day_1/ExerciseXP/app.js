@@ -17,5 +17,4 @@ const {PORT} = process.env;
 
 app.listen(PORT || 5000, () =>{
     console.log(`run on ${PORT || 5000}`);
-    
-})
+});
