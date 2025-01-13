@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 // const db = require("./config/db");
+const userRouter = require("./routes/userRoute");
+const userController = require("./controllers/userController");
 
 const app = express();
 
@@ -21,7 +23,7 @@ app.listen(PORT || 5000, () =>{
     
 })
 
-
+app.use('/api/user', userRouter);
 // async function testConnection() {
 //     try {
 //       const response = await db.raw("select version()");
