@@ -17,28 +17,6 @@
 // TypeScript configuration files present
 // Development server running without errors
 
-
-// 🌟 Exercise 4: Creating a React Component with Optional Props
-// What You Will Learn:
-
-// How to define an interface with optional props in TypeScript.
-// How to handle optional props in a React component.
-// How to provide default content when optional props are not available.
-// Time Needed: 15 minutes
-
-// Instructions
-// Create a new UserCard.tsx component
-// Define interface with optional name, age, and role props
-// Implement default values for optional props
-// Test component with various prop combinations
-// Success Criteria:
-
-// Component works with all props provided
-// Component works with some props omitted
-// Default values display correctly
-// TypeScript properly handles optional props
-
-
 // 🌟 Exercise 5: Using useEffect Hook with TypeScript in React
 // What You Will Learn:
 
@@ -65,12 +43,17 @@ import React from "react";
 import './App.css'
 import Greeting from "./components/Greeting";
 import Counter from "./components/Counter";
+import UserCard from "./components/UserCard";
 
 const App: React.FC = () => {
   return (
     <div>
       <Greeting name="John" messageCount={5} />
       <Counter/>
+      <UserCard name="Alice" age={30} role="Developer" />
+      <UserCard age={25} />
+      <UserCard/>
+
     </div>
   );
 };
