@@ -17,33 +17,12 @@
 // TypeScript configuration files present
 // Development server running without errors
 
-// 🌟 Exercise 5: Using useEffect Hook with TypeScript in React
-// What You Will Learn:
-
-// How to use the useEffect hook in a functional React component.
-// How to fetch data from an API using useEffect.
-// How to handle loading state and display data in the component.
-// Time Needed: 20 minutes
-
-// Instructions
-// Create a new UserList.tsx component
-// Define User interface for API data
-// Implement loading and error states
-// Fetch and display user data from the API https://jsonplaceholder.typicode.com/users. Use the useEffect hook to fetch data from the API when the component mounts.
-// Handle potential errors properly
-// Display the fetched data in the component.
-// Success Criteria:
-
-// Data fetches and displays correctly
-// Loading state shows while fetching
-// Errors are properly handled and displayed
-// All API data is properly typed
-
 import React from "react";
 import './App.css'
 import Greeting from "./components/Greeting";
 import Counter from "./components/Counter";
 import UserCard from "./components/UserCard";
+import UserList from "./components/UserList";
 
 const App: React.FC = () => {
   return (
@@ -53,7 +32,7 @@ const App: React.FC = () => {
       <UserCard name="Alice" age={30} role="Developer" />
       <UserCard age={25} />
       <UserCard/>
-
+      <UserList/>
     </div>
   );
 };
