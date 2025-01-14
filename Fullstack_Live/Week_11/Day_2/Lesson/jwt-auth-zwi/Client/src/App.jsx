@@ -11,7 +11,16 @@ import UserProfile from './components/UserProfile'
 function App() {
   return (
     <>
-      
+      <Navbar/>
+      <main className="container">
+          <Routes>
+            <Route path="/" element={<h2>Welcome to our App</h2>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/profile" element={<UserProfile/>}/>
+          </Routes>
+      </main>
     </>
   )
 }
