@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import axios from 'axios'
 
 // Create a context to manage authentication state and functionality
 const AuthContext = createContext();
@@ -19,6 +20,17 @@ export const UseAuth = () => {
 
 // Authentication provider to wrap the application or parts of it
 export const AuthProvider = ({ children }) => {
+    const [user,setUser] = useState(null);
+    const [token,setTokem] = useState(null);
+    const [loading, setLoading] = useState(null);
+
+    const login = (user, token) =>{
+        setUser(user);
+        setToken(token);
+        localStorage.setItenm("user", JSON.stringify(user));
+        localStorage.setItenm("accessToken", JSON.stringify(user));
+
+    }
     // Provide an empty value for now; you can extend this to include
     // state and functions for authentication, such as login/logout
     return (
