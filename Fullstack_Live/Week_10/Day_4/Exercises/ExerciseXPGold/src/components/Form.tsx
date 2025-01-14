@@ -16,3 +16,13 @@
 // Validation works for all required fields
 // Error messages display appropriately
 // Form submission handles both success and error cases
+
+const Form = () =>{
+    return(
+        <>
+        
+        </>
+    )
+}
+
+export default Form
