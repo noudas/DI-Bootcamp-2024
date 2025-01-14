@@ -21,6 +21,7 @@ const Login = () => {
         );
             const {user, token} = response.data;
             console.log({user, token});
+            navigate("/dashboard")
             
         } catch (error) {
             setErrors(error.response?.data?.message || "Login Failed");
