@@ -28,12 +28,14 @@ module.exports = {
             const user = await userModel.getUserByEmail(email);
             if(!user){
                 res.status(404).json({message:"User not found"})
+                return;
             }
             
             const matchinPassword = await bcrypt.compare(password + '', user.password);
 
             if(!matchinPassword){
                 res.status(404).json({message:"Wrong Password"})
+                return;
             }
 
             const {ACCESS_TOKEN_SECRET} = process.env;
