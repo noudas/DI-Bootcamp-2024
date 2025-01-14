@@ -1,7 +1,7 @@
 const ProtectedRoot = () =>{
     return (
         <>
-        
+            <h1>Protected Root</h1>        
         </>
     )
 }
