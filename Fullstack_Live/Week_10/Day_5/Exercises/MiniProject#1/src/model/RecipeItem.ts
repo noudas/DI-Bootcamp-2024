@@ -22,3 +22,5 @@ class Recipe {
         this.isFavorite = isFavorite;
     }
 }
+
+export default Recipe
