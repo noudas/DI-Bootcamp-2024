@@ -14,3 +14,10 @@ export type GenericListProps<T> = {
     items: T[];
     renderItem: (item: T) => React.ReactNode;
 }
+
+
+// Generic Add Form
+export type AddItemFormProps<T> = {
+    onAdd: (item: T) => void;
+    fields: { name: keyof T; placeholder: string; type: string }[];
+};

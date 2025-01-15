@@ -31,15 +31,18 @@
 // Rendering the App
 // Use the generic List component to display the list of books. The renderItem function determines how each book is presented.
 
-// By focusing on TypeScript generics and React components, this challenge demonstrates how to write flexible code that can easily adapt to different data structures. The final result is a book list that you can extend or customize as needed.
+// By focusing on TypeScript generics and React components, 
+// this challenge demonstrates how to write flexible code that can easily adapt to different data structures. 
+// The final result is a book list that you can extend or customize as needed.
 
 import './App.css'
+import BookApp from './components/BookApp'
 
 function App() {
 
   return (
     <>
-
+      <BookApp/>
     </>
   )
 }
