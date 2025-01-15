@@ -17,12 +17,13 @@
 // Book Type - OK
 // Define the Book type, which includes an id, a title, and an author, specifying the structure for each book item.
 
-// Generic List Component
+// Generic List Component - OK
 // Create a reusable, generic List component that accepts an array of items and a renderItem function. 
 // This allows you to decide exactly how each book is displayed.
 
 // Main BookApp Component
-// Use the useState hook in BookApp to manage a list of books. Prepopulate it with a few entries, and let the list grow by adding new books.
+// Use the useState hook in BookApp to manage a list of books. 
+// Prepopulate it with a few entries, and let the list grow by adding new books.
 
 // Adding a New Book
 // Implement a function addBook that generates a new book object (with a unique id) and appends it to the state.
