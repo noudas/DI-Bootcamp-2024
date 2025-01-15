@@ -1,34 +1,8 @@
-// Exercise 2: Building a Data Table Component with Advanced TypeScript
-// What Is a “Data Table Component”?
-// A Data Table Component is a reusable React component that displays tabular data of any type. It typically supports:
-
-// Configurable columns (which properties from your data objects to show, column titles, custom rendering for cells, etc.).
-// Sorting (allowing users to sort rows by clicking on column headers).
-// Selection (selecting one or more rows).
-// Filtering (an optional feature to show/hide rows based on specific criteria).
-// Your job is to create this table in a generic and type-safe way, so it can handle different data structures without changing the core table code.
-
-
-
-// 👩‍🏫 👩🏿‍🏫 What You’ll learn
-// Creating complex, reusable interfaces in TypeScript.
-// Implementing generic types for flexible components.
-// Handling dynamic data rendering with proper typing.
-// Managing row selection using React state.
-// Time Needed: 25 minutes
-
-
-
-// Step-by-Step Instructions
-
-
-
-
 // Exercise 3: Creating a Data Fetching and Caching System
 // Goal
-// Build a reusable system in React (with TypeScript) that fetches data from an API, caches the results to prevent redundant network requests, and allows refreshing (re-fetching) when necessary.
-
-
+// Build a reusable system in React (with TypeScript) that fetches data from an API, 
+// caches the results to prevent redundant network requests, 
+// and allows refreshing (re-fetching) when necessary.
 
 // What Is a Caching System?
 // A caching system stores data in memory (or another storage mechanism) so that subsequent requests for the same data do not always require a network call. This can significantly improve performance and user experience by reducing loading times and avoiding unnecessary API calls.
