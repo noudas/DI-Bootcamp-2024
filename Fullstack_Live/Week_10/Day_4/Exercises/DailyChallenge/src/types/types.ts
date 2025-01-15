@@ -10,6 +10,10 @@ export type Book = {
 // Generic List Component
 // Create a reusable, generic List component that accepts an array of items and a renderItem function. 
 // This allows you to decide exactly how each book is displayed.
+
+// Rendering the App
+// Use the generic List component to display the list of books. 
+// The renderItem function determines how each book is presented.
 export type GenericListProps<T> = {
     items: T[];
     renderItem: (item: T) => React.ReactNode;

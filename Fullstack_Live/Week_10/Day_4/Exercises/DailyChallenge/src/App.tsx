@@ -21,7 +21,7 @@
 // Create a reusable, generic List component that accepts an array of items and a renderItem function. 
 // This allows you to decide exactly how each book is displayed.
 
-// Main BookApp Component
+// Main BookApp Component - OK
 // Use the useState hook in BookApp to manage a list of books. 
 // Prepopulate it with a few entries, and let the list grow by adding new books.
 

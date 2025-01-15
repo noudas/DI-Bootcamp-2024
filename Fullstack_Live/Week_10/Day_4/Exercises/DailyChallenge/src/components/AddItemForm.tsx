@@ -1,3 +1,6 @@
+// Adding a New Book
+// Implement a function addBook that generates a new book object (with a unique id) and appends it to the state.
+
 import React, { useState } from "react";
 import { AddItemFormProps } from "../types/types"
 

@@ -1,3 +1,12 @@
+// Main BookApp Component - OK
+// Use the useState hook in BookApp to manage a list of books. 
+// Prepopulate it with a few entries, and let the list grow by adding new books.
+
+// Rendering the App
+// Use the generic List component to display the list of books. 
+// The renderItem function determines how each book is presented.
+
+
 import { useState } from "react";
 import { Book } from "../types/types";
 import AddItemForm from "./AddItemForm";
