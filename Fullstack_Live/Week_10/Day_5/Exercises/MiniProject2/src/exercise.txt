@@ -1,0 +1,137 @@
+Exercise Steps
+Part 1: Project Setup (15-20 minutes)
+Create a new directory for your project
+Initialize a new Vite project with TypeScript support
+Install required dependencies
+Create the basic project structure
+Tasks:
+
+# 1. Create project directory
+mkdir book-library
+cd book-library
+
+# 2. Initialize Vite project
+npm create vite@latest . -- --template react-ts
+
+# 3. Install dependencies
+npm install
+npm install @reduxjs/toolkit react-redux
+
+# 4. Start the development server to verify setup
+npm run dev
+
+
+Part 2: Define the Data Model (20-30 minutes)
+Create the Book interface
+Implement the BookItem class
+Add serialization methods
+Tasks:
+
+Create src/model directory
+Create Book.ts file
+Define the Book interface with required properties
+Implement the BookItem class with getters and serialization methods
+
+
+Part 3: Set Up Redux Store (30-40 minutes)
+Create the Redux store configuration
+Define the books slice
+Implement basic actions
+Set up TypeScript types for the store
+Tasks:
+
+Create src/app directory
+Set up store configuration
+Create books slice with initial state
+Implement core actions (add, remove, toggle read status)
+Define filter and category functionality
+
+
+Part 4: Create Custom Hooks (30-40 minutes)
+Implement hooks for book operations
+Create filter and category hooks
+Add TypeScript types for hooks
+Tasks:
+
+Create hooks for:
+
+Adding books
+
+Removing books
+Toggling read status
+Setting filters
+Managing categories
+Add proper TypeScript types
+Implement error handling
+
+
+Part 5: Build Components (45-60 minutes)
+Create the BookInput component
+Build the BookList component
+Implement the BookItem component
+Add TypeScript props and event handling
+Tasks:
+
+Create components directory structure
+Implement each component with proper typing
+Add event handlers
+Connect components to Redux store using hooks
+
+
+Part 6: Style the Application (30-40 minutes)
+Create CSS modules
+Implement responsive design
+Add transitions and animations
+Tasks:
+
+Create CSS files for components
+Implement grid layout for book list
+Style forms and buttons
+Add responsive breakpoints
+
+
+Part 7: Testing and Refinement (30-40 minutes)
+Test all functionality
+Add error handling
+Implement loading states
+Add form validation
+Tasks:
+
+Test adding, removing, and updating books
+Verify filter functionality
+Test responsive design
+Validate form inputs
+Add error messages
+
+
+Challenge Exercises
+After completing the basic implementation, try these challenges:
+
+1. Search Implementation (30 minutes)
+
+Add search functionality to filter books
+Implement debouncing for search input
+Add highlighting for search terms
+2. Sorting Features (30 minutes)
+
+Add sort by title
+Add sort by author
+Add sort by date added
+Implement sort direction toggle
+3. Statistics Dashboard (45 minutes)
+
+Show total books count
+Display read vs unread ratio
+Show books by category
+Add reading progress tracking
+4. Data Persistence (30 minutes)
+
+Implement localStorage saving
+Add data export feature
+Add data import feature
+5. Categories Management (45 minutes)
+
+Add category creation
+Implement category deletion
+Add category editing
+Show books count per category
