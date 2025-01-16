@@ -19,8 +19,11 @@ class RecipeTemplate {
         this.container = container;
     }
 
-    // Render recipe cards
-    renderRecipes(recipes: Recipe[], onToggleFavorite: (id: number) => void, onDelete: (id: number) => void): void {
+    renderRecipes(
+        recipes: Recipe[],
+        onToggleFavorite: (id: number) => void,
+        onDelete: (id: number) => void
+    ): void {
         this.container.innerHTML = ""; // Clear previous content
 
         recipes.forEach((recipe) => {
@@ -29,7 +32,7 @@ class RecipeTemplate {
 
             card.innerHTML = `
                 <h2>${recipe.title}</h2>
-                <div class="recipe-details hidden">
+                <div class="recipe-details" style="display: block;">
                     <p><strong>Ingredients:</strong> ${recipe.ingredients.join(", ")}</p>
                     <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                 </div>
@@ -42,10 +45,13 @@ class RecipeTemplate {
             const toggleDetailsButton = card.querySelector(".toggle-details")!;
             const detailsDiv = card.querySelector(".recipe-details")!;
             toggleDetailsButton.addEventListener("click", () => {
-                detailsDiv.classList.toggle("hidden");
-                toggleDetailsButton.textContent = detailsDiv.classList.contains("hidden")
-                    ? "Show Details"
-                    : "Hide Details";
+                if (detailsDiv.style.display === "none" || !detailsDiv.style.display) {
+                    detailsDiv.style.display = "block"; // Show the details
+                    toggleDetailsButton.textContent = "Hide Details";
+                } else {
+                    detailsDiv.style.display = "none"; // Hide the details
+                    toggleDetailsButton.textContent = "Show Details";
+                }
             });
 
             // Event: Toggle favorite

@@ -25,7 +25,7 @@ class RecipeCollection{
     }
 
     toggleRecipe(id: number): void{
-        const recipe = this.recipes.find((recipe) => recipe.id !== id);
+        const recipe = this.recipes.find((recipe) => recipe.id === id);
         if (recipe) {
             recipe.isFavorite = !recipe.isFavorite;
         }
