@@ -2,6 +2,7 @@ import './style.css'
 import Recipe from './model/RecipeItem'
 import RecipeCollection from './model/RecipeCollection'
 import RecipeTemplate from './template/RecipeTemplate'
+import { v4 as uuidv4 } from 'uuid';
 
 // Initialize classes
 const recipeCollection = new RecipeCollection();
@@ -29,7 +30,7 @@ recipeEntryForm.addEventListener("submit", (e) => {
     if (title && ingredients.length && instructions) {
         const maxId = recipeCollection.recipes.reduce((max, recipe) => Math.max(max, recipe.id), 0);
         const newRecipe = new Recipe(
-            maxId + 1, // Unique ID
+            uuidv4(), // Unique ID
             title,
             ingredients,
             instructions,
