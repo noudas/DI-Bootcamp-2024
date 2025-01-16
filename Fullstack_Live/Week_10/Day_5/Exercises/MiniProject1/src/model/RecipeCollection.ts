@@ -31,6 +31,10 @@ class RecipeCollection{
         }
     }
 
+    clearAllRecipes():void {
+        this.recipes = []
+    }
+
     saveToLocalStorage():void{
         localStorage.setItem("recipes", JSON.stringify(this.recipes));
     }
